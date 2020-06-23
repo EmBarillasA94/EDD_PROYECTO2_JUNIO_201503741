@@ -3,29 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package proyecto2_201503741.Clases;
 
 /**
  *
  * @author EDDY
  */
-public class Conductor {
+public class Cliente {
 
-    public Conductor(String dpi, String nombres, String apellidos, String tipo_licencia, String genero, int telefono, String direccion) {
+    public Cliente(int dpi, String nombres, String apellidos, String genero, int telefono, String direccion) {
         this.dpi = dpi;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.tipo_licencia = tipo_licencia;
         this.genero = genero;
         this.telefono = telefono;
         this.direccion = direccion;
     }
 
-    public String getDpi() {
+    public int getDpi() {
         return dpi;
     }
 
-    public void setDpi(String dpi) {
+    public void setDpi(int dpi) {
         this.dpi = dpi;
     }
 
@@ -43,14 +42,6 @@ public class Conductor {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    public String getTipo_licencia() {
-        return tipo_licencia;
-    }
-
-    public void setTipo_licencia(String tipo_licencia) {
-        this.tipo_licencia = tipo_licencia;
     }
 
     public String getGenero() {
@@ -77,12 +68,10 @@ public class Conductor {
         this.direccion = direccion;
     }
     
-    private String dpi;
+    private int dpi;
     private String nombres;
     private String apellidos;
-    private String tipo_licencia;
     private String genero;
     private int telefono;
     private String direccion;
-    
 }

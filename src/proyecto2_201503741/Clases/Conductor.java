@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clases;
+package proyecto2_201503741.Clases;
 
 /**
  *
  * @author EDDY
  */
-public class Cliente {
+public class Conductor {
 
-    public Cliente(int dpi, String nombres, String apellidos, String genero, int telefono, String direccion) {
+    public Conductor(int dpi, String nombres, String apellidos, String tipo_licencia, String genero, int telefono, String direccion) {
         this.dpi = dpi;
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.tipo_licencia = tipo_licencia;
         this.genero = genero;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -44,6 +45,14 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
+    public String getTipo_licencia() {
+        return tipo_licencia;
+    }
+
+    public void setTipo_licencia(String tipo_licencia) {
+        this.tipo_licencia = tipo_licencia;
+    }
+
     public String getGenero() {
         return genero;
     }
@@ -71,7 +80,9 @@ public class Cliente {
     private int dpi;
     private String nombres;
     private String apellidos;
+    private String tipo_licencia;
     private String genero;
     private int telefono;
     private String direccion;
+    
 }
