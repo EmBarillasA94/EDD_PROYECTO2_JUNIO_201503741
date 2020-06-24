@@ -11,12 +11,22 @@ package proyecto2_201503741.Clases;
  */
 public class Conductor {
 
-    public Conductor(int dpi, String nombres, String apellidos, String tipo_licencia, String genero, int telefono, String direccion) {
+    private int dpi;
+    private String nombres;
+    private String apellidos;
+    private String tipo_licencia;
+    private String genero;
+    private String fecha_nacimiento;
+    private int telefono;
+    private String direccion;
+
+    public Conductor(int dpi, String nombres, String apellidos, String tipo_licencia, String genero, String fecha_nacimiento, int telefono, String direccion) {
         this.dpi = dpi;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipo_licencia = tipo_licencia;
         this.genero = genero;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
     }
@@ -76,13 +86,13 @@ public class Conductor {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    private int dpi;
-    private String nombres;
-    private String apellidos;
-    private String tipo_licencia;
-    private String genero;
-    private int telefono;
-    private String direccion;
-    
+
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
 }

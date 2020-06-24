@@ -11,7 +11,15 @@ package proyecto2_201503741.Clases;
  */
 public class Vehiculo {
 
-    public Vehiculo(String placa, String marca, String modelo, int anio, String color, int precio, String transmision) {
+    private String placa;
+    private String marca;
+    private String modelo;
+    private int anio;
+    private String color;
+    private String precio;
+    private String transmision;
+
+    public Vehiculo(String placa, String marca, String modelo, int anio, String color, String precio, String transmision) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -61,11 +69,11 @@ public class Vehiculo {
         this.color = color;
     }
 
-    public int getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
@@ -76,12 +84,5 @@ public class Vehiculo {
     public void setTransmision(String transmision) {
         this.transmision = transmision;
     }
-    
-    private String placa;
-    private String marca;
-    private String modelo;
-    private int anio;
-    private String color;
-    private int precio;
-    private String transmision;
+
 }
