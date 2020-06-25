@@ -32,6 +32,9 @@ public class Nodo_TablaHash {
         this.Lista.Eliminar(dpi);
     }
 
+    public boolean isEmpty(){
+        return this.Lista.isEmpty();
+    }
     public Lista_Cliente getLista() {
         return Lista;
     }

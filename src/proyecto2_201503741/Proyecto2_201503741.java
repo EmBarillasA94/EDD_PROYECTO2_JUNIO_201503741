@@ -21,9 +21,8 @@ public class Proyecto2_201503741 {
     /**
      * @param args the command line arguments
      */
-    
     public static Tabla_Hash Tabla = new Tabla_Hash();
-    
+
     public static void main(String[] args) {
 
 //        long a = 2552889210101l;
@@ -38,11 +37,18 @@ public class Proyecto2_201503741 {
 //        } else {
 //            System.out.println("el mayor es b");
 //        }
-        String ruta = "C:\\Users\\EDDY\\Desktop\\Clientes.txt";
-
-        LeerArchivoClientes(ruta);
-        
-        Tabla.Eliminar(465321232212l);
+//        String ruta = "C:\\Users\\EDDY\\Desktop\\Clientes.txt";
+//
+//        LeerArchivoClientes(ruta);
+//        Tabla.Eliminar(465321232212l);
+//        Tabla.Graph();
+//        Cliente cli = Tabla.Buscar(221374732231l);
+//        if (cli != null)
+//        System.out.println("cliente: " + cli.getDpi() + " " + cli.getNombres());
+        for (int i = 0; i <= 111; i++) {
+            Cliente cli = new Cliente(i, "cliente"+i, "apellidos", "genero", "fecha nacimiento", 12345, "direccion");
+            Tabla.Insertar(cli);
+        }
         Tabla.Graph();
     }
 

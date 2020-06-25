@@ -82,4 +82,10 @@ public class Lista_Cliente {
         return lista;
     }
 
+    public Cliente getInicio() {
+        return this.Inicio;
+    }
+
+    
+    
 }
