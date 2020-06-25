@@ -36,7 +36,7 @@ public class Lista_Cliente {
         }
     }
 
-    public Cliente Buscar(int dpi) {
+    public Cliente Buscar(long dpi) {
         Cliente aux = this.Inicio;
         while (aux != null) {
             if (aux.getDpi() == dpi) {
@@ -48,7 +48,7 @@ public class Lista_Cliente {
         return null;
     }
 
-    public void Eliminar(int dpi) {
+    public void Eliminar(long dpi) {
         if (this.Inicio.getDpi() == dpi) {
             this.Inicio = this.Inicio.getNext();
         } else {
@@ -65,6 +65,21 @@ public class Lista_Cliente {
                 }
             }
         }
+    }
+
+    public String ListaClientes() {
+        String lista = "";
+//        String espacio = "&#92;n";
+        if (!isEmpty()) {
+            Cliente aux = this.Inicio;
+            while (aux != null) {
+                lista = lista + aux.getDpi()+ " " + aux.getNombres()+ " "+ aux.getApellidos()+"|";
+                aux = aux.getNext();
+            }
+        } else {
+            return "";
+        }
+        return lista;
     }
 
 }

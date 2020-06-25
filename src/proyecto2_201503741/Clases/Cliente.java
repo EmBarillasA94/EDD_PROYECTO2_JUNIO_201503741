@@ -11,7 +11,7 @@ package proyecto2_201503741.Clases;
  */
 public class Cliente {
 
-    private int dpi;
+    private long dpi;
     private String nombres;
     private String apellidos;
     private String genero;
@@ -20,7 +20,7 @@ public class Cliente {
     private String direccion;
     private Cliente next;
 
-    public Cliente(int dpi, String nombres, String apellidos, String genero, String fecha_nacimiento, int telefono, String direccion) {
+    public Cliente(long dpi, String nombres, String apellidos, String genero, String fecha_nacimiento, int telefono, String direccion) {
         this.dpi = dpi;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -31,11 +31,11 @@ public class Cliente {
         this.next = null;
     }
 
-    public int getDpi() {
+    public long getDpi() {
         return dpi;
     }
 
-    public void setDpi(int dpi) {
+    public void setDpi(long dpi) {
         this.dpi = dpi;
     }
 

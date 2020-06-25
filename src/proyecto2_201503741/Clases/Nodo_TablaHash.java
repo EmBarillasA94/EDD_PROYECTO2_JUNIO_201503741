@@ -23,13 +23,17 @@ public class Nodo_TablaHash {
         this.Lista.Insertar(NuevoCliente);
     }
     
-    public Cliente Buscar(int dpi){
+    public Cliente Buscar(long dpi){
         Cliente cli = this.Lista.Buscar(dpi);
         return cli;
     }
     
-    public void Eliminar(int dpi){
+    public void Eliminar(long dpi){
         this.Lista.Eliminar(dpi);
+    }
+
+    public Lista_Cliente getLista() {
+        return Lista;
     }
     
 }
