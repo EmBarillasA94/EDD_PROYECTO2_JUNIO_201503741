@@ -11,7 +11,7 @@ package proyecto2_201503741.Clases;
  */
 public class Conductor {
 
-    private int dpi;
+    private long dpi;
     private String nombres;
     private String apellidos;
     private String tipo_licencia;
@@ -19,8 +19,10 @@ public class Conductor {
     private String fecha_nacimiento;
     private int telefono;
     private String direccion;
+    private Conductor before;
+    private Conductor next;
 
-    public Conductor(int dpi, String nombres, String apellidos, String tipo_licencia, String genero, String fecha_nacimiento, int telefono, String direccion) {
+    public Conductor(long dpi, String nombres, String apellidos, String tipo_licencia, String genero, String fecha_nacimiento, int telefono, String direccion) {
         this.dpi = dpi;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -29,13 +31,15 @@ public class Conductor {
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.before = null;
+        this.next = null;
     }
 
-    public int getDpi() {
+    public long getDpi() {
         return dpi;
     }
 
-    public void setDpi(int dpi) {
+    public void setDpi(long dpi) {
         this.dpi = dpi;
     }
 
@@ -95,4 +99,21 @@ public class Conductor {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
+    public Conductor getBefore() {
+        return before;
+    }
+
+    public void setBefore(Conductor before) {
+        this.before = before;
+    }
+
+    public Conductor getNext() {
+        return next;
+    }
+
+    public void setNext(Conductor next) {
+        this.next = next;
+    }
+
+    
 }

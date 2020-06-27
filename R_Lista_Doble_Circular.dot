@@ -1,0 +1,10 @@
+digraph G{ 
+rankdir = LR; 
+node[shape=box] 
+"31168322"[label ="2552889210101&#92;nEddy Alejandro&#92;nLicencia Tipo: C"]; 
+"17225372"[label ="6865324680074&#92;nCarla Patricia&#92;nLicencia Tipo: C"]; 
+"31168322"->"17225372"
+"31168322"->"17225372"
+"17225372"->"31168322"
+"17225372"->"31168322"
+}

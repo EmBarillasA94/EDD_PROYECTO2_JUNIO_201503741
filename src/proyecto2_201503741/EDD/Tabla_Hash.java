@@ -99,12 +99,12 @@ public class Tabla_Hash {
             archivo = new File("R_TablaHash.dot");
             fw_archivo = new FileWriter(archivo, false);
             char comillas = '"';
-            int altura = this.claves_ocupadas/2;
+            int altura = this.claves_ocupadas / 2;
 
             fw_archivo.write("digraph G{ \n");
             fw_archivo.write("nodesep =.01; \n");
             fw_archivo.write("rankdir = LR; \n");
-            fw_archivo.write("node[shape=record,width=.1,height="+altura+"]; \n");
+            fw_archivo.write("node[shape=record,width=.1,height=" + altura + "]; \n");
 //            fw_archivo.write("node[shape=record] \n");
 //            fw_archivo.write("nodeArray[label =" + comillas + "<f0>0|<f1>1|<f2>2|<f3>3|<f4>4|<f5>5|<f6>6|<f7>7|<f8>8|<f9>9|<f10>10|<f11>11|<f12>12|<f13>13|<f14>14|<f15>15|<f16>16|<f17>17|<f18>18|<f19>19|<f20>20|<f21>21|<f22>22|<f23>23|<f24>24|<f25>25|<f26>26|<f27>27|<f28>28|<f29>29|<f30>30|<f31>31|<f32>32|<f33>33|<f34>34|<f35>35|<f36>36" + comillas + "]; \n");
             fw_archivo.write("nodeArray[label=" + comillas);
