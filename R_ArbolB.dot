@@ -1,0 +1,6 @@
+digraph g{ 
+rankdir = TB; 
+node [shape = record]; 
+31168322[label ="P345RTX&#92;nCorolla|P654CRV&#92;nCorolla|P876GDW&#92;nLancer|"]; 
+
+} 

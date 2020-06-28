@@ -8,9 +8,10 @@ package proyecto2_201503741;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.math.BigInteger;
 import proyecto2_201503741.Clases.Cliente;
 import proyecto2_201503741.Clases.Conductor;
+import proyecto2_201503741.Clases.Vehiculo;
+import proyecto2_201503741.EDD.Arbol_B;
 import proyecto2_201503741.EDD.Lista_Conductores;
 import proyecto2_201503741.EDD.Tabla_Hash;
 
@@ -22,11 +23,11 @@ public class Proyecto2_201503741 {
 
     public static Tabla_Hash Tabla = new Tabla_Hash();
     public static Lista_Conductores Lista_Conductores = new Lista_Conductores();
-    
+    public static Arbol_B Arbol_Vehiculos = new Arbol_B();
+
     /**
      * @param args the command line arguments
      */
-
     public static void main(String[] args) {
 
 //        long a = 2552889210101l;
@@ -49,21 +50,35 @@ public class Proyecto2_201503741 {
 //        Cliente cli = Tabla.Buscar(221374732231l);
 //        if (cli != null)
 //        System.out.println("cliente: " + cli.getDpi() + " " + cli.getNombres());
-
-
 //        for (int i = 0; i <= 111; i++) {
 //            Cliente cli = new Cliente(i, "cliente"+i, "apellidos", "genero", "fecha nacimiento", 12345, "direccion");
 //            Tabla.Insertar(cli);
 //        }
 //        Tabla.Graph();
+//
+//        String ruta = "C:\\Users\\EDDY\\Desktop\\Conductores.txt";
+//        LeerArchivoConductores(ruta);
+//        Lista_Conductores.Eliminar(3875490173451l);
+//        Lista_Conductores.graph();
 
-        String ruta = "C:\\Users\\EDDY\\Desktop\\Conductores.txt";
-        LeerArchivoConductores(ruta);
-        Lista_Conductores.Eliminar(3875490173451l);
-        Lista_Conductores.graph();
+//        String placa1 = "P654CRV";
+//        String placa2 = "P876GDW";
+//        int comparacion = placa1.compareTo(placa2);
+//        if (comparacion < 0) {
+//            System.out.println("la placa1 es mayor");
+//            System.out.println(placa1);
+//            System.out.println("Comparacion: " + comparacion);
+//        } else {
+//            System.out.println("La placa2 es mayor");
+//            System.out.println(placa2);
+//            System.out.println("Comparcion: "+ comparacion);
+//        }
+
+        String ruta = "C:\\Users\\EDDY\\Desktop\\Vehiculos.txt";
+        LeerArchivoVehiculos(ruta);
+        Arbol_Vehiculos.Reporte_ArbolB();
 
     }
-      
 
     public static void LeerArchivoClientes(String ruta) {
 
@@ -96,8 +111,8 @@ public class Proyecto2_201503741 {
             Tabla.Insertar(ClienteNuevo);
         }
     }
-    
-    public static void LeerArchivoConductores(String ruta){
+
+    public static void LeerArchivoConductores(String ruta) {
         String texto = "";
         try {
             File archivo = new File(ruta);
@@ -126,6 +141,37 @@ public class Proyecto2_201503741 {
             String direccion = separador2[7].trim();
             Conductor ConductorNuevo = new Conductor(Long.parseLong(dpi), nombres, apellidos, licencia, genero, fecha, Integer.parseInt(telefono), direccion);
             Lista_Conductores.Insertar(ConductorNuevo);
+        }
+    }
+    
+    public static void LeerArchivoVehiculos(String ruta){
+        String texto = "";
+        try {
+            File archivo = new File(ruta);
+            FileReader fr_archivo = new FileReader(archivo);
+            BufferedReader br_archivo = new BufferedReader(fr_archivo);
+
+            String linea;
+            while ((linea = br_archivo.readLine()) != null) {
+                texto = texto + linea;
+            }
+            fr_archivo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        System.out.println("Texto: "+texto);
+        String[] separador = texto.split(";");
+        for (int i = 0; i < separador.length; i++) {
+            String[] separador2 = separador[i].split(":");
+            String placa = separador2[0].trim();
+            String marca = separador2[1].trim();
+            String modelo = separador2[2].trim();
+            String anio = separador2[3].trim();
+            String color = separador2[4].trim();
+            String precio = separador2[5].trim();
+            String transmicion = separador2[6].trim();
+            Vehiculo NuevoVehiculo = new Vehiculo(placa, marca, modelo, Integer.parseInt(anio), color, precio, transmicion);
+            Arbol_Vehiculos.Insertar(NuevoVehiculo);
         }
     }
 }
