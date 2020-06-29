@@ -81,8 +81,40 @@ public class Proyecto2_201503741 {
 //            System.out.println(b.getMarca());
 //            System.out.println(b.getModelo());
 //        }
+//        Arbol_Vehiculos.EliminarPorplaca("P050OEX");
+//        Arbol_Vehiculos.EliminarPorplaca("P175EOS");
+//        Arbol_Vehiculos.EliminarPorplaca("P100TEW");
+//        Arbol_Vehiculos.EliminarPorplaca("P250JSI");
+//        Arbol_Vehiculos.EliminarPorplaca("P400EPQ");
+//        Arbol_Vehiculos.EliminarPorplaca("P140GNI");
+//        Arbol_Vehiculos.EliminarPorplaca("P425HRP");
+//        Arbol_Vehiculos.EliminarPorplaca("P300QEA");
 
-//        Arbol_Vehiculos.Reporte_ArbolB();
+        Arbol_Vehiculos.EliminarPorplaca("P900VSF");
+        Arbol_Vehiculos.EliminarPorplaca("P325YWP");
+        Arbol_Vehiculos.EliminarPorplaca("P150ERT");
+        Arbol_Vehiculos.EliminarPorplaca("P600ANB");
+        Arbol_Vehiculos.EliminarPorplaca("P140GNI");
+        Arbol_Vehiculos.EliminarPorplaca("P300QEA");
+        Arbol_Vehiculos.EliminarPorplaca("P345RTX");
+        Arbol_Vehiculos.EliminarPorplaca("P175EOS");
+        Arbol_Vehiculos.EliminarPorplaca("P425HRP");
+        Arbol_Vehiculos.EliminarPorplaca("P200CDQ");
+        Arbol_Vehiculos.EliminarPorplaca("P625DWE");
+        Arbol_Vehiculos.EliminarPorplaca("P550MXA");
+        Arbol_Vehiculos.EliminarPorplaca("P654CRV");
+        Arbol_Vehiculos.EliminarPorplaca("P100TEW");   
+        Arbol_Vehiculos.EliminarPorplaca("P400EPQ");
+        Arbol_Vehiculos.EliminarPorplaca("P250JSI");
+        Arbol_Vehiculos.EliminarPorplaca("P125QPW");
+        Arbol_Vehiculos.EliminarPorplaca("P450ZNQ");
+        Arbol_Vehiculos.EliminarPorplaca("P050OEX");
+        Arbol_Vehiculos.EliminarPorplaca("P075WOQ");
+        Arbol_Vehiculos.EliminarPorplaca("P500RTI");
+        Arbol_Vehiculos.EliminarPorplaca("P700YQZ");
+        Arbol_Vehiculos.EliminarPorplaca("P876GDW");
+
+        Arbol_Vehiculos.Reporte_ArbolB();
     }
 
     public static void LeerArchivoClientes(String ruta) {

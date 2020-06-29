@@ -19,17 +19,17 @@ import proyecto2_201503741.Clases.Vehiculo;
  * @author EDDY
  */
 public class Arbol_B {
-
+    
     Nodo_B raiz;
-
+    
     public Arbol_B() {
         this.raiz = new Nodo_B();
     }
-
+    
     public void Insertar(Vehiculo n) {
         Insertar_en_Hoja(this.raiz, n);
     }
-
+    
     private void Insertar_en_Hoja(Nodo_B nodo, Vehiculo vehiculo) {
         if (nodo != null) {
             if (!nodo.getEsPadre()) {//es una hoja
@@ -53,13 +53,13 @@ public class Arbol_B {
                 }
             }
         }
-
+        
     }
-
+    
     private void Dividir(Nodo_B nodo) {
         Nodo_B H_Izquierdo = new Nodo_B();
         Nodo_B H_Derecho = new Nodo_B();
-
+        
         if (nodo.getEsPadre()) {//si tiene hijos antes de dividirlo hay que asignar las ramas a los hijos
             //al hijo izquierdo
             H_Izquierdo.getRamas()[0] = nodo.getRamas()[0];
@@ -96,7 +96,7 @@ public class Arbol_B {
         nodo.getVehiculos()[3] = null;
         nodo.getVehiculos()[4] = null;
         nodo.setCantidad(1);
-        
+
         //enlazando el nodo dividido con los hijos 
         nodo.getRamas()[0] = H_Izquierdo;
         nodo.getRamas()[1] = H_Derecho;
@@ -121,13 +121,13 @@ public class Arbol_B {
             }
         }
     }
-
+    
     public Vehiculo Buscar(String placa) {
         Nodo_B aux = this.raiz;
         Vehiculo v = Buscar_P(aux, placa);
         return v;
     }
-
+    
     private Vehiculo Buscar_P(Nodo_B nodo, String placa) {
         if (nodo != null) {
             int comparacion;
@@ -147,9 +147,9 @@ public class Arbol_B {
         }
         return null;
     }
-
+    
     Nodo_B buscar;
-
+    
     public void EliminarPorplaca(String placa) {
         Nodo_B aux = this.raiz;
         Nodo_B NodoBuscado = BuscarNodo(aux, placa);
@@ -161,7 +161,7 @@ public class Arbol_B {
                 if (NodoBuscado.getCantidad() > 1) {
                     EliminarVehiculoRama(NodoBuscado, placa);
                 } else {
-                    EliminarVehiculoRamaAjustar(NodoBuscado, placa);
+                    EliminarVehiculoRama(NodoBuscado, placa);
                 }
             } else if (NodoBuscado != this.raiz && !NodoBuscado.getEsPadre()) {//3
                 EliminarHoja(NodoBuscado, placa);//el nodo es una hoja
@@ -173,7 +173,7 @@ public class Arbol_B {
         }
         buscar = null;
     }
-
+    
     private Nodo_B BuscarNodo(Nodo_B raiz, String placa) {
         if (raiz != null) {
             int comparacion;
@@ -192,7 +192,7 @@ public class Arbol_B {
         }
         return buscar;
     }
-
+    
     private void EliminarHoja(Nodo_B NodoBuscado, String placa) {//cuando es hoja y > 2
         boolean eliminado = false;
         for (int i = 0; i < NodoBuscado.getVehiculos().length; i++) {
@@ -214,7 +214,7 @@ public class Arbol_B {
             }
         }
     }
-
+    
     private void Balancear2(Nodo_B Padre) {
         if (Padre != null) {
             int posNodo = 0;
@@ -224,88 +224,133 @@ public class Arbol_B {
                     if (Padre.getRamas()[i].getCantidad() < 2) {
                         posNodo = i;//2
                         bandera = true;
+                        break;
                     }
                 }
             }
-
+            
             if (bandera) {//hay nodos < 2 
                 if (posNodo == 0) {
                     //consultar si el nodo hermano tiene para pasar 
                     if (Padre.getRamas()[posNodo + 1].getCantidad() > 2) {
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
+//                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo]);
                         Padre.getVehiculos()[posNodo] = Padre.getRamas()[posNodo + 1].getVehiculos()[0];
                         //validar si el derecho tiene hijos
                         if (Padre.getRamas()[posNodo + 1].getEsPadre()) {
                             //pasar el primer nodoRama al hijo izquierdo en su ultima posicion valida
                             int pos = Padre.getRamas()[posNodo].getCantidad();
-                            Padre.getRamas()[pos] = Padre.getRamas()[posNodo + 1].getRamas()[0];
+//                            Padre.getRamas()[pos] = Padre.getRamas()[posNodo + 1].getRamas()[0];
+                            Padre.getRamas()[posNodo].getRamas()[pos] = Padre.getRamas()[posNodo + 1].getRamas()[0];
+                            Padre.getRamas()[posNodo + 1].getRamas()[0].setPadre(Padre.getRamas()[posNodo]);
                             //eliminar el nodoRama del hijo derecho
                             Padre.getRamas()[posNodo + 1].getRamas()[0] = null;
                             //actualizar lista de nodosRamas
                             ActualizarListaNodos(Padre.getRamas()[posNodo + 1]);
-                            EliminarHoja(Padre.getRamas()[posNodo + 1], Padre.getVehiculos()[posNodo].getPlaca());
+//                            EliminarHoja(Padre.getRamas()[posNodo + 1], Padre.getVehiculos()[posNodo].getPlaca());
                         }
                         EliminarHoja(Padre.getRamas()[posNodo + 1], Padre.getVehiculos()[posNodo].getPlaca());
                     } else {//unir nodos
                         //pasar el menor del padre al nodo izquierdo
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo]);
                         //pasar lo valores del nodo de la derecha al nodo de la izquierda
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getRamas()[posNodo + 1].getVehiculos()[0];
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getRamas()[posNodo + 1].getVehiculos()[1];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getRamas()[posNodo + 1].getVehiculos()[0]);
+                        Padre.getRamas()[posNodo].Insertar(Padre.getRamas()[posNodo + 1].getVehiculos()[1]);
+                        //Ver si el nodo de la derecha tiene ramas
+                        if (Padre.getRamas()[posNodo + 1].getEsPadre()) {
+                            for (int i = 0; i < Padre.getRamas()[posNodo + 1].getRamas().length; i++) {
+                                if (Padre.getRamas()[posNodo + 1].getRamas()[i] != null) {
+                                    Padre.getRamas()[posNodo].Insertar_Rama(Padre.getRamas()[posNodo + 1].getRamas()[i]);
+                                    Padre.getRamas()[posNodo + 1].getRamas()[i].setPadre(Padre.getRamas()[posNodo]);
+                                }
+                            }
+                        }
                         //Eliminar nodo derecho
                         Padre.getRamas()[posNodo + 1] = null;
                         //actualizar nodos
                         ActualizarListaNodos(Padre);
                         //eliminar menor del nodo padre (ciclo)
                         EliminarHoja(Padre, Padre.getVehiculos()[posNodo].getPlaca());
+                        if (Padre == this.raiz && Padre.getCantidad() < 1) {
+                            this.raiz = Padre.getRamas()[0];
+                            this.raiz.setPadre(null);
+                        }
                     }
-                } else if (Padre.getVehiculos()[posNodo] == null) {
+                } else if (Padre.getVehiculos()[posNodo] == null) {//si la rama es la ultima
                     if (Padre.getRamas()[posNodo - 1].getCantidad() > 2) {
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo - 1];
+//                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo - 1];
 //                        ordenar(Padre.getRamas()[posNodo].valores, 6);
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo - 1]);
                         Padre.getVehiculos()[posNodo - 1] = Padre.getRamas()[posNodo - 1].getVehiculos()[Padre.getRamas()[posNodo - 1].getCantidad() - 1];
                         EliminarHoja(Padre.getRamas()[posNodo - 1], Padre.getVehiculos()[posNodo - 1].getPlaca());
                     } else {//unir nodos
                         //Pasar el mayor del padre al nodo derecho
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo - 1];
-                        //ordenar valores
-//                        ordenar(Padre.getRamas()[posNodo].valores, 6);
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo - 1]);
                         //Pasar los valores del nodo de la izquierda al nodo de la derecha
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getRamas()[posNodo - 1].getVehiculos()[0];
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getRamas()[posNodo - 1].getVehiculos()[1];
-                        //ordenar de nuevo
-//                        ordenar(Padre.getRamas()[posNodo].valores, 6);
+                        Padre.getRamas()[posNodo].Insertar(Padre.getRamas()[posNodo - 1].getVehiculos()[0]);
+                        Padre.getRamas()[posNodo].Insertar(Padre.getRamas()[posNodo - 1].getVehiculos()[1]);
+                        //si el nodo tiene hijos hay que pasarlos tambien 
+                        if (Padre.getRamas()[posNodo - 1].getEsPadre()) {
+                            for (int i = 0; i < Padre.getRamas()[posNodo - 1].getRamas().length; i++) {
+                                if (Padre.getRamas()[posNodo - 1].getRamas()[i] != null) {
+                                    Padre.getRamas()[posNodo].Insertar_Rama(Padre.getRamas()[posNodo - 1].getRamas()[i]);
+                                    Padre.getRamas()[posNodo - 1].getRamas()[i].setPadre(Padre.getRamas()[posNodo]);
+                                }
+                            }
+                        }
                         //eliminar nodo izquierdo
                         Padre.getRamas()[posNodo - 1] = null;
                         //Actualizar nodos
                         ActualizarListaNodos(Padre);
                         //eliminar mayor del nodo padre
                         EliminarHoja(Padre, Padre.getVehiculos()[posNodo - 1].getPlaca());
+                        if (Padre == this.raiz && Padre.getCantidad() < 1) {
+                            this.raiz = Padre.getRamas()[0];
+                            this.raiz.setPadre(null);
+                        }
                     }
-
+                    
                 } else {
                     if (Padre.getRamas()[posNodo + 1].getCantidad() > 2) {
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
+//                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo]);
                         Padre.getVehiculos()[posNodo] = Padre.getRamas()[posNodo + 1].getVehiculos()[0];
+//                        Padre.Insertar(Padre.getRamas()[posNodo + 1].getVehiculos()[0]);
                         EliminarHoja(Padre.getRamas()[posNodo + 1], Padre.getVehiculos()[posNodo].getPlaca());
                     } else if (Padre.getRamas()[posNodo - 1].getCantidad() > 2) {
                         //cambio con los de la izquierda
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo - 1];
+//                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo - 1];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo - 1]);
+//                        EliminarHoja(Padre,Padre.getVehiculos()[posNodo - 1].getPlaca());
 //                        ordenar(Padre.getRamas()[posNodo].valores, 6);
                         Padre.getVehiculos()[posNodo - 1] = Padre.getRamas()[posNodo - 1].getVehiculos()[Padre.getRamas()[posNodo - 1].getCantidad() - 1];
+//                        Padre.Insertar(Padre.getRamas()[posNodo - 1].getVehiculos()[Padre.getRamas()[posNodo - 1].getCantidad() - 1]);
                         EliminarHoja(Padre.getRamas()[posNodo - 1], Padre.getVehiculos()[posNodo - 1].getPlaca());
                     } else {//unir nodos
                         //pasar el menor del padre al nodo izquierdo
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getVehiculos()[posNodo]);
                         //pasar lo valores del nodo de la derecha al nodo de la izquierda
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getRamas()[posNodo + 1].getVehiculos()[0];
-                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getRamas()[posNodo + 1].getVehiculos()[1];
+                        Padre.getRamas()[posNodo].Insertar(Padre.getRamas()[posNodo + 1].getVehiculos()[0]);
+                        Padre.getRamas()[posNodo].Insertar(Padre.getRamas()[posNodo + 1].getVehiculos()[1]);
+                        //Ver si el nodo de la derecha tiene ramas
+                        if (Padre.getRamas()[posNodo + 1].getEsPadre()) {
+                            for (int i = 0; i < Padre.getRamas()[posNodo + 1].getRamas().length; i++) {
+                                if (Padre.getRamas()[posNodo + 1].getRamas()[i] != null) {
+                                    Padre.getRamas()[posNodo].Insertar_Rama(Padre.getRamas()[posNodo + 1].getRamas()[i]);
+                                    Padre.getRamas()[posNodo + 1].getRamas()[i].setPadre(Padre.getRamas()[posNodo]);
+                                }
+                            }
+                        }
                         //Eliminar nodo derecho
                         Padre.getRamas()[posNodo + 1] = null;
                         //actualizar nodos
                         ActualizarListaNodos(Padre);
                         //eliminar menor del nodo padre (ciclo)
                         EliminarHoja(Padre, Padre.getVehiculos()[posNodo].getPlaca());
+                        if (Padre == this.raiz && Padre.getCantidad() < 1) {
+                            this.raiz = Padre.getRamas()[0];
+                            this.raiz.setPadre(null);
+                        }
                     }
                 }
             }
@@ -314,28 +359,29 @@ public class Arbol_B {
                     Balancear2(Padre.getRamas()[i]);
                 }
             }
-
+            
         }
     }
-
+    
     private void EliminarVehiculoRama(Nodo_B NodoBuscado, String placa) {
-        //encontrar la posicion del libro enla lista de valores
-        int posLibro = 0;
+        //encontrar la posicion del vehhiculo enla lista de valores
+        int posVehiculo = 0;
         for (int i = 0; i < NodoBuscado.getVehiculos().length; i++) {
             if (NodoBuscado.getVehiculos()[i] != null) {
                 if (NodoBuscado.getVehiculos()[i].getPlaca().equals(placa)) {
-                    posLibro = i;//0
+                    posVehiculo = i;//0
+                    break;
                 }
             }
         }
 
         //buscando el sucesor mayor a la izquierda
-        Vehiculo SM = SucesorMayorIzquierdo(NodoBuscado.getRamas()[posLibro]);
-        NodoBuscado.getVehiculos()[posLibro] = SM;
-
+        Vehiculo SM = SucesorMayorIzquierdo(NodoBuscado.getRamas()[posVehiculo]);
+        NodoBuscado.getVehiculos()[posVehiculo] = SM;
+        
         Balancear2(this.raiz);
     }
-
+    
     private void EliminarVehiculoRamaAjustar(Nodo_B NodoBuscado, String placa) {
         boolean eliminado = false;
         for (int i = 0; i < NodoBuscado.getVehiculos().length; i++) {
@@ -350,14 +396,14 @@ public class Arbol_B {
                 }
             }
         }
-        if (NodoBuscado != this.raiz) {
-            //balancear
-            if (NodoBuscado.getCantidad() < 2) {
-                BalancearAjustar(NodoBuscado.getPadre());
-            }
-        }
-    }
 
+        //balancear
+        if (NodoBuscado.getCantidad() < 2) {
+            BalancearAjustar(NodoBuscado.getPadre());
+        }
+        
+    }
+    
     private void BalancearAjustar(Nodo_B Padre) {
         if (Padre != null) {
             int posNodo = 0;
@@ -405,7 +451,7 @@ public class Arbol_B {
             }
         }
     }
-
+    
     private Vehiculo SucesorMayorIzquierdo(Nodo_B NodoIzquierdo) {
         if (NodoIzquierdo.getEsPadre()) {//Buscar el mas a su derecha
             return SucesorMayorDerecho(NodoIzquierdo.getRamas()[NodoIzquierdo.getCantidad()]);
@@ -416,7 +462,7 @@ public class Arbol_B {
             return aux;
         }
     }
-
+    
     private Vehiculo SucesorMayorDerecho(Nodo_B NodoDerecho) {
         if (NodoDerecho.getEsPadre()) {//Buscar el mas a su derecha
             return SucesorMayorDerecho(NodoDerecho.getRamas()[NodoDerecho.getCantidad()]);
@@ -427,7 +473,7 @@ public class Arbol_B {
             return aux;
         }
     }
-
+    
     private void ActualizarListaNodos(Nodo_B Padre) {
         if (Padre != null) {
             for (int i = 0; i < Padre.getRamas().length; i++) {
@@ -439,21 +485,21 @@ public class Arbol_B {
                 } catch (Exception e) {
                     e.getMessage();
                 }
-
+                
             }
         }
     }
-
+    
     File R_ArbolB;
     FileWriter FW_ArbolB;
     char com = '"';
     String espacio = "&#92;n";
-
+    
     public void Reporte_ArbolB() {
         try {
             R_ArbolB = new File("R_ArbolB.dot");
             FW_ArbolB = new FileWriter(R_ArbolB);
-
+            
             FW_ArbolB.write("digraph g{ \n");
             FW_ArbolB.write("rankdir = TB; \n");
             FW_ArbolB.write("node [shape = record]; \n");
@@ -470,7 +516,7 @@ public class Arbol_B {
             Process p;
             try {
                 p = Runtime.getRuntime().exec(Comando);
-
+                
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -478,7 +524,7 @@ public class Arbol_B {
             e.printStackTrace();
         }
     }
-
+    
     private void GraficarNodos(Nodo_B Raiz) {
         if (Raiz != null) {
             try {
@@ -520,13 +566,13 @@ public class Arbol_B {
             } catch (IOException ex) {
                 Logger.getLogger(Arbol_B.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
             for (int i = 0; i < Raiz.getRamas().length; i++) {
                 GraficarNodos(Raiz.getRamas()[i]);
             }
         }
     }
-
+    
     private void CrearEnlaces(Nodo_B Raiz) {
         if (Raiz != null) {
             for (int i = 0; i < Raiz.getRamas().length; i++) {
@@ -543,5 +589,5 @@ public class Arbol_B {
             }
         }
     }
-
+    
 }
