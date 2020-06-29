@@ -28,38 +28,60 @@ public class Lista_Adyacencia {
         return this.Inicio == null;
     }
 
-    public void Insertar_Vertice(String origen, String destino, int tiempo) {
+    public void Insertar_Vertice(Vertice v/*String origen, String destino, int tiempo*/) {
         if (isEmpty()) {
-            Vertice v = new Vertice(origen);
-            v.Insertar_Arista(origen, destino, tiempo);
             this.Inicio = v;
             this.size++;
-            
-        } else {
-            //buscar si el nodo ya existe e insertarlo ahi si no crearlo 
-            Vertice aux = this.Inicio;
-            boolean ingresado = false;
-            while (aux != null) {
-                if (aux.getNombre().equals(origen)) {
-                    aux.Insertar_Arista(origen, destino, tiempo);
-                    ingresado = true;
-                    break;
-                }
-                aux = aux.getAbajo();
-            }
-            if (!ingresado) {
-                aux = this.Inicio;
+        }else{
+            Vertice v_buscado = Buscar(v.getNombre());
+            if (v_buscado == null) {
+                //vertice no existe
+                Vertice aux = this.Inicio;
                 while (aux.getAbajo() != null) {                    
                     aux = aux.getAbajo();
                 }
-                Vertice v = new Vertice(origen);
-                v.Insertar_Arista(origen, destino, tiempo);
                 aux.setAbajo(v);
                 this.size++;
             }
         }
+//        if (isEmpty()) {
+//            Vertice v = new Vertice(origen);
+//            v.Insertar_Arista(origen, destino, tiempo);
+//            this.Inicio = v;
+//            this.size++;
+//            
+//        } else {
+//            //buscar si el nodo ya existe e insertarlo ahi si no crearlo 
+//            Vertice aux = this.Inicio;
+//            boolean ingresado = false;
+//            while (aux != null) {
+//                if (aux.getNombre().equals(origen)) {
+//                    aux.Insertar_Arista(origen, destino, tiempo);
+//                    ingresado = true;
+//                    break;
+//                }
+//                aux = aux.getAbajo();
+//            }
+//            if (!ingresado) {
+//                aux = this.Inicio;
+//                while (aux.getAbajo() != null) {                    
+//                    aux = aux.getAbajo();
+//                }
+//                Vertice v = new Vertice(origen);
+//                v.Insertar_Arista(origen, destino, tiempo);
+//                aux.setAbajo(v);
+//                this.size++;
+//            }
+//        }
     }
-
+    
+    public void Insertar_Arista(String origen, String destino, int tiempo){
+        Vertice v_buscar = Buscar(origen);
+        if (v_buscar != null) {
+            v_buscar.Insertar_Arista(origen, destino, tiempo);
+        }
+    }
+    
     public Vertice Buscar(String nombre) {
         if (!isEmpty()) {
             Vertice aux = this.Inicio;
@@ -72,7 +94,7 @@ public class Lista_Adyacencia {
         }
         return null;
     }
-
+    
     public void Graph() {
         try {
             File archivo;

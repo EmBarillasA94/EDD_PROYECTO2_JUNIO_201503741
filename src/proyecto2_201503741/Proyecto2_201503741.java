@@ -11,6 +11,7 @@ import java.io.FileReader;
 import proyecto2_201503741.Clases.Cliente;
 import proyecto2_201503741.Clases.Conductor;
 import proyecto2_201503741.Clases.Vehiculo;
+import proyecto2_201503741.Clases.Vertice;
 import proyecto2_201503741.EDD.Arbol_B;
 import proyecto2_201503741.EDD.Lista_Conductores;
 import proyecto2_201503741.EDD.Tabla_Hash;
@@ -240,7 +241,11 @@ public class Proyecto2_201503741 {
             String origen = separador2[0].trim();
             String destino = separador2[1].trim();
             String tiempo = separador2[2].trim();
-            Grafo.Insertar_Vertice(origen, destino, Integer.parseInt(tiempo));
+            Vertice v1 = new Vertice(origen);
+            Vertice v2 = new Vertice(destino);
+            Grafo.Insertar_Vertice(v1);
+            Grafo.Insertar_Vertice(v2);
+            Grafo.Insertar_Arista(origen, destino, Integer.parseInt(tiempo));
         }
     }
 }
