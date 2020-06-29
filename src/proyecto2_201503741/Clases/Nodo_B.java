@@ -69,7 +69,7 @@ public class Nodo_B {
         for (int i = 0; i < this.vehiculos.length; i++) {
             if (this.vehiculos[i] == null) {
                 this.vehiculos[i] = vehiculo;
-                cantidad++;
+                this.cantidad++;
                 break;
             }
         }

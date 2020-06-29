@@ -60,7 +60,6 @@ public class Proyecto2_201503741 {
 //        LeerArchivoConductores(ruta);
 //        Lista_Conductores.Eliminar(3875490173451l);
 //        Lista_Conductores.graph();
-
 //        String placa1 = "P654CRV";
 //        String placa2 = "P876GDW";
 //        int comparacion = placa1.compareTo(placa2);
@@ -73,11 +72,17 @@ public class Proyecto2_201503741 {
 //            System.out.println(placa2);
 //            System.out.println("Comparcion: "+ comparacion);
 //        }
-
         String ruta = "C:\\Users\\EDDY\\Desktop\\Vehiculos.txt";
         LeerArchivoVehiculos(ruta);
-        Arbol_Vehiculos.Reporte_ArbolB();
+//        Vehiculo b = Arbol_Vehiculos.Buscar("P345RTX");
+//        if (b != null) {
+//            System.out.println("Vehiculo encontrado");
+//            System.out.println(b.getPlaca());
+//            System.out.println(b.getMarca());
+//            System.out.println(b.getModelo());
+//        }
 
+//        Arbol_Vehiculos.Reporte_ArbolB();
     }
 
     public static void LeerArchivoClientes(String ruta) {
@@ -143,8 +148,8 @@ public class Proyecto2_201503741 {
             Lista_Conductores.Insertar(ConductorNuevo);
         }
     }
-    
-    public static void LeerArchivoVehiculos(String ruta){
+
+    public static void LeerArchivoVehiculos(String ruta) {
         String texto = "";
         try {
             File archivo = new File(ruta);

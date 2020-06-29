@@ -84,10 +84,10 @@ public class Arbol_B {
         }
 
         //pasar los valores del nodo que se va a dirivir a los hijos
-        H_Izquierdo.getVehiculos()[0] = nodo.getVehiculos()[0];
-        H_Izquierdo.getVehiculos()[1] = nodo.getVehiculos()[1];
-        H_Derecho.getVehiculos()[0] = nodo.getVehiculos()[3];
-        H_Derecho.getVehiculos()[1] = nodo.getVehiculos()[4];
+        H_Izquierdo.Insertar(nodo.getVehiculos()[0]);
+        H_Izquierdo.Insertar(nodo.getVehiculos()[1]);
+        H_Derecho.Insertar(nodo.getVehiculos()[3]);
+        H_Derecho.Insertar(nodo.getVehiculos()[4]);
 
         //pasando el valor de en medio al principio de la lista y borrando los demas
         nodo.getVehiculos()[0] = nodo.getVehiculos()[2];
@@ -95,7 +95,8 @@ public class Arbol_B {
         nodo.getVehiculos()[2] = null;
         nodo.getVehiculos()[3] = null;
         nodo.getVehiculos()[4] = null;
-
+        nodo.setCantidad(1);
+        
         //enlazando el nodo dividido con los hijos 
         nodo.getRamas()[0] = H_Izquierdo;
         nodo.getRamas()[1] = H_Derecho;
@@ -137,12 +138,10 @@ public class Arbol_B {
                         Vehiculo aux = nodo.getVehiculos()[i];
                         return aux;
                     } else if (comparacion < 0) {
-                        Buscar_P(nodo.getRamas()[i], placa);
-                        break;
+                        return Buscar_P(nodo.getRamas()[i], placa);
                     }
                 } else {
-                    Buscar_P(nodo.getRamas()[i], placa);
-                    break;
+                    return Buscar_P(nodo.getRamas()[i], placa);
                 }
             }
         }
