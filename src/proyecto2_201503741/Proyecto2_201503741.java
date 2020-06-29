@@ -14,6 +14,7 @@ import proyecto2_201503741.Clases.Vehiculo;
 import proyecto2_201503741.EDD.Arbol_B;
 import proyecto2_201503741.EDD.Lista_Conductores;
 import proyecto2_201503741.EDD.Tabla_Hash;
+import proyecto2_201503741.EDD.Lista_Adyacencia;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Proyecto2_201503741 {
     public static Tabla_Hash Tabla = new Tabla_Hash();
     public static Lista_Conductores Lista_Conductores = new Lista_Conductores();
     public static Arbol_B Arbol_Vehiculos = new Arbol_B();
+    public static Lista_Adyacencia Grafo = new Lista_Adyacencia();
 
     /**
      * @param args the command line arguments
@@ -72,8 +74,8 @@ public class Proyecto2_201503741 {
 //            System.out.println(placa2);
 //            System.out.println("Comparcion: "+ comparacion);
 //        }
-        String ruta = "C:\\Users\\EDDY\\Desktop\\Vehiculos.txt";
-        LeerArchivoVehiculos(ruta);
+//        String ruta = "C:\\Users\\EDDY\\Desktop\\Vehiculos.txt";
+//        LeerArchivoVehiculos(ruta);
 //        Vehiculo b = Arbol_Vehiculos.Buscar("P345RTX");
 //        if (b != null) {
 //            System.out.println("Vehiculo encontrado");
@@ -90,31 +92,35 @@ public class Proyecto2_201503741 {
 //        Arbol_Vehiculos.EliminarPorplaca("P425HRP");
 //        Arbol_Vehiculos.EliminarPorplaca("P300QEA");
 
-        Arbol_Vehiculos.EliminarPorplaca("P900VSF");
-        Arbol_Vehiculos.EliminarPorplaca("P325YWP");
-        Arbol_Vehiculos.EliminarPorplaca("P150ERT");
-        Arbol_Vehiculos.EliminarPorplaca("P600ANB");
-        Arbol_Vehiculos.EliminarPorplaca("P140GNI");
-        Arbol_Vehiculos.EliminarPorplaca("P300QEA");
-        Arbol_Vehiculos.EliminarPorplaca("P345RTX");
-        Arbol_Vehiculos.EliminarPorplaca("P175EOS");
-        Arbol_Vehiculos.EliminarPorplaca("P425HRP");
-        Arbol_Vehiculos.EliminarPorplaca("P200CDQ");
-        Arbol_Vehiculos.EliminarPorplaca("P625DWE");
-        Arbol_Vehiculos.EliminarPorplaca("P550MXA");
-        Arbol_Vehiculos.EliminarPorplaca("P654CRV");
-        Arbol_Vehiculos.EliminarPorplaca("P100TEW");   
-        Arbol_Vehiculos.EliminarPorplaca("P400EPQ");
-        Arbol_Vehiculos.EliminarPorplaca("P250JSI");
-        Arbol_Vehiculos.EliminarPorplaca("P125QPW");
-        Arbol_Vehiculos.EliminarPorplaca("P450ZNQ");
-        Arbol_Vehiculos.EliminarPorplaca("P050OEX");
-        Arbol_Vehiculos.EliminarPorplaca("P075WOQ");
-        Arbol_Vehiculos.EliminarPorplaca("P500RTI");
-        Arbol_Vehiculos.EliminarPorplaca("P700YQZ");
-        Arbol_Vehiculos.EliminarPorplaca("P876GDW");
+//        Arbol_Vehiculos.EliminarPorplaca("P900VSF");
+//        Arbol_Vehiculos.EliminarPorplaca("P325YWP");
+//        Arbol_Vehiculos.EliminarPorplaca("P150ERT");
+//        Arbol_Vehiculos.EliminarPorplaca("P600ANB");
+//        Arbol_Vehiculos.EliminarPorplaca("P140GNI");
+//        Arbol_Vehiculos.EliminarPorplaca("P300QEA");
+//        Arbol_Vehiculos.EliminarPorplaca("P345RTX");
+//        Arbol_Vehiculos.EliminarPorplaca("P175EOS");
+//        Arbol_Vehiculos.EliminarPorplaca("P425HRP");
+//        Arbol_Vehiculos.EliminarPorplaca("P200CDQ");
+//        Arbol_Vehiculos.EliminarPorplaca("P625DWE");
+//        Arbol_Vehiculos.EliminarPorplaca("P550MXA");
+//        Arbol_Vehiculos.EliminarPorplaca("P654CRV");
+//        Arbol_Vehiculos.EliminarPorplaca("P100TEW");   
+//        Arbol_Vehiculos.EliminarPorplaca("P400EPQ");
+//        Arbol_Vehiculos.EliminarPorplaca("P250JSI");
+//        Arbol_Vehiculos.EliminarPorplaca("P125QPW");
+//        Arbol_Vehiculos.EliminarPorplaca("P450ZNQ");
+//        Arbol_Vehiculos.EliminarPorplaca("P050OEX");
+//        Arbol_Vehiculos.EliminarPorplaca("P075WOQ");
+//        Arbol_Vehiculos.EliminarPorplaca("P500RTI");
+//        Arbol_Vehiculos.EliminarPorplaca("P700YQZ");
+//        Arbol_Vehiculos.EliminarPorplaca("P876GDW");
+//        Arbol_Vehiculos.Reporte_ArbolB();
 
-        Arbol_Vehiculos.Reporte_ArbolB();
+        String ruta = "C:\\Users\\EDDY\\Desktop\\Rutas.txt";
+        LeerArchivoRutas(ruta);
+        Grafo.Graph();
+        
     }
 
     public static void LeerArchivoClientes(String ruta) {
@@ -209,6 +215,32 @@ public class Proyecto2_201503741 {
             String transmicion = separador2[6].trim();
             Vehiculo NuevoVehiculo = new Vehiculo(placa, marca, modelo, Integer.parseInt(anio), color, precio, transmicion);
             Arbol_Vehiculos.Insertar(NuevoVehiculo);
+        }
+    }
+    
+    public static void LeerArchivoRutas(String ruta){
+        String texto = "";
+        try {
+            File archivo = new File(ruta);
+            FileReader fr_archivo = new FileReader(archivo);
+            BufferedReader br_archivo = new BufferedReader(fr_archivo);
+
+            String linea;
+            while ((linea = br_archivo.readLine()) != null) {
+                texto = texto + linea;
+            }
+            fr_archivo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        System.out.println("Texto: "+texto);
+        String[] separador = texto.split("%");
+        for (int i = 0; i < separador.length; i++) {
+            String[] separador2 = separador[i].split("/");
+            String origen = separador2[0].trim();
+            String destino = separador2[1].trim();
+            String tiempo = separador2[2].trim();
+            Grafo.Insertar_Vertice(origen, destino, Integer.parseInt(tiempo));
         }
     }
 }
