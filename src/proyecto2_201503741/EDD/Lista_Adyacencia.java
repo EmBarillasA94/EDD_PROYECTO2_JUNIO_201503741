@@ -34,6 +34,7 @@ public class Lista_Adyacencia {
             v.Insertar_Arista(origen, destino, tiempo);
             this.Inicio = v;
             this.size++;
+            
         } else {
             //buscar si el nodo ya existe e insertarlo ahi si no crearlo 
             Vertice aux = this.Inicio;
@@ -60,6 +61,15 @@ public class Lista_Adyacencia {
     }
 
     public Vertice Buscar(String nombre) {
+        if (!isEmpty()) {
+            Vertice aux = this.Inicio;
+            while (aux != null) {                
+                if (aux.getNombre().equals(nombre)) {
+                    return aux;
+                }
+                aux = aux.getAbajo();
+            }
+        }
         return null;
     }
 
