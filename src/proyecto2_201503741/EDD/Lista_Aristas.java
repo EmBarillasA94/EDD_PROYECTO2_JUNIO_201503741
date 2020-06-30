@@ -25,7 +25,7 @@ public class Lista_Aristas {
         return this.Inicio == null;
     }
     
-    public void Insertar(Arista n){
+    public void Insertar_last(Arista n){
         if (isEmpty()) {
             this.Inicio = n;
             this.size++;
@@ -39,6 +39,16 @@ public class Lista_Aristas {
         }
     }
     
+    public void Insertar_firts(Arista n){
+        if (isEmpty()) {
+            this.Inicio = n;
+            this.size++;
+        }else{
+            n.setSiguiente(this.Inicio);
+            this.Inicio = n;
+            this.size++;
+        }
+    }
     public int getSize(){
         return this.size;
     }
@@ -47,4 +57,14 @@ public class Lista_Aristas {
         return this.Inicio;
     }
     
+    public Arista Buscar(String destino){
+        Arista aux = this.Inicio;
+        while (aux != null) {            
+            if (aux.getDestino().equals(destino)) {
+                return aux;
+            }
+            aux = aux.getSiguiente();
+        }
+        return null;
+    }
 }

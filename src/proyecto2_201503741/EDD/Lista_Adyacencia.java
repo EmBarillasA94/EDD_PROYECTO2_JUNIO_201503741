@@ -28,64 +28,35 @@ public class Lista_Adyacencia {
         return this.Inicio == null;
     }
 
-    public void Insertar_Vertice(Vertice v/*String origen, String destino, int tiempo*/) {
+    public void Insertar_Vertice(Vertice v) {
         if (isEmpty()) {
             this.Inicio = v;
             this.size++;
-        }else{
+        } else {
             Vertice v_buscado = Buscar(v.getNombre());
             if (v_buscado == null) {
                 //vertice no existe
                 Vertice aux = this.Inicio;
-                while (aux.getAbajo() != null) {                    
+                while (aux.getAbajo() != null) {
                     aux = aux.getAbajo();
                 }
                 aux.setAbajo(v);
                 this.size++;
             }
         }
-//        if (isEmpty()) {
-//            Vertice v = new Vertice(origen);
-//            v.Insertar_Arista(origen, destino, tiempo);
-//            this.Inicio = v;
-//            this.size++;
-//            
-//        } else {
-//            //buscar si el nodo ya existe e insertarlo ahi si no crearlo 
-//            Vertice aux = this.Inicio;
-//            boolean ingresado = false;
-//            while (aux != null) {
-//                if (aux.getNombre().equals(origen)) {
-//                    aux.Insertar_Arista(origen, destino, tiempo);
-//                    ingresado = true;
-//                    break;
-//                }
-//                aux = aux.getAbajo();
-//            }
-//            if (!ingresado) {
-//                aux = this.Inicio;
-//                while (aux.getAbajo() != null) {                    
-//                    aux = aux.getAbajo();
-//                }
-//                Vertice v = new Vertice(origen);
-//                v.Insertar_Arista(origen, destino, tiempo);
-//                aux.setAbajo(v);
-//                this.size++;
-//            }
-//        }
     }
-    
-    public void Insertar_Arista(String origen, String destino, int tiempo){
+
+    public void Insertar_Arista(String origen, String destino, int tiempo) {
         Vertice v_buscar = Buscar(origen);
         if (v_buscar != null) {
             v_buscar.Insertar_Arista(origen, destino, tiempo);
         }
     }
-    
+
     public Vertice Buscar(String nombre) {
         if (!isEmpty()) {
             Vertice aux = this.Inicio;
-            while (aux != null) {                
+            while (aux != null) {
                 if (aux.getNombre().equals(nombre)) {
                     return aux;
                 }
@@ -94,7 +65,94 @@ public class Lista_Adyacencia {
         }
         return null;
     }
-    
+
+//    private int posVertice(String nombre) {
+//        Vertice vr = this.Inicio;
+//        int pos = 0;
+//        while (vr != null) {
+//            if (vr.getNombre().equals(nombre)) {
+//                return pos;
+//            }
+//            pos++;
+//            vr = vr.getAbajo();
+//        }
+//        return pos;
+//    }
+
+    private Vertice getVertice(int i) {
+        Vertice aux = this.Inicio;
+        for (int j = 0; j < i; j++) {
+            aux = aux.getAbajo();
+        }
+        return aux;
+    }
+
+    public void Dijstra(String origen, String destino) {
+        Vertice v_origen = Buscar(origen);
+        Vertice aux = this.Inicio;
+
+        while (aux != null) {
+            aux.setValor(v_origen.getTiempo(aux.getNombre()));
+            aux.setVisto(false);
+            aux.setUltimo((v_origen.getArista(aux.getNombre())!= null)? v_origen.getArista(aux.getNombre()).getOrigen(): "-");
+            aux = aux.getAbajo();
+        }
+
+        v_origen.setValor(0);
+        v_origen.setVisto(true);
+
+        aux = this.Inicio;
+        while (aux != null) {
+            Vertice v_minimo = getVerticeMinimo();
+            if (v_minimo != null) {
+                Vertice aux2 = this.Inicio;
+                while (aux2 != null) {
+                    if (!aux2.isVisto() && (v_minimo.getValor() + v_minimo.getTiempo(aux2.getNombre())< aux2.getValor())) {
+                        aux2.setValor(v_minimo.getValor() + v_minimo.getTiempo(aux2.getNombre()));
+                        aux2.setUltimo(v_minimo.getNombre());
+                    }
+                    aux2 = aux2.getAbajo();
+                }
+            }
+            aux = aux.getAbajo();
+        }
+        
+        Obtener_Ruta(destino);
+        
+    }
+
+    private Vertice getVerticeMinimo() {
+        Vertice aux = this.Inicio;
+        int valor_menor = Integer.MAX_VALUE / 2;
+        int i = 0;
+        int pos_vertice = -1;
+        while (aux != null) {
+            if (!aux.isVisto() && aux.getValor() < valor_menor) {
+                valor_menor = aux.getValor();
+                pos_vertice = i;
+            }
+            aux = aux.getAbajo();
+            i++;
+        }
+        if (valor_menor != Integer.MAX_VALUE / 2 && pos_vertice != -1) {
+            Vertice v_menor = getVertice(pos_vertice);
+            v_menor.setVisto(true);
+            return v_menor;
+        }
+        return null;
+
+    }
+
+    private void Obtener_Ruta(String destino) {
+        Vertice v_destino = Buscar(destino);
+        Lista_Aristas lista_RutaCorta = new Lista_Aristas();
+        while (v_destino != null) {
+            Arista A = new Arista(v_destino.getUltimo(), v_destino.getNombre(), v_destino.getValor());
+            lista_RutaCorta.Insertar_firts(A);
+            v_destino =Buscar(v_destino.getUltimo());
+        }
+    }
+
     public void Graph() {
         try {
             File archivo;

@@ -92,7 +92,6 @@ public class Proyecto2_201503741 {
 //        Arbol_Vehiculos.EliminarPorplaca("P140GNI");
 //        Arbol_Vehiculos.EliminarPorplaca("P425HRP");
 //        Arbol_Vehiculos.EliminarPorplaca("P300QEA");
-
 //        Arbol_Vehiculos.EliminarPorplaca("P900VSF");
 //        Arbol_Vehiculos.EliminarPorplaca("P325YWP");
 //        Arbol_Vehiculos.EliminarPorplaca("P150ERT");
@@ -121,6 +120,7 @@ public class Proyecto2_201503741 {
         String ruta = "C:\\Users\\EDDY\\Desktop\\Rutas.txt";
         LeerArchivoRutas(ruta);
         Grafo.Graph();
+        Grafo.Dijstra("Zaragoza", "Gerona");
         
     }
 
@@ -218,8 +218,8 @@ public class Proyecto2_201503741 {
             Arbol_Vehiculos.Insertar(NuevoVehiculo);
         }
     }
-    
-    public static void LeerArchivoRutas(String ruta){
+
+    public static void LeerArchivoRutas(String ruta) {
         String texto = "";
         try {
             File archivo = new File(ruta);
