@@ -5,6 +5,7 @@
  */
 package proyecto2_201503741;
 
+import proyecto2_201503741.Interfaz.Pantalla_Inicio;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,6 +14,7 @@ import proyecto2_201503741.Clases.Conductor;
 import proyecto2_201503741.Clases.Vehiculo;
 import proyecto2_201503741.Clases.Vertice;
 import proyecto2_201503741.EDD.Arbol_B;
+import proyecto2_201503741.EDD.BlockChain_Viajes;
 import proyecto2_201503741.EDD.Lista_Conductores;
 import proyecto2_201503741.EDD.Tabla_Hash;
 import proyecto2_201503741.EDD.Lista_Adyacencia;
@@ -28,6 +30,7 @@ public class Proyecto2_201503741 {
     public static Lista_Conductores Lista_Conductores = new Lista_Conductores();
     public static Arbol_B Arbol_Vehiculos = new Arbol_B();
     public static Lista_Adyacencia Grafo = new Lista_Adyacencia();
+    public static BlockChain_Viajes Block_Viajes = new BlockChain_Viajes();
 
     /**
      * @param args the command line arguments
@@ -117,13 +120,14 @@ public class Proyecto2_201503741 {
 //        Arbol_Vehiculos.EliminarPorplaca("P700YQZ");
 //        Arbol_Vehiculos.EliminarPorplaca("P876GDW");
 //        Arbol_Vehiculos.Reporte_ArbolB();
+//        String ruta = "C:\\Users\\EDDY\\Desktop\\Rutas.txt";
+//        LeerArchivoRutas(ruta);
+//        Grafo.Graph();
+//        Lista_Aristas RutaCorta = Grafo.Dijstra("Zaragoza", "Madrid");
+//        System.out.println(RutaCorta.Graph_RutaCorta("e1"));
+        Pantalla_Inicio p_inicio = new Pantalla_Inicio();
+        p_inicio.setVisible(true);
 
-        String ruta = "C:\\Users\\EDDY\\Desktop\\Rutas.txt";
-        LeerArchivoRutas(ruta);
-        Grafo.Graph();
-        Lista_Aristas RutaCorta = Grafo.Dijstra("Zaragoza", "Madrid");
-        System.out.println(RutaCorta.Graph_RutaCorta("e1"));
-        
     }
 
     public static void LeerArchivoClientes(String ruta) {
