@@ -121,8 +121,8 @@ public class Proyecto2_201503741 {
         String ruta = "C:\\Users\\EDDY\\Desktop\\Rutas.txt";
         LeerArchivoRutas(ruta);
         Grafo.Graph();
-        Lista_Aristas RutaCorta = Grafo.Dijstra("Oviedo", "Gerona");
-        System.out.println(RutaCorta.Graph_RutaCorta());
+        Lista_Aristas RutaCorta = Grafo.Dijstra("Zaragoza", "Madrid");
+        System.out.println(RutaCorta.Graph_RutaCorta("e1"));
         
     }
 

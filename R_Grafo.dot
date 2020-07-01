@@ -1,10 +1,18 @@
 digraph G{ 
 rankdir = LR; 
-"Oviedo" -> "Bilbao"[label= "304"] 
-"Bilbao" -> "Zaragoza"[label= "324"] 
-"Bilbao" -> "Madrid"[label= "395"] 
-"Bilbao" -> "Valladolid"[label= "280"] 
-"Zaragoza" -> "Barcelona"[label= "296"] 
-"Zaragoza" -> "Madrid"[label= "325"] 
-"Barcelona" -> "Gerona"[label= "100"] 
+"Oviedo_G"[label="Oviedo"] 
+"Bilbao_G"[label="Bilbao"] 
+"Zaragoza_G"[label="Zaragoza"] 
+"Madrid_G"[label="Madrid"] 
+"Valladolid_G"[label="Valladolid"] 
+"Barcelona_G"[label="Barcelona"] 
+"Gerona_G"[label="Gerona"] 
+
+"Oviedo_G" -> "Bilbao_G"[label= "304"] 
+"Bilbao_G" -> "Zaragoza_G"[label= "324"] 
+"Bilbao_G" -> "Madrid_G"[label= "395"] 
+"Bilbao_G" -> "Valladolid_G"[label= "280"] 
+"Zaragoza_G" -> "Barcelona_G"[label= "296"] 
+"Zaragoza_G" -> "Madrid_G"[label= "325"] 
+"Barcelona_G" -> "Gerona_G"[label= "100"] 
 }

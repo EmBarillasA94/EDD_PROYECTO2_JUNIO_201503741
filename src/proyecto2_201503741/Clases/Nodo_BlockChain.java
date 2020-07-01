@@ -18,22 +18,29 @@ public class Nodo_BlockChain {
     String llave;
     String Lugar_origen;
     String Lugar_destino;
+    String fecha_hora_inicio;
     Cliente cliente;
     Conductor conductor;
     Vehiculo vehiculo;
     Lista_Aristas ruta;
+    Nodo_BlockChain before;
+    Nodo_BlockChain next;
+    
 
-    public Nodo_BlockChain(String llave, String Lugar_origen, String Lugar_destino, Cliente cliente, Conductor conductor, Vehiculo vehiculo, Lista_Aristas ruta) {
-        this.llave = Generar_llave(llave);
+    public Nodo_BlockChain(String llave, String Lugar_origen, String Lugar_destino, String fecha_hora_inicio, Cliente cliente, Conductor conductor, Vehiculo vehiculo, Lista_Aristas ruta) {
+        this.llave = Generar_llave_MD5(llave);
         this.Lugar_origen = Lugar_origen;
         this.Lugar_destino = Lugar_destino;
+        this.fecha_hora_inicio = fecha_hora_inicio;
         this.cliente = cliente;
         this.conductor = conductor;
         this.vehiculo = vehiculo;
         this.ruta = ruta;
+        this.before = null;
+        this.next = null;
     }
     
-    public static String Generar_llave(String llave){
+    public static String Generar_llave_MD5(String llave){
         String digest = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -78,6 +85,14 @@ public class Nodo_BlockChain {
         this.Lugar_destino = Lugar_destino;
     }
 
+    public String getFecha_hora_inicio() {
+        return fecha_hora_inicio;
+    }
+
+    public void setFecha_hora_inicio(String fecha_hora_inicio) {
+        this.fecha_hora_inicio = fecha_hora_inicio;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -109,6 +124,21 @@ public class Nodo_BlockChain {
     public void setRuta(Lista_Aristas ruta) {
         this.ruta = ruta;
     }
-    
+
+    public Nodo_BlockChain getBefore() {
+        return before;
+    }
+
+    public void setBefore(Nodo_BlockChain before) {
+        this.before = before;
+    }
+
+    public Nodo_BlockChain getNext() {
+        return next;
+    }
+
+    public void setNext(Nodo_BlockChain next) {
+        this.next = next;
+    }
     
 }

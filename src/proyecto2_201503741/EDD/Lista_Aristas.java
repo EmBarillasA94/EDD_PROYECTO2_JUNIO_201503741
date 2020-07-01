@@ -69,27 +69,27 @@ public class Lista_Aristas {
         return null;
     }
 
-    public String Graph_RutaCorta() {
+    public String Graph_RutaCorta(String Block_Propietario) {
         String texto = "";
         char com = '"';
         String espacio = "&#92;n";
-        texto = texto + "subgraph " + this.Inicio.hashCode() + "{ \n";
-        texto = texto + "node[shape=box] \n";
-        texto = texto + "rankdir=LR \n";
+
+        texto = texto + "subgraph ruta_" + Block_Propietario + "{ \n";
+        texto = texto + "rank=same \n;";
         Arista aux = this.Inicio;
         while (aux != null) {
-            texto = texto + com + aux.getDestino() + com + "[label=" + com + aux.getDestino() + espacio + aux.getTiempo() + com + "] \n";
+            texto = texto + com + aux.getDestino() + "_" + Block_Propietario + com + "[label=" + com + aux.getDestino() + espacio + aux.getTiempo() + com + "]; \n";
             aux = aux.getSiguiente();
         }
         texto = texto + "\n";
         aux = this.Inicio;
         while (aux != null) {
             if (!aux.getOrigen().equals("-")) {
-                texto = texto + com + aux.getOrigen() + com + "->" + com + aux.getDestino() + com + "\n";
+                texto = texto + com + aux.getOrigen() + "_" + Block_Propietario + com + "->" + com + aux.getDestino() + "_" + Block_Propietario + com + "; \n";
             }
             aux = aux.getSiguiente();
         }
-        texto= texto+"}";
+        texto = texto + "}";
         return texto;
     }
 }

@@ -78,7 +78,6 @@ public class Lista_Adyacencia {
 //        }
 //        return pos;
 //    }
-
     private Vertice getVertice(int i) {
         Vertice aux = this.Inicio;
         for (int j = 0; j < i; j++) {
@@ -94,7 +93,7 @@ public class Lista_Adyacencia {
         while (aux != null) {
             aux.setValor(v_origen.getTiempo(aux.getNombre()));
             aux.setVisto(false);
-            aux.setUltimo((v_origen.getArista(aux.getNombre())!= null)? v_origen.getArista(aux.getNombre()).getOrigen(): "-");
+            aux.setUltimo((v_origen.getArista(aux.getNombre()) != null) ? v_origen.getArista(aux.getNombre()).getOrigen() : "-");
             aux = aux.getAbajo();
         }
 
@@ -107,7 +106,7 @@ public class Lista_Adyacencia {
             if (v_minimo != null) {
                 Vertice aux2 = this.Inicio;
                 while (aux2 != null) {
-                    if (!aux2.isVisto() && (v_minimo.getValor() + v_minimo.getTiempo(aux2.getNombre())< aux2.getValor())) {
+                    if (!aux2.isVisto() && (v_minimo.getValor() + v_minimo.getTiempo(aux2.getNombre()) < aux2.getValor())) {
                         aux2.setValor(v_minimo.getValor() + v_minimo.getTiempo(aux2.getNombre()));
                         aux2.setUltimo(v_minimo.getNombre());
                     }
@@ -116,9 +115,9 @@ public class Lista_Adyacencia {
             }
             aux = aux.getAbajo();
         }
-        
+
         return Obtener_Ruta(destino);
-        
+
     }
 
     private Vertice getVerticeMinimo() {
@@ -149,7 +148,7 @@ public class Lista_Adyacencia {
         while (v_destino != null) {
             Arista A = new Arista(v_destino.getUltimo(), v_destino.getNombre(), v_destino.getValor());
             lista_RutaCorta.Insertar_firts(A);
-            v_destino =Buscar(v_destino.getUltimo());
+            v_destino = Buscar(v_destino.getUltimo());
         }
         return lista_RutaCorta;
     }
@@ -164,11 +163,18 @@ public class Lista_Adyacencia {
 
             fw_archivo.write("digraph G{ \n");
             fw_archivo.write("rankdir = LR; \n");
+
             Vertice aux = this.Inicio;
+            for (int i = 0; i < this.size; i++) {
+                fw_archivo.write("" + comillas + aux.getNombre() + "_G" + comillas + "[label=" + comillas + aux.getNombre() + comillas + "] \n");
+                aux = aux.getAbajo();
+            }
+            fw_archivo.write("\n");
+            aux = this.Inicio;
             for (int i = 0; i < this.size; i++) {
                 Arista auxArista = aux.getInicio();
                 for (int j = 0; j < aux.getTamLista(); j++) {
-                    fw_archivo.write("" + comillas + aux.getNombre() + comillas + " -> " + comillas + auxArista.getDestino() + comillas);
+                    fw_archivo.write("" + comillas + aux.getNombre() + "_G" + comillas + " -> " + comillas + auxArista.getDestino() + "_G" + comillas);
                     fw_archivo.write("[label= " + comillas + auxArista.getTiempo() + comillas + "] \n");
                     auxArista = auxArista.getSiguiente();
                 }
