@@ -87,7 +87,7 @@ public class Lista_Adyacencia {
         return aux;
     }
 
-    public void Dijstra(String origen, String destino) {
+    public Lista_Aristas Dijstra(String origen, String destino) {
         Vertice v_origen = Buscar(origen);
         Vertice aux = this.Inicio;
 
@@ -117,7 +117,7 @@ public class Lista_Adyacencia {
             aux = aux.getAbajo();
         }
         
-        Obtener_Ruta(destino);
+        return Obtener_Ruta(destino);
         
     }
 
@@ -143,7 +143,7 @@ public class Lista_Adyacencia {
 
     }
 
-    private void Obtener_Ruta(String destino) {
+    private Lista_Aristas Obtener_Ruta(String destino) {
         Vertice v_destino = Buscar(destino);
         Lista_Aristas lista_RutaCorta = new Lista_Aristas();
         while (v_destino != null) {
@@ -151,6 +151,7 @@ public class Lista_Adyacencia {
             lista_RutaCorta.Insertar_firts(A);
             v_destino =Buscar(v_destino.getUltimo());
         }
+        return lista_RutaCorta;
     }
 
     public void Graph() {

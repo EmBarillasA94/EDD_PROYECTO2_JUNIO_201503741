@@ -20,51 +20,76 @@ public class Lista_Aristas {
         this.Inicio = null;
         this.size = 0;
     }
-    
-    public boolean isEmpty(){
+
+    public boolean isEmpty() {
         return this.Inicio == null;
     }
-    
-    public void Insertar_last(Arista n){
+
+    public void Insertar_last(Arista n) {
         if (isEmpty()) {
             this.Inicio = n;
             this.size++;
-        }else{
+        } else {
             Arista aux = this.Inicio;
-            while (aux.getSiguiente() != null) {                
+            while (aux.getSiguiente() != null) {
                 aux = aux.getSiguiente();
             }
             aux.setSiguiente(n);
             this.size++;
         }
     }
-    
-    public void Insertar_firts(Arista n){
+
+    public void Insertar_firts(Arista n) {
         if (isEmpty()) {
             this.Inicio = n;
             this.size++;
-        }else{
+        } else {
             n.setSiguiente(this.Inicio);
             this.Inicio = n;
             this.size++;
         }
     }
-    public int getSize(){
+
+    public int getSize() {
         return this.size;
     }
 
     public Arista getInicio() {
         return this.Inicio;
     }
-    
-    public Arista Buscar(String destino){
+
+    public Arista Buscar(String destino) {
         Arista aux = this.Inicio;
-        while (aux != null) {            
+        while (aux != null) {
             if (aux.getDestino().equals(destino)) {
                 return aux;
             }
             aux = aux.getSiguiente();
         }
         return null;
+    }
+
+    public String Graph_RutaCorta() {
+        String texto = "";
+        char com = '"';
+        String espacio = "&#92;n";
+        texto = texto + "subgraph " + this.Inicio.hashCode() + "{ \n";
+        texto = texto + "node[shape=box] \n";
+        texto = texto + "rankdir=LR \n";
+        Arista aux = this.Inicio;
+        while (aux != null) {
+            texto = texto + com + aux.getDestino() + com + "[label=" + com + aux.getDestino() + espacio + aux.getTiempo() + com + "] \n";
+            aux = aux.getSiguiente();
+        }
+        texto = texto + "\n";
+        aux = this.Inicio;
+        while (aux != null) {
+            if (!aux.getOrigen().equals("-")) {
+                texto = texto + com + aux.getOrigen() + com + "->" + com + aux.getDestino() + com + "\n";
+            }
+            aux = aux.getSiguiente();
+        }
+        texto= texto+"}";
+        return texto;
     }
 }

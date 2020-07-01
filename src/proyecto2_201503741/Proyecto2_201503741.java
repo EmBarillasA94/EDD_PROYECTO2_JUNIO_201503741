@@ -16,6 +16,7 @@ import proyecto2_201503741.EDD.Arbol_B;
 import proyecto2_201503741.EDD.Lista_Conductores;
 import proyecto2_201503741.EDD.Tabla_Hash;
 import proyecto2_201503741.EDD.Lista_Adyacencia;
+import proyecto2_201503741.EDD.Lista_Aristas;
 
 /**
  *
@@ -120,7 +121,8 @@ public class Proyecto2_201503741 {
         String ruta = "C:\\Users\\EDDY\\Desktop\\Rutas.txt";
         LeerArchivoRutas(ruta);
         Grafo.Graph();
-        Grafo.Dijstra("Zaragoza", "Gerona");
+        Lista_Aristas RutaCorta = Grafo.Dijstra("Oviedo", "Gerona");
+        System.out.println(RutaCorta.Graph_RutaCorta());
         
     }
 
