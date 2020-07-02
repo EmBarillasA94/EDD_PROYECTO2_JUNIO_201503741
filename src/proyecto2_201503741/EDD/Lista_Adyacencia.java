@@ -153,6 +153,17 @@ public class Lista_Adyacencia {
         return lista_RutaCorta;
     }
 
+    public String [] ListadoVertices(){
+        String [] listado = new String[this.size];
+        Vertice aux = this.Inicio;
+        if(!isEmpty())
+        for (int i = 0; i < this.size; i++) {
+            listado[i] = aux.getNombre();
+            aux = aux.getAbajo();
+        }
+        return listado;
+    }
+    
     public void Graph() {
         try {
             File archivo;

@@ -5,6 +5,7 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoVehiculos;
 import static proyecto2_201503741.Proyecto2_201503741.Arbol_Vehiculos;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoConductores;
 import static proyecto2_201503741.Proyecto2_201503741.ListaCirculoar_Conductores;
+import static proyecto2_201503741.Proyecto2_201503741.Grafo;
 
 /**
  *
@@ -28,6 +30,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     public Menu_Principal() {
         initComponents();
         CargarImagen();
+        CargarComboBoxs();
     }
 
     /**
@@ -104,7 +107,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                     .addComponent(cbx_Origen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbx_Destino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(951, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,6 +234,12 @@ public class Menu_Principal extends javax.swing.JFrame {
         lbl_ImagenGrafo.setIcon(icono);
     }
     
+    public static void CargarComboBoxs(){
+        String [] Listado_Vertices = Grafo.ListadoVertices();
+        cbx_Origen.setModel(new DefaultComboBoxModel<>(Listado_Vertices));
+        cbx_Destino.setModel(new DefaultComboBoxModel<>(Listado_Vertices));
+    }
+    
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
        JOptionPane.showMessageDialog(this, "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA \n"
                + "FACULTAD DE INGENIERIA \n"
@@ -331,8 +340,8 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbx_Destino;
-    private javax.swing.JComboBox<String> cbx_Origen;
+    private static javax.swing.JComboBox<String> cbx_Destino;
+    private static javax.swing.JComboBox<String> cbx_Origen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
