@@ -7,6 +7,7 @@ package proyecto2_201503741.Interfaz;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoRutas;
 import static proyecto2_201503741.Proyecto2_201503741.Grafo;
 
@@ -75,8 +76,8 @@ public class Pantalla_Inicio extends javax.swing.JFrame {
 
     private void btn_CargarRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CargarRutasActionPerformed
         JFileChooser choser = new JFileChooser();
-
-
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TXT", "txt");
+        choser.setFileFilter(filter);
         int option = choser.showOpenDialog(this);
         if (option == JFileChooser.APPROVE_OPTION) {
             String ruta = choser.getSelectedFile().toString();
