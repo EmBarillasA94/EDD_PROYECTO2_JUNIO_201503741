@@ -19,6 +19,7 @@ public class Conductor {
     private String fecha_nacimiento;
     private int telefono;
     private String direccion;
+    private int numero_viajes;
     private Conductor before;
     private Conductor next;
 
@@ -31,6 +32,7 @@ public class Conductor {
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.numero_viajes = 0;
         this.before = null;
         this.next = null;
     }
@@ -115,5 +117,15 @@ public class Conductor {
         this.next = next;
     }
 
+    public int getNumero_viajes() {
+        return numero_viajes;
+    }
+
+    public void setNumero_viajes(int numero_viajes) {
+        this.numero_viajes = numero_viajes;
+    }
     
+    public void AumentarViajes() {
+        this.numero_viajes += 1;
+    }
 }

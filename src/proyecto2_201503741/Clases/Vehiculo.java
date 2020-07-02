@@ -18,6 +18,7 @@ public class Vehiculo {
     private String color;
     private String precio;
     private String transmision;
+    private int numero_viajes;
 
     public Vehiculo(String placa, String marca, String modelo, int anio, String color, String precio, String transmision) {
         this.placa = placa;
@@ -27,6 +28,7 @@ public class Vehiculo {
         this.color = color;
         this.precio = precio;
         this.transmision = transmision;
+        this.numero_viajes = 0;
     }
 
     public String getPlaca() {
@@ -85,4 +87,15 @@ public class Vehiculo {
         this.transmision = transmision;
     }
 
+    public int getNumero_viajes() {
+        return numero_viajes;
+    }
+
+    public void setNumero_viajes(int numero_viajes) {
+        this.numero_viajes = numero_viajes;
+    }
+
+    public void AumentarViajes() {
+        this.numero_viajes += 1;
+    }
 }

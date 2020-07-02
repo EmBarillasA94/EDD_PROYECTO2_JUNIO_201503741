@@ -9,6 +9,8 @@ import proyecto2_201503741.Interfaz.Pantalla_Inicio;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Calendar;
+import java.util.Date;
 import proyecto2_201503741.Clases.Cliente;
 import proyecto2_201503741.Clases.Conductor;
 import proyecto2_201503741.Clases.Vehiculo;
@@ -18,7 +20,6 @@ import proyecto2_201503741.EDD.BlockChain_Viajes;
 import proyecto2_201503741.EDD.Lista_Conductores;
 import proyecto2_201503741.EDD.Tabla_Hash;
 import proyecto2_201503741.EDD.Lista_Adyacencia;
-import proyecto2_201503741.EDD.Lista_Aristas;
 
 /**
  *
@@ -125,10 +126,22 @@ public class Proyecto2_201503741 {
 //        Grafo.Graph();
 //        Lista_Aristas RutaCorta = Grafo.Dijstra("Zaragoza", "Madrid");
 //        System.out.println(RutaCorta.Graph_RutaCorta("e1"));
+//        Date fecha = new Date();
+//        System.out.println(fecha);
+    
+//        Calendar c = Calendar.getInstance();
+//        String dia = Integer.toString(c.get(Calendar.DATE));
+//        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+//        String annio = Integer.toString(c.get(Calendar.YEAR));
+//        String hora = Integer.toString(c.get(Calendar.HOUR));
+//        String minutos = Integer.toString(c.get(Calendar.MINUTE));
+//        
+//        System.out.println(dia+"/"+mes+"/"+annio);
+//        System.out.println(hora+":"+minutos);
+
         Pantalla_Inicio p_inicio;
         p_inicio = new Pantalla_Inicio();
         p_inicio.setVisible(true);
-
     }
 
     public static void LeerArchivoClientes(String ruta) {

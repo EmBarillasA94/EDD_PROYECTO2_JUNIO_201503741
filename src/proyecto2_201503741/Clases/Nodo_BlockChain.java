@@ -8,6 +8,7 @@ package proyecto2_201503741.Clases;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import proyecto2_201503741.EDD.Lista_Aristas;
 
 /**
@@ -15,6 +16,7 @@ import proyecto2_201503741.EDD.Lista_Aristas;
  * @author EDDY
  */
 public class Nodo_BlockChain {
+
     String llave;
     String Lugar_origen;
     String Lugar_destino;
@@ -25,7 +27,6 @@ public class Nodo_BlockChain {
     Lista_Aristas ruta;
     Nodo_BlockChain before;
     Nodo_BlockChain next;
-    
 
     public Nodo_BlockChain(String llave, String Lugar_origen, String Lugar_destino, String fecha_hora_inicio, Cliente cliente, Conductor conductor, Vehiculo vehiculo, Lista_Aristas ruta) {
         this.llave = Generar_llave_MD5(llave);
@@ -39,25 +40,24 @@ public class Nodo_BlockChain {
         this.before = null;
         this.next = null;
     }
-    
-    public static String Generar_llave_MD5(String llave){
+
+    public static String Generar_llave_MD5(String llave) {
         String digest = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] hash = md.digest(llave.getBytes("UTF-8"));
-            
-            StringBuilder sb = new StringBuilder(2*hash.length);
-            for(byte b : hash){
-                sb.append(String.format("%02x",b&0xff));
+            StringBuilder sb = new StringBuilder(2 * hash.length);
+            for (byte b : hash) {
+                sb.append(String.format("%02x", b & 0xff));
             }
-            
+
             digest = sb.toString();
-            
+
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
 //            Logger.getLogger(StringReplace.class.getName()).log(Level.SEVERE, null, ex);
         }
 //            Logger.getLogger(StringReplace.class.getName()).log(Level.SEVERE, null, ex);
-        
+
         return digest;
     }
 
@@ -140,5 +140,5 @@ public class Nodo_BlockChain {
     public void setNext(Nodo_BlockChain next) {
         this.next = next;
     }
-    
+
 }

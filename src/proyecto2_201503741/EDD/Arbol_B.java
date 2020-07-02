@@ -495,11 +495,12 @@ public class Arbol_B {
         }
     }
 
-    int ingresado =0;
+    int ingresado = 0;
+
     public Vehiculo[] Lista_Vehiculos() {
         Vehiculo[] Lista = new Vehiculo[this.cantidad];
         Nodo_B aux = this.raiz;
-        ingresado =0;
+        ingresado = 0;
         Cargar_Lista_Vehiculos(aux, Lista);
         return Lista;
     }
@@ -583,7 +584,7 @@ public class Arbol_B {
                 }
                 if (Raiz.getVehiculos()[i] != null) {
                     try {
-                        FW_ArbolB.write(Raiz.getVehiculos()[i].getPlaca() + espacio + Raiz.getVehiculos()[i].getModelo() + "|");
+                        FW_ArbolB.write("<" + Raiz.getVehiculos()[i].hashCode() + ">" + Raiz.getVehiculos()[i].getPlaca() + espacio + Raiz.getVehiculos()[i].getModelo() + espacio + Raiz.getVehiculos()[i].getColor() + espacio + Raiz.getVehiculos()[i].getTransmision() + "|");
                     } catch (IOException ex) {
                         Logger.getLogger(Arbol_B.class.getName()).log(Level.SEVERE, null, ex);
                     }

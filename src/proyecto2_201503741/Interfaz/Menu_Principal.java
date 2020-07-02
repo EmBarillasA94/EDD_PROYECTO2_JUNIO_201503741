@@ -5,6 +5,7 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -13,6 +14,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import proyecto2_201503741.Clases.Cliente;
 import proyecto2_201503741.Clases.Vehiculo;
 import proyecto2_201503741.Clases.Conductor;
+import proyecto2_201503741.Clases.Nodo_BlockChain;
+import proyecto2_201503741.EDD.Lista_Aristas;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoClientes;
 import static proyecto2_201503741.Proyecto2_201503741.TablaHash_Clientes;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoVehiculos;
@@ -20,6 +23,7 @@ import static proyecto2_201503741.Proyecto2_201503741.Arbol_Vehiculos;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoConductores;
 import static proyecto2_201503741.Proyecto2_201503741.ListaCirculoar_Conductores;
 import static proyecto2_201503741.Proyecto2_201503741.Grafo;
+import static proyecto2_201503741.Proyecto2_201503741.Block_Viajes;
 
 /**
  *
@@ -325,54 +329,67 @@ public class Menu_Principal extends javax.swing.JFrame {
         icono.getImage().flush();
         lbl_ImagenGrafo.setIcon(icono);
     }
-    
-    public static void CargarCbx_OrigenYDestino(){
-        String [] Listado_Vertices = Grafo.ListadoVertices();
+
+    public static void CargarCbx_OrigenYDestino() {
+        String[] Listado_Vertices = Grafo.ListadoVertices();
         cbx_Origen.setModel(new DefaultComboBoxModel<>(Listado_Vertices));
         cbx_Destino.setModel(new DefaultComboBoxModel<>(Listado_Vertices));
     }
-    
-    public static void CargarCbx_Cliente(){
+
+    public static void CargarCbx_Cliente() {
         Cliente[] ListaClientes = TablaHash_Clientes.ListaClientes();
         String[] Cli = new String[ListaClientes.length];
         for (int i = 0; i < ListaClientes.length; i++) {
-            Cli[i] = ListaClientes[i].getDpi()+" | "+ListaClientes[i].getNombres();
+            Cli[i] = ListaClientes[i].getDpi() + " | " + ListaClientes[i].getNombres();
         }
         cbx_Clientes.setModel(new DefaultComboBoxModel<>(Cli));
     }
-    
-    public static void CargarCbx_Vehiculos(){
+
+    public static void CargarCbx_Vehiculos() {
         Vehiculo[] ListaVehiculos = Arbol_Vehiculos.Lista_Vehiculos();
         String[] Vehiculos = new String[ListaVehiculos.length];
         for (int i = 0; i < Vehiculos.length; i++) {
-            Vehiculos[i]= ListaVehiculos[i].getPlaca()+" | "+ListaVehiculos[i].getMarca()+" | "+ListaVehiculos[i].getModelo();
+            Vehiculos[i] = ListaVehiculos[i].getPlaca() + " | " + ListaVehiculos[i].getMarca() + " | " + ListaVehiculos[i].getModelo();
         }
         cbx_Vehiculos.setModel(new DefaultComboBoxModel<>(Vehiculos));
     }
-    
-    public static void CargarCbx_Conductores(){
+
+    public static void CargarCbx_Conductores() {
         Conductor[] ListaConductores = ListaCirculoar_Conductores.ListadoConductores();
         String[] Conduc = new String[ListaConductores.length];
         for (int i = 0; i < Conduc.length; i++) {
-            Conduc[i] = ListaConductores[i].getDpi() +" | "+ ListaConductores[i].getNombres();
+            Conduc[i] = ListaConductores[i].getDpi() + " | " + ListaConductores[i].getNombres();
         }
         cbx_Conductores.setModel(new DefaultComboBoxModel<>(Conduc));
     }
-    
+
+    public static String getFecha() {
+        Calendar c = Calendar.getInstance();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH) + 1);
+        return dia + mes + "20";
+    }
+
+    public static String getHora() {
+        Calendar c = Calendar.getInstance();
+        String hora = Integer.toString(c.get(Calendar.HOUR));
+        String minutos = Integer.toString(c.get(Calendar.MINUTE));
+        return hora + ":" + minutos;
+    }
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-       JOptionPane.showMessageDialog(this, "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA \n"
-               + "FACULTAD DE INGENIERIA \n"
-               + "ESCUELA DE CIENCIAS Y SISTEMAS \n"
-               + "Laboratorio de Estructura de Datos \n"
-               + "Segundo Proyecto \n"
-               + "          Autor: Eddy Alejandro Murga Barillas \n"
-               + "          Carnet: 201503741 \n"
-               + "Repositorio en Github: \n"
-               + "https:/github.com/EmBarillasA94/EDD_PROYECTO2_JUNIO_201503741");
+        JOptionPane.showMessageDialog(this, "UNIVERSIDAD DE SAN CARLOS DE GUATEMALA \n"
+                + "FACULTAD DE INGENIERIA \n"
+                + "ESCUELA DE CIENCIAS Y SISTEMAS \n"
+                + "Laboratorio de Estructura de Datos \n"
+                + "Segundo Proyecto \n"
+                + "          Autor: Eddy Alejandro Murga Barillas \n"
+                + "          Carnet: 201503741 \n"
+                + "Repositorio en Github: \n"
+                + "https:/github.com/EmBarillasA94/EDD_PROYECTO2_JUNIO_201503741");
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        
+
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
@@ -427,7 +444,34 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void btn_AceptarViajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AceptarViajeActionPerformed
-        // TODO add your handling code here:
+        //optener primero el vertice origen y el vertice destino
+        int posOrigen = cbx_Origen.getSelectedIndex();
+        String origen = cbx_Origen.getItemAt(posOrigen);
+        int posDestino = cbx_Destino.getSelectedIndex();
+        String destino = cbx_Destino.getItemAt(posDestino);
+        Lista_Aristas rutaTomada = Grafo.Dijstra(origen, destino);
+        //buscar el conductor
+        int posConductor = cbx_Conductores.getSelectedIndex();
+        String DatoCombo = cbx_Conductores.getItemAt(posConductor);
+        String[] DatosConductor = DatoCombo.split("|");
+        Conductor con = ListaCirculoar_Conductores.Buscar(Long.parseLong(DatosConductor[0].trim()));
+        //buscar el cliente
+        int posClient = cbx_Clientes.getSelectedIndex();
+        String DatosComboCli = cbx_Clientes.getItemAt(posClient);
+        String[] Cadena_cli = DatosComboCli.split("|");
+        Cliente cli = TablaHash_Clientes.Buscar(Long.parseLong(Cadena_cli[0].trim()));
+        //Buscar el vehiculo
+        int posVehiculo = cbx_Vehiculos.getSelectedIndex();
+        String DatosComboVe = cbx_Vehiculos.getItemAt(posVehiculo);
+        String[] Cadena_ve = DatosComboVe.split("|");
+        Vehiculo veh = Arbol_Vehiculos.Buscar(Cadena_ve[0].trim());
+        //validar la ruta
+        if (rutaTomada.getSize() >= 2) {
+            Nodo_BlockChain viaje = new Nodo_BlockChain(veh.getPlaca()+getFecha()+getHora(), origen, destino, getFecha()+" "+getHora(), cli, con, veh, rutaTomada);
+            System.out.println("Viaje ----------> "+viaje.getLlave());
+            Block_Viajes.Insertar(viaje);
+            Block_Viajes.Graph();
+        }
     }//GEN-LAST:event_btn_AceptarViajeActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

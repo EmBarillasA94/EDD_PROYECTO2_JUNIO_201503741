@@ -18,6 +18,7 @@ public class Cliente {
     private String fecha_nacimiento;
     private int telefono;
     private String direccion;
+    private int numero_viajes;
     private Cliente next;
 
     public Cliente(long dpi, String nombres, String apellidos, String genero, String fecha_nacimiento, int telefono, String direccion) {
@@ -28,6 +29,7 @@ public class Cliente {
         this.fecha_nacimiento = fecha_nacimiento;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.numero_viajes = 0;
         this.next = null;
     }
 
@@ -95,4 +97,15 @@ public class Cliente {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
+    public int getNumero_viajes() {
+        return numero_viajes;
+    }
+
+    public void setNumero_viajes(int numero_viajes) {
+        this.numero_viajes = numero_viajes;
+    }
+    
+    public void AumentarViajes() {
+        this.numero_viajes += 1;
+    }
 }

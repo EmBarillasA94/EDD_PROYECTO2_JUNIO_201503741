@@ -92,6 +92,16 @@ public class BlockChain_Viajes {
             }
             fw_archivo.write("\n");
             fw_archivo.write("}");
+            
+            //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"
+            String Comando = "C:\\release\\bin\\dot.exe -Tpng R_BlockChain.dot -o Grafica_BlockChain.png";
+            Process p;
+            try {
+                p = Runtime.getRuntime().exec(Comando);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } catch (Exception e) {
         }
     }
