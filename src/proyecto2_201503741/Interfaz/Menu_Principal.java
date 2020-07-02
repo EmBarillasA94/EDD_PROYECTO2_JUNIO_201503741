@@ -186,9 +186,9 @@ public class Menu_Principal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -340,7 +340,9 @@ public class Menu_Principal extends javax.swing.JFrame {
         Cliente[] ListaClientes = TablaHash_Clientes.ListaClientes();
         String[] Cli = new String[ListaClientes.length];
         for (int i = 0; i < ListaClientes.length; i++) {
-            Cli[i] = ListaClientes[i].getDpi() + " / " + ListaClientes[i].getNombres();
+            if (ListaClientes[i] != null) {
+                Cli[i] = ListaClientes[i].getDpi() + " / " + ListaClientes[i].getNombres();
+            }
         }
         cbx_Clientes.setModel(new DefaultComboBoxModel<>(Cli));
     }
@@ -467,14 +469,14 @@ public class Menu_Principal extends javax.swing.JFrame {
         Vehiculo veh = Arbol_Vehiculos.Buscar(Cadena_ve[0].trim());
         //validar la ruta
         if (rutaTomada.getSize() >= 2) {
-            System.out.println("Viaje ----------> "+veh.getPlaca()+getFecha()+getHora());
-            Nodo_BlockChain viaje = new Nodo_BlockChain(veh.getPlaca()+getFecha()+getHora(), origen, destino, getFecha()+" "+getHora(), cli, con, veh, rutaTomada);
+            System.out.println("Viaje ----------> " + veh.getPlaca() + getFecha() + getHora());
+            Nodo_BlockChain viaje = new Nodo_BlockChain(veh.getPlaca() + getFecha() + getHora(), origen, destino, getFecha() + " " + getHora(), cli, con, veh, rutaTomada);
             cli.AumentarViajes();
             veh.AumentarViajes();
             con.AumentarViajes();
             Block_Viajes.Insertar(viaje);
             Block_Viajes.Graph();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No es posible conectar el origen con el destino");
         }
     }//GEN-LAST:event_btn_AceptarViajeActionPerformed

@@ -5,6 +5,12 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyecto2_201503741.Clases.Conductor;
+import proyecto2_201503741.Proyecto2_201503741;
+import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Conductores;
+
 /**
  *
  * @author EDDY
@@ -16,6 +22,7 @@ public class Admin_Conductores extends javax.swing.JFrame {
      */
     public Admin_Conductores() {
         initComponents();
+        RefrescarTabla();
     }
 
     /**
@@ -103,6 +110,11 @@ public class Admin_Conductores extends javax.swing.JFrame {
 
         btn_Ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
 
         txt_Licencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -281,9 +293,69 @@ public class Admin_Conductores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static Conductor Conductor_Buscado;
+    
+    public static void RefrescarTabla() {
+        Conductor[] Lista = Proyecto2_201503741.ListaCirculoar_Conductores.ListadoConductores();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "DPI", "Nombres", "Apellidos", "Genero", "Tipo Licencia", "Fecha Nacimiento", "Telefono", "Direccion"
+                }
+        );
+        for (int i = 0; i < Lista.length; i++) {
+            String dpi = Lista[i].getDpi() + "";
+            String nombres = Lista[i].getNombres();
+            String apellidos = Lista[i].getApellidos();
+            String genero = Lista[i].getGenero();
+            String licencia = Lista[i].getTipo_licencia();
+            String fecha_nac = Lista[i].getFecha_nacimiento();
+            String telefono = Lista[i].getTelefono() + "";
+            String direccion = Lista[i].getDireccion();
+            modelo.addRow(new Object[]{dpi, nombres, apellidos, genero, licencia, fecha_nac, telefono, direccion});
+        }
+        btl_Conductores.setModel(modelo);
+    }
+    
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
-        // TODO add your handling code here:
+        if (!txt_buscar.getText().equals("")) {
+            Conductor_Buscado = Proyecto2_201503741.ListaCirculoar_Conductores.Buscar(Long.parseLong(txt_buscar.getText().trim()));
+            if (Conductor_Buscado != null) {
+                Ventana_Conductores vtn_Conductor = new Ventana_Conductores();
+                vtn_Conductor.setVisible(true);
+                txt_buscar.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontro el cliente");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ingrese un DPI valido");
+        }
     }//GEN-LAST:event_btn_BuscarActionPerformed
+
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        if (!"".equals(txt_Dpi.getText())
+                && !txt_Nombres.getText().equals("")
+                && !txt_Apellidos.getText().equals("")
+                && !txt_Genero.getText().equals("")
+                && !txt_Licencia.getText().equals("")
+                && !txt_Fecha.getText().equals("")
+                && !txt_Telefono.getText().equals("")
+                && !txt_Direccion.getText().equals("")) {
+            Conductor Nuevo_Cond = new Conductor(Long.parseLong(txt_Dpi.getText()), txt_Nombres.getText(), txt_Apellidos.getText(), txt_Genero.getText(), txt_Licencia.getText(),txt_Fecha.getText(), Integer.parseInt(txt_Telefono.getText().trim()), txt_Direccion.getText());
+            Proyecto2_201503741.ListaCirculoar_Conductores.Insertar(Nuevo_Cond);
+            CargarCbx_Conductores();
+            //refrescar tabla
+            txt_Dpi.setText("");
+            txt_Nombres.setText("");
+            txt_Apellidos.setText("");
+            txt_Genero.setText("");
+            txt_Licencia.setText("");
+            txt_Fecha.setText("");
+            txt_Telefono.setText("");
+            txt_Direccion.setText("");
+            RefrescarTabla();
+        }
+    }//GEN-LAST:event_btn_IngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,7 +393,7 @@ public class Admin_Conductores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable btl_Conductores;
+    private static javax.swing.JTable btl_Conductores;
     private javax.swing.JButton btn_Buscar;
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JLabel jLabel1;

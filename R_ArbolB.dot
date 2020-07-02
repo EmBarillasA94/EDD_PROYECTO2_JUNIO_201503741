@@ -1,26 +1,26 @@
 digraph g{ 
 rankdir = TB; 
 node [shape = record]; 
-7966988[label ="<26600929>|<23548662>P345RTX&#92;nCorolla&#92;nNegro&#92;nAutomatico|<32346114>"]; 
-26600929[label ="<27299970>|<19845242>P100TEW&#92;nCentra&#92;nGris&#92;nMecanico|<13751051>|<30617107>P150ERT&#92;nModelo2&#92;nBlanco&#92;nMecanico|<5019499>|<18624536>P250JSI&#92;nModelo18&#92;nAmarillo&#92;nAutomatico|<23062331>"]; 
-27299970[label ="<26142325>P050OEX&#92;nModelo12&#92;nAmarillo&#92;nAutomatico|<21873760>P075WOQ&#92;nModelo17&#92;nAmarillo&#92;nAutomatico|"]; 
-13751051[label ="<27112609>P125QPW&#92;nModelo4&#92;nNegro&#92;nMecanico|<27523094>P140GNI&#92;nModelo13&#92;nAmarillo&#92;nAutomatico|"]; 
-5019499[label ="<29103513>P175EOS&#92;nModelo6&#92;nAzul&#92;nMecanico|<6141386>P200CDQ&#92;nModelo1&#92;nRojo&#92;nAutomatico|"]; 
-23062331[label ="<2435804>P300QEA&#92;nModelo8&#92;nAmarillo&#92;nAutomatico|<11276934>P325YWP&#92;nModelo10&#92;nAmarillo&#92;nAutomatico|"]; 
-32346114[label ="<17551767>|<13491993>P450ZNQ&#92;nModelo9&#92;nAmarillo&#92;nAutomatico|<17790998>|<19229331>P600ANB&#92;nModelo7&#92;nAmarillo&#92;nAutomatico|<3771913>|<9614592>P700YQZ&#92;nModelo15&#92;nAmarillo&#92;nAutomatico|<6797324>"]; 
-17551767[label ="<7223009>P400EPQ&#92;nModelo3&#92;nVerde&#92;nMecanico|<2341795>P425HRP&#92;nModelo119&#92;nAmarillo&#92;nAutomatico|"]; 
-17790998[label ="<31077906>P500RTI&#92;nModelo5&#92;nAmarillo&#92;nAutomatico|<2905021>P550MXA&#92;nModelo11&#92;nAmarillo&#92;nAutomatico|"]; 
-3771913[label ="<26256423>P625DWE&#92;nModelo16&#92;nAmarillo&#92;nAutomatico|<6546901>P654CRV&#92;nCorolla&#92;nNegro&#92;nAutomatico|"]; 
-6797324[label ="<734253>P876GDW&#92;nLancer&#92;nAzul&#92;nMecanico|<5907242>P900VSF&#92;nModelo114&#92;nAmarillo&#92;nAutomatico|"]; 
+7478719[label ="<25593505>|<30589170>P345RTX&#92;nCorolla&#92;nNegro&#92;nAutomatico|<14224312>"]; 
+25593505[label ="<13793017>|<21257804>P100TEW&#92;nCentra&#92;nGris&#92;nMecanico|<13421254>|<12099372>P150ERT&#92;nModelo2&#92;nBlanco&#92;nMecanico|<31604988>|<16763890>P250JSI&#92;nModelo18&#92;nAmarillo&#92;nAutomatico|<14138833>"]; 
+13793017[label ="<7734104>P050OEX&#92;nModelo12&#92;nAmarillo&#92;nAutomatico|<26892874>P075WOQ&#92;nModelo17&#92;nAmarillo&#92;nAutomatico|"]; 
+13421254[label ="<24427664>P125QPW&#92;nModelo4&#92;nNegro&#92;nMecanico|<15901914>P140GNI&#92;nModelo13&#92;nAmarillo&#92;nAutomatico|"]; 
+31604988[label ="<13371423>P175EOS&#92;nModelo6&#92;nAzul&#92;nMecanico|<29180742>P200CDQ&#92;nModelo1&#92;nRojo&#92;nAutomatico|"]; 
+14138833[label ="<19784157>P300QEA&#92;nModelo8&#92;nAmarillo&#92;nAutomatico|<7753558>P325YWP&#92;nModelo10&#92;nAmarillo&#92;nAutomatico|"]; 
+14224312[label ="<13773943>|<32432792>P450ZNQ&#92;nModelo9&#92;nAmarillo&#92;nAutomatico|<30654961>|<26425378>P600ANB&#92;nModelo7&#92;nAmarillo&#92;nAutomatico|<6626867>|<10866053>P700YQZ&#92;nModelo15&#92;nAmarillo&#92;nAutomatico|<28595305>"]; 
+13773943[label ="<23083925>P400EPQ&#92;nModelo3&#92;nVerde&#92;nMecanico|<25439244>P425HRP&#92;nModelo119&#92;nAmarillo&#92;nAutomatico|"]; 
+30654961[label ="<16845660>P500RTI&#92;nModelo5&#92;nAmarillo&#92;nAutomatico|<1770121>P550MXA&#92;nModelo11&#92;nAmarillo&#92;nAutomatico|"]; 
+6626867[label ="<9383564>P625DWE&#92;nModelo16&#92;nAmarillo&#92;nAutomatico|<1278173>P654CRV&#92;nCorolla&#92;nNegro&#92;nAutomatico|"]; 
+28595305[label ="<22362472>P876GDW&#92;nLancer&#92;nAzul&#92;nMecanico|<26899969>P900VSF&#92;nModelo114&#92;nAmarillo&#92;nAutomatico|"]; 
 
-7966988:26600929->26600929:n; 
-7966988:32346114->32346114:n; 
-26600929:27299970->27299970:n; 
-26600929:13751051->13751051:n; 
-26600929:5019499->5019499:n; 
-26600929:23062331->23062331:n; 
-32346114:17551767->17551767:n; 
-32346114:17790998->17790998:n; 
-32346114:3771913->3771913:n; 
-32346114:6797324->6797324:n; 
+7478719:25593505->25593505:n; 
+7478719:14224312->14224312:n; 
+25593505:13793017->13793017:n; 
+25593505:13421254->13421254:n; 
+25593505:31604988->31604988:n; 
+25593505:14138833->14138833:n; 
+14224312:13773943->13773943:n; 
+14224312:30654961->30654961:n; 
+14224312:6626867->6626867:n; 
+14224312:28595305->28595305:n; 
 } 
