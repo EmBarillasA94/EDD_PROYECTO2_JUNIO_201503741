@@ -6,7 +6,9 @@
 package proyecto2_201503741.Interfaz;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoRutas;
+import static proyecto2_201503741.Proyecto2_201503741.Grafo;
 
 /**
  *
@@ -34,6 +36,7 @@ public class Pantalla_Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("LLEGA RAPIDITO");
 
         btn_CargarRutas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_CargarRutas.setText("Cargar Archivo de Rutas");
@@ -78,6 +81,14 @@ public class Pantalla_Inicio extends javax.swing.JFrame {
         if (option == JFileChooser.APPROVE_OPTION) {
             String ruta = choser.getSelectedFile().toString();
             LeerArchivoRutas(ruta);
+            Grafo.Graph();
+            if (!Grafo.isEmpty()) {
+                Menu_Principal mp = new Menu_Principal();
+                mp.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "El Archivo ruta no se cargo correctamente");
+            }
         }
     }//GEN-LAST:event_btn_CargarRutasActionPerformed
 
