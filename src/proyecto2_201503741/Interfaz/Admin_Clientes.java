@@ -5,6 +5,10 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import proyecto2_201503741.Clases.Cliente;
+import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Cliente;
+import proyecto2_201503741.Proyecto2_201503741;
+
 /**
  *
  * @author EDDY
@@ -119,6 +123,11 @@ public class Admin_Clientes extends javax.swing.JFrame {
 
         btn_Ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -271,9 +280,35 @@ public class Admin_Clientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static void RefrescarTabla(){
+        
+    }
+    
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_BuscarActionPerformed
+
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        if (!"".equals(txt_Dpi.getText()) 
+                && !txt_Nombres.getText().equals("") 
+                && !txt_Apellidos.getText().equals("")
+                && !txt_Genero.getText().equals("")
+                && !txt_Fecha.getText().equals("")
+                && !txt_Telefono.getText().equals("")
+                && !txt_Direccion.getText().equals("")) {
+            Cliente Nuevo_Cli = new Cliente(Long.parseLong(txt_Dpi.getText()), txt_Nombres.getText(), txt_Apellidos.getText(), txt_Genero.getText(), txt_Fecha.getText(), Integer.parseInt(txt_Telefono.getText().trim()), txt_Direccion.getText());
+            Proyecto2_201503741.TablaHash_Clientes.Insertar(Nuevo_Cli);
+            CargarCbx_Cliente();
+            //refrescar tabla
+            txt_Dpi.setText("");
+            txt_Nombres.setText("");
+            txt_Apellidos.setText("");
+            txt_Genero.setText("");
+            txt_Fecha.setText("");
+            txt_Telefono.setText("");
+            txt_Direccion.setText("");
+        }
+    }//GEN-LAST:event_btn_IngresarActionPerformed
 
     /**
      * @param args the command line arguments

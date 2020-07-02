@@ -1,0 +1,57 @@
+digraph BlockChain{ 
+node[shape=box]; 
+rankdir = LR; 
+
+"12992685"[label = "aad362e4ca96c965068054bd605217b3"] 
+"19003610"[label = "58c974155f64e876c0b35fada29c9094"] 
+"32193531"[label = "f51654e799a7fd6a6eb640b5ffad1ba5"] 
+"12992685"->"19003610"; 
+"19003610"->"12992685"; 
+"19003610"->"32193531"; 
+"32193531"->"19003610"; 
+
+subgraph ruta_12992685{ 
+rank=same 
+;"Jaen_12992685"[label="Jaen&#92;n0"]; 
+"Madrid_12992685"[label="Madrid&#92;n335"]; 
+"Murcia_12992685"[label="Murcia&#92;n485"]; 
+"Valencia_12992685"[label="Valencia&#92;n726"]; 
+"Barcelona_12992685"[label="Barcelona&#92;n1075"]; 
+"Gerona_12992685"[label="Gerona&#92;n1175"]; 
+
+"Jaen_12992685"->"Madrid_12992685"; 
+"Madrid_12992685"->"Murcia_12992685"; 
+"Murcia_12992685"->"Valencia_12992685"; 
+"Valencia_12992685"->"Barcelona_12992685"; 
+"Barcelona_12992685"->"Gerona_12992685"; 
+}
+subgraph ruta_19003610{ 
+rank=same 
+;"Oviedo_19003610"[label="Oviedo&#92;n0"]; 
+"Bilbao_19003610"[label="Bilbao&#92;n304"]; 
+"Zaragoza_19003610"[label="Zaragoza&#92;n628"]; 
+"Barcelona_19003610"[label="Barcelona&#92;n924"]; 
+"Gerona_19003610"[label="Gerona&#92;n1024"]; 
+
+"Oviedo_19003610"->"Bilbao_19003610"; 
+"Bilbao_19003610"->"Zaragoza_19003610"; 
+"Zaragoza_19003610"->"Barcelona_19003610"; 
+"Barcelona_19003610"->"Gerona_19003610"; 
+}
+subgraph ruta_32193531{ 
+rank=same 
+;"Valladolid_32193531"[label="Valladolid&#92;n0"]; 
+"Madrid_32193531"[label="Madrid&#92;n193"]; 
+"Albacete_32193531"[label="Albacete&#92;n444"]; 
+
+"Valladolid_32193531"->"Madrid_32193531"; 
+"Madrid_32193531"->"Albacete_32193531"; 
+}
+{rank=same "12992685" "Jaen_12992685"} 
+"12992685"->"Jaen_12992685"; 
+{rank=same "19003610" "Oviedo_19003610"} 
+"19003610"->"Oviedo_19003610"; 
+{rank=same "32193531" "Valladolid_32193531"} 
+"32193531"->"Valladolid_32193531"; 
+
+}

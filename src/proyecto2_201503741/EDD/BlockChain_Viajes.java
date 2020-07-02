@@ -87,11 +87,12 @@ public class BlockChain_Viajes {
             aux = this.firts;
             for (int i = 0; i < this.size; i++) {
                 fw_archivo.write("{rank=same " + comillas + aux.hashCode() + comillas + " " + comillas + aux.getRuta().getInicio().getDestino() + "_" + aux.hashCode() + comillas + "} \n");
-                fw_archivo.write(comillas + aux.hashCode() + comillas + "->"+comillas + aux.getRuta().getInicio().getDestino() + "_" + aux.hashCode() + comillas+"; \n");
+                fw_archivo.write(""+comillas + aux.hashCode() + comillas + "->"+comillas + aux.getRuta().getInicio().getDestino() + "_" + aux.hashCode() + comillas+"; \n");
                 aux = aux.getNext();
             }
             fw_archivo.write("\n");
             fw_archivo.write("}");
+            fw_archivo.close();
             
             //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"
             String Comando = "C:\\release\\bin\\dot.exe -Tpng R_BlockChain.dot -o Grafica_BlockChain.png";

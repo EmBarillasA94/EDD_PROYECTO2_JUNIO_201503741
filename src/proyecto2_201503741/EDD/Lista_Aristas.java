@@ -75,7 +75,7 @@ public class Lista_Aristas {
         String espacio = "&#92;n";
 
         texto = texto + "subgraph ruta_" + Block_Propietario + "{ \n";
-        texto = texto + "rank=same \n;";
+        texto = texto + "rank=same; \n";
         Arista aux = this.Inicio;
         while (aux != null) {
             texto = texto + com + aux.getDestino() + "_" + Block_Propietario + com + "[label=" + com + aux.getDestino() + espacio + aux.getTiempo() + com + "]; \n";

@@ -340,7 +340,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         Cliente[] ListaClientes = TablaHash_Clientes.ListaClientes();
         String[] Cli = new String[ListaClientes.length];
         for (int i = 0; i < ListaClientes.length; i++) {
-            Cli[i] = ListaClientes[i].getDpi() + " | " + ListaClientes[i].getNombres();
+            Cli[i] = ListaClientes[i].getDpi() + " / " + ListaClientes[i].getNombres();
         }
         cbx_Clientes.setModel(new DefaultComboBoxModel<>(Cli));
     }
@@ -349,7 +349,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         Vehiculo[] ListaVehiculos = Arbol_Vehiculos.Lista_Vehiculos();
         String[] Vehiculos = new String[ListaVehiculos.length];
         for (int i = 0; i < Vehiculos.length; i++) {
-            Vehiculos[i] = ListaVehiculos[i].getPlaca() + " | " + ListaVehiculos[i].getMarca() + " | " + ListaVehiculos[i].getModelo();
+            Vehiculos[i] = ListaVehiculos[i].getPlaca() + " / " + ListaVehiculos[i].getMarca() + " / " + ListaVehiculos[i].getModelo();
         }
         cbx_Vehiculos.setModel(new DefaultComboBoxModel<>(Vehiculos));
     }
@@ -358,7 +358,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         Conductor[] ListaConductores = ListaCirculoar_Conductores.ListadoConductores();
         String[] Conduc = new String[ListaConductores.length];
         for (int i = 0; i < Conduc.length; i++) {
-            Conduc[i] = ListaConductores[i].getDpi() + " | " + ListaConductores[i].getNombres();
+            Conduc[i] = ListaConductores[i].getDpi() + " / " + ListaConductores[i].getNombres();
         }
         cbx_Conductores.setModel(new DefaultComboBoxModel<>(Conduc));
     }
@@ -453,24 +453,29 @@ public class Menu_Principal extends javax.swing.JFrame {
         //buscar el conductor
         int posConductor = cbx_Conductores.getSelectedIndex();
         String DatoCombo = cbx_Conductores.getItemAt(posConductor);
-        String[] DatosConductor = DatoCombo.split("|");
+        String[] DatosConductor = DatoCombo.split("/");
         Conductor con = ListaCirculoar_Conductores.Buscar(Long.parseLong(DatosConductor[0].trim()));
         //buscar el cliente
         int posClient = cbx_Clientes.getSelectedIndex();
         String DatosComboCli = cbx_Clientes.getItemAt(posClient);
-        String[] Cadena_cli = DatosComboCli.split("|");
+        String[] Cadena_cli = DatosComboCli.split("/");
         Cliente cli = TablaHash_Clientes.Buscar(Long.parseLong(Cadena_cli[0].trim()));
         //Buscar el vehiculo
         int posVehiculo = cbx_Vehiculos.getSelectedIndex();
         String DatosComboVe = cbx_Vehiculos.getItemAt(posVehiculo);
-        String[] Cadena_ve = DatosComboVe.split("|");
+        String[] Cadena_ve = DatosComboVe.split("/");
         Vehiculo veh = Arbol_Vehiculos.Buscar(Cadena_ve[0].trim());
         //validar la ruta
         if (rutaTomada.getSize() >= 2) {
+            System.out.println("Viaje ----------> "+veh.getPlaca()+getFecha()+getHora());
             Nodo_BlockChain viaje = new Nodo_BlockChain(veh.getPlaca()+getFecha()+getHora(), origen, destino, getFecha()+" "+getHora(), cli, con, veh, rutaTomada);
-            System.out.println("Viaje ----------> "+viaje.getLlave());
+            cli.AumentarViajes();
+            veh.AumentarViajes();
+            con.AumentarViajes();
             Block_Viajes.Insertar(viaje);
             Block_Viajes.Graph();
+        }else{
+            JOptionPane.showMessageDialog(this, "No es posible conectar el origen con el destino");
         }
     }//GEN-LAST:event_btn_AceptarViajeActionPerformed
 
