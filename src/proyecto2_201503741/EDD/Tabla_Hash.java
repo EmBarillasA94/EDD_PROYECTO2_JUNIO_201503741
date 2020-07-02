@@ -92,6 +92,23 @@ public class Tabla_Hash {
         return cli;
     }
 
+    public String ListaClientes() {
+        String Lista = "";
+        for (int i = 0; i < this.tam; i++) {
+            Nodo_TablaHash aux = this.Tabla[i];
+            if (aux != null) {
+                if (!aux.getLista().isEmpty()) {
+                    Cliente aux2 = aux.getLista().getInicio();
+                    while (aux2 != null) {
+                        Lista = Lista + aux2.getDpi() + " | " + aux2.getNombres() + "%";
+                        aux2 = aux2.getNext();
+                    }
+                }
+            }
+        }
+        return Lista;
+    }
+
     public void Graph() {
         try {
             File archivo;
