@@ -19,6 +19,7 @@ public class Tabla_Hash {
     Nodo_TablaHash[] Tabla;
     int tam;
     int claves_ocupadas;
+    int cantidad_clientes;
 
     public Tabla_Hash() {
         this.Tabla = new Nodo_TablaHash[37];
@@ -42,8 +43,10 @@ public class Tabla_Hash {
             this.Tabla[hash] = new Nodo_TablaHash();
             this.Tabla[hash].Insertar(NuevoCliente);
             this.claves_ocupadas++;
+            this.cantidad_clientes++;
         } else {
             Tabla[hash].Insertar(NuevoCliente);
+            this.cantidad_clientes++;
         }
 
         //calcular si ya se lleno mas del 75%
@@ -80,9 +83,9 @@ public class Tabla_Hash {
     public void Eliminar(long dpi) {
         int hash = CalcularHash(dpi);
         this.Tabla[hash].Eliminar(dpi);
+        this.claves_ocupadas--;
         if (this.Tabla[hash].isEmpty()) {
             this.Tabla[hash] = null;
-            this.claves_ocupadas--;
         }
     }
 
@@ -92,15 +95,17 @@ public class Tabla_Hash {
         return cli;
     }
 
-    public String ListaClientes() {
-        String Lista = "";
+    public Cliente[] ListaClientes() {
+        Cliente[] Lista = new Cliente[this.cantidad_clientes];
+        int j = 0;
         for (int i = 0; i < this.tam; i++) {
             Nodo_TablaHash aux = this.Tabla[i];
             if (aux != null) {
                 if (!aux.getLista().isEmpty()) {
                     Cliente aux2 = aux.getLista().getInicio();
                     while (aux2 != null) {
-                        Lista = Lista + aux2.getDpi() + " | " + aux2.getNombres() + "%";
+                        Lista[j] = aux2;
+                        j++;
                         aux2 = aux2.getNext();
                     }
                 }

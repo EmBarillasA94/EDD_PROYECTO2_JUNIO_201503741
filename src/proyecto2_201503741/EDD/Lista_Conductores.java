@@ -104,6 +104,16 @@ public class Lista_Conductores {
         return null;
     }
 
+    public Conductor[] ListadoConductores() {
+        Conductor[] Lista = new Conductor[this.size];
+        Conductor aux = this.firts;
+        for (int i = 0; i < Lista.length; i++) {
+            Lista[i] = aux;
+            aux = aux.getNext();
+        }
+        return Lista;
+    }
+
     public void graph() {
         try {
             File archivo;
@@ -119,18 +129,18 @@ public class Lista_Conductores {
 
             Conductor aux = this.firts;
             for (int i = 0; i < this.size; i++) {
-                fw_archivo.write(""+comillas + aux.hashCode() + comillas + "[label ="+comillas + aux.getDpi() + espacio + aux.getNombres() + espacio + "Licencia Tipo: " + aux.getTipo_licencia() + comillas + "]; \n");
+                fw_archivo.write("" + comillas + aux.hashCode() + comillas + "[label =" + comillas + aux.getDpi() + espacio + aux.getNombres() + espacio + "Licencia Tipo: " + aux.getTipo_licencia() + comillas + "]; \n");
                 aux = aux.getNext();
             }
 
             aux = this.firts;
             for (int i = 0; i < this.size; i++) {
-                fw_archivo.write(""+comillas + aux.hashCode() + comillas + "->" + comillas + aux.getNext().hashCode() + comillas+"\n");
-                fw_archivo.write(""+comillas + aux.hashCode() + comillas + "->" + comillas + aux.getBefore().hashCode() + comillas+"\n");
+                fw_archivo.write("" + comillas + aux.hashCode() + comillas + "->" + comillas + aux.getNext().hashCode() + comillas + "\n");
+                fw_archivo.write("" + comillas + aux.hashCode() + comillas + "->" + comillas + aux.getBefore().hashCode() + comillas + "\n");
                 aux = aux.getNext();
             }
             fw_archivo.write("}\n");
-            
+
             fw_archivo.close();
 
             //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"

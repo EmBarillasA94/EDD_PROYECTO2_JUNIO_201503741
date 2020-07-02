@@ -10,6 +10,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import proyecto2_201503741.Clases.Cliente;
+import proyecto2_201503741.Clases.Vehiculo;
+import proyecto2_201503741.Clases.Conductor;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoClientes;
 import static proyecto2_201503741.Proyecto2_201503741.TablaHash_Clientes;
 import static proyecto2_201503741.Proyecto2_201503741.LeerArchivoVehiculos;
@@ -330,9 +333,30 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
     
     public static void CargarCbx_Cliente(){
-        String Lista_Cli = TablaHash_Clientes.ListaClientes();
-        String [] Cli = Lista_Cli.split("%");
+        Cliente[] ListaClientes = TablaHash_Clientes.ListaClientes();
+        String[] Cli = new String[ListaClientes.length];
+        for (int i = 0; i < ListaClientes.length; i++) {
+            Cli[i] = ListaClientes[i].getDpi()+" | "+ListaClientes[i].getNombres();
+        }
         cbx_Clientes.setModel(new DefaultComboBoxModel<>(Cli));
+    }
+    
+    public static void CargarCbx_Vehiculos(){
+        Vehiculo[] ListaVehiculos = Arbol_Vehiculos.Lista_Vehiculos();
+        String[] Vehiculos = new String[ListaVehiculos.length];
+        for (int i = 0; i < Vehiculos.length; i++) {
+            Vehiculos[i]= ListaVehiculos[i].getPlaca()+" | "+ListaVehiculos[i].getMarca()+" | "+ListaVehiculos[i].getModelo();
+        }
+        cbx_Vehiculos.setModel(new DefaultComboBoxModel<>(Vehiculos));
+    }
+    
+    public static void CargarCbx_Conductores(){
+        Conductor[] ListaConductores = ListaCirculoar_Conductores.ListadoConductores();
+        String[] Conduc = new String[ListaConductores.length];
+        for (int i = 0; i < Conduc.length; i++) {
+            Conduc[i] = ListaConductores[i].getDpi() +" | "+ ListaConductores[i].getNombres();
+        }
+        cbx_Conductores.setModel(new DefaultComboBoxModel<>(Conduc));
     }
     
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
@@ -370,7 +394,7 @@ public class Menu_Principal extends javax.swing.JFrame {
             LeerArchivoClientes(ruta);
             TablaHash_Clientes.Graph();
             CargarCbx_Cliente();
-            JOptionPane.showMessageDialog(null, "Carga Exitosa");
+            JOptionPane.showMessageDialog(this, "Carga Exitosa");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -383,6 +407,7 @@ public class Menu_Principal extends javax.swing.JFrame {
             String ruta = choser.getSelectedFile().toString();
             LeerArchivoVehiculos(ruta);
             Arbol_Vehiculos.Reporte_ArbolB();
+            CargarCbx_Vehiculos();
             JOptionPane.showMessageDialog(this, "Carga Exitosa");
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -396,7 +421,8 @@ public class Menu_Principal extends javax.swing.JFrame {
             String ruta = choser.getSelectedFile().toString();
             LeerArchivoConductores(ruta);
             ListaCirculoar_Conductores.graph();
-            JOptionPane.showMessageDialog(null, "Carga Exitosa");
+            CargarCbx_Conductores();
+            JOptionPane.showMessageDialog(this, "Carga Exitosa");
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 

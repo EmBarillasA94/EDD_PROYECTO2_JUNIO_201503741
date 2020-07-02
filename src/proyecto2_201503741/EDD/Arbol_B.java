@@ -19,17 +19,20 @@ import proyecto2_201503741.Clases.Vehiculo;
  * @author EDDY
  */
 public class Arbol_B {
-    
+
     Nodo_B raiz;
-    
+    int cantidad;
+
     public Arbol_B() {
         this.raiz = new Nodo_B();
+        this.cantidad = 0;
     }
-    
+
     public void Insertar(Vehiculo n) {
         Insertar_en_Hoja(this.raiz, n);
+        this.cantidad++;
     }
-    
+
     private void Insertar_en_Hoja(Nodo_B nodo, Vehiculo vehiculo) {
         if (nodo != null) {
             if (!nodo.getEsPadre()) {//es una hoja
@@ -53,13 +56,13 @@ public class Arbol_B {
                 }
             }
         }
-        
+
     }
-    
+
     private void Dividir(Nodo_B nodo) {
         Nodo_B H_Izquierdo = new Nodo_B();
         Nodo_B H_Derecho = new Nodo_B();
-        
+
         if (nodo.getEsPadre()) {//si tiene hijos antes de dividirlo hay que asignar las ramas a los hijos
             //al hijo izquierdo
             H_Izquierdo.getRamas()[0] = nodo.getRamas()[0];
@@ -121,13 +124,13 @@ public class Arbol_B {
             }
         }
     }
-    
+
     public Vehiculo Buscar(String placa) {
         Nodo_B aux = this.raiz;
         Vehiculo v = Buscar_P(aux, placa);
         return v;
     }
-    
+
     private Vehiculo Buscar_P(Nodo_B nodo, String placa) {
         if (nodo != null) {
             int comparacion;
@@ -147,9 +150,9 @@ public class Arbol_B {
         }
         return null;
     }
-    
+
     Nodo_B buscar;
-    
+
     public void EliminarPorplaca(String placa) {
         Nodo_B aux = this.raiz;
         Nodo_B NodoBuscado = BuscarNodo(aux, placa);
@@ -170,10 +173,12 @@ public class Arbol_B {
             }
         } else {
             JOptionPane.showMessageDialog(null, "El placa no existe en la biblioteca");
+            this.cantidad++;
         }
         buscar = null;
+        this.cantidad--;
     }
-    
+
     private Nodo_B BuscarNodo(Nodo_B raiz, String placa) {
         if (raiz != null) {
             int comparacion;
@@ -192,7 +197,7 @@ public class Arbol_B {
         }
         return buscar;
     }
-    
+
     private void EliminarHoja(Nodo_B NodoBuscado, String placa) {//cuando es hoja y > 2
         boolean eliminado = false;
         for (int i = 0; i < NodoBuscado.getVehiculos().length; i++) {
@@ -214,7 +219,7 @@ public class Arbol_B {
             }
         }
     }
-    
+
     private void Balancear2(Nodo_B Padre) {
         if (Padre != null) {
             int posNodo = 0;
@@ -228,7 +233,7 @@ public class Arbol_B {
                     }
                 }
             }
-            
+
             if (bandera) {//hay nodos < 2 
                 if (posNodo == 0) {
                     //consultar si el nodo hermano tiene para pasar 
@@ -309,7 +314,7 @@ public class Arbol_B {
                             this.raiz.setPadre(null);
                         }
                     }
-                    
+
                 } else {
                     if (Padre.getRamas()[posNodo + 1].getCantidad() > 2) {
 //                        Padre.getRamas()[posNodo].getVehiculos()[Padre.getRamas()[posNodo].getCantidad()] = Padre.getVehiculos()[posNodo];
@@ -359,10 +364,10 @@ public class Arbol_B {
                     Balancear2(Padre.getRamas()[i]);
                 }
             }
-            
+
         }
     }
-    
+
     private void EliminarVehiculoRama(Nodo_B NodoBuscado, String placa) {
         //encontrar la posicion del vehhiculo enla lista de valores
         int posVehiculo = 0;
@@ -378,10 +383,10 @@ public class Arbol_B {
         //buscando el sucesor mayor a la izquierda
         Vehiculo SM = SucesorMayorIzquierdo(NodoBuscado.getRamas()[posVehiculo]);
         NodoBuscado.getVehiculos()[posVehiculo] = SM;
-        
+
         Balancear2(this.raiz);
     }
-    
+
     private void EliminarVehiculoRamaAjustar(Nodo_B NodoBuscado, String placa) {
         boolean eliminado = false;
         for (int i = 0; i < NodoBuscado.getVehiculos().length; i++) {
@@ -401,9 +406,9 @@ public class Arbol_B {
         if (NodoBuscado.getCantidad() < 2) {
             BalancearAjustar(NodoBuscado.getPadre());
         }
-        
+
     }
-    
+
     private void BalancearAjustar(Nodo_B Padre) {
         if (Padre != null) {
             int posNodo = 0;
@@ -451,7 +456,7 @@ public class Arbol_B {
             }
         }
     }
-    
+
     private Vehiculo SucesorMayorIzquierdo(Nodo_B NodoIzquierdo) {
         if (NodoIzquierdo.getEsPadre()) {//Buscar el mas a su derecha
             return SucesorMayorDerecho(NodoIzquierdo.getRamas()[NodoIzquierdo.getCantidad()]);
@@ -462,7 +467,7 @@ public class Arbol_B {
             return aux;
         }
     }
-    
+
     private Vehiculo SucesorMayorDerecho(Nodo_B NodoDerecho) {
         if (NodoDerecho.getEsPadre()) {//Buscar el mas a su derecha
             return SucesorMayorDerecho(NodoDerecho.getRamas()[NodoDerecho.getCantidad()]);
@@ -473,7 +478,7 @@ public class Arbol_B {
             return aux;
         }
     }
-    
+
     private void ActualizarListaNodos(Nodo_B Padre) {
         if (Padre != null) {
             for (int i = 0; i < Padre.getRamas().length; i++) {
@@ -485,21 +490,44 @@ public class Arbol_B {
                 } catch (Exception e) {
                     e.getMessage();
                 }
-                
+
             }
         }
     }
-    
+
+    int ingresado =0;
+    public Vehiculo[] Lista_Vehiculos() {
+        Vehiculo[] Lista = new Vehiculo[this.cantidad];
+        Nodo_B aux = this.raiz;
+        ingresado =0;
+        Cargar_Lista_Vehiculos(aux, Lista);
+        return Lista;
+    }
+
+    private void Cargar_Lista_Vehiculos(Nodo_B nodo, Vehiculo[] lista) {
+        if (nodo != null) {
+            for (int j = 0; j < nodo.getCantidad(); j++) {
+                if (nodo.getVehiculos()[j] != null) {
+                    lista[ingresado] = nodo.getVehiculos()[j];
+                    ingresado++;
+                }
+            }
+            for (int x = 0; x < nodo.getRamas().length; x++) {
+                Cargar_Lista_Vehiculos(nodo.getRamas()[x], lista);
+            }
+        }
+    }
+
     File R_ArbolB;
     FileWriter FW_ArbolB;
     char com = '"';
     String espacio = "&#92;n";
-    
+
     public void Reporte_ArbolB() {
         try {
             R_ArbolB = new File("R_ArbolB.dot");
             FW_ArbolB = new FileWriter(R_ArbolB);
-            
+
             FW_ArbolB.write("digraph g{ \n");
             FW_ArbolB.write("rankdir = TB; \n");
             FW_ArbolB.write("node [shape = record]; \n");
@@ -516,7 +544,7 @@ public class Arbol_B {
             Process p;
             try {
                 p = Runtime.getRuntime().exec(Comando);
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -524,7 +552,7 @@ public class Arbol_B {
             e.printStackTrace();
         }
     }
-    
+
     private void GraficarNodos(Nodo_B Raiz) {
         if (Raiz != null) {
             try {
@@ -566,13 +594,13 @@ public class Arbol_B {
             } catch (IOException ex) {
                 Logger.getLogger(Arbol_B.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             for (int i = 0; i < Raiz.getRamas().length; i++) {
                 GraficarNodos(Raiz.getRamas()[i]);
             }
         }
     }
-    
+
     private void CrearEnlaces(Nodo_B Raiz) {
         if (Raiz != null) {
             for (int i = 0; i < Raiz.getRamas().length; i++) {
@@ -589,5 +617,5 @@ public class Arbol_B {
             }
         }
     }
-    
+
 }
