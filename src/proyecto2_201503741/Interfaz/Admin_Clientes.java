@@ -312,6 +312,7 @@ public class Admin_Clientes extends javax.swing.JFrame {
             if (Cliente_Buscado != null) {
                 Ventana_Cliente vtn_Cliente = new Ventana_Cliente();
                 vtn_Cliente.setVisible(true);
+                txt_buscar.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "No se encontro el cliente");
             }

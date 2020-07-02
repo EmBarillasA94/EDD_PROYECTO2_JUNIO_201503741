@@ -83,9 +83,10 @@ public class Tabla_Hash {
     public void Eliminar(long dpi) {
         int hash = CalcularHash(dpi);
         this.Tabla[hash].Eliminar(dpi);
-        this.claves_ocupadas--;
+        this.cantidad_clientes--;
         if (this.Tabla[hash].isEmpty()) {
             this.Tabla[hash] = null;
+            this.claves_ocupadas--;
         }
     }
 

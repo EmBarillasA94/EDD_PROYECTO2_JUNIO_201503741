@@ -51,6 +51,7 @@ public class Lista_Cliente {
     public void Eliminar(long dpi) {
         if (this.Inicio.getDpi() == dpi) {
             this.Inicio = this.Inicio.getNext();
+            this.size--;
         } else {
             Cliente aux = this.Inicio;
             Cliente aux2 = this.Inicio;

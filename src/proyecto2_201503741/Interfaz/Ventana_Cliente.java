@@ -10,6 +10,7 @@ import proyecto2_201503741.Clases.Cliente;
 import static proyecto2_201503741.Interfaz.Admin_Clientes.Cliente_Buscado;
 import proyecto2_201503741.Proyecto2_201503741;
 import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Cliente;
+import static proyecto2_201503741.Interfaz.Admin_Clientes.RefrescarTabla;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Ventana_Cliente extends javax.swing.JFrame {
      */
     public Ventana_Cliente() {
         initComponents();
+        CargarDatos();
     }
 
     /**
@@ -216,6 +218,9 @@ public class Ventana_Cliente extends javax.swing.JFrame {
         int confirmar = JOptionPane.showConfirmDialog(null, "¿Seguro desea borrar este cliente?", "", JOptionPane.YES_NO_OPTION);
         if (confirmar == JOptionPane.YES_OPTION) {
             Proyecto2_201503741.TablaHash_Clientes.Eliminar(Long.parseLong(txt_Dpi.getText().trim()));
+            RefrescarTabla();
+            CargarCbx_Cliente();
+            Cliente_Buscado = null;
             this.dispose();
         }
     }//GEN-LAST:event_btn_EliminarActionPerformed
@@ -228,11 +233,18 @@ public class Ventana_Cliente extends javax.swing.JFrame {
             Cliente_Buscado.setFecha_nacimiento(txt_Fecha.getText());
             Cliente_Buscado.setTelefono(Integer.parseInt(txt_Telefono.getText()));
             Cliente_Buscado.setDireccion(txt_Direccion.getText());
+            JOptionPane.showMessageDialog(this, "Modificado");
+            CargarDatos();
+            RefrescarTabla();
+            CargarCbx_Cliente();
         } else {
-            Proyecto2_201503741.TablaHash_Clientes.Eliminar(Long.parseLong(txt_Dpi.getText().trim()));
+            Proyecto2_201503741.TablaHash_Clientes.Eliminar(Cliente_Buscado.getDpi());
             Cliente ClienteModificado = new Cliente(Long.parseLong(txt_Dpi.getText().trim()), txt_Nombres.getText(), txt_Apellidos.getText(), txt_Genero.getText(), txt_Fecha.getText(), Integer.parseInt(txt_Telefono.getText()), txt_Direccion.getText());
             Proyecto2_201503741.TablaHash_Clientes.Insertar(ClienteModificado);
+            Cliente_Buscado = Proyecto2_201503741.TablaHash_Clientes.Buscar(ClienteModificado.getDpi());
+            JOptionPane.showMessageDialog(this, "Modificado");
             CargarDatos();
+            RefrescarTabla();
             CargarCbx_Cliente();
         }
     }//GEN-LAST:event_btn_ModificarActionPerformed
