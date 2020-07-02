@@ -125,7 +125,8 @@ public class Proyecto2_201503741 {
 //        Grafo.Graph();
 //        Lista_Aristas RutaCorta = Grafo.Dijstra("Zaragoza", "Madrid");
 //        System.out.println(RutaCorta.Graph_RutaCorta("e1"));
-        Pantalla_Inicio p_inicio = new Pantalla_Inicio();
+        Pantalla_Inicio p_inicio;
+        p_inicio = new Pantalla_Inicio();
         p_inicio.setVisible(true);
 
     }
