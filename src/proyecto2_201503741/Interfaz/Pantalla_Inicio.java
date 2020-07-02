@@ -84,10 +84,15 @@ public class Pantalla_Inicio extends javax.swing.JFrame {
             LeerArchivoRutas(ruta);
             Grafo.Graph();
             if (!Grafo.isEmpty()) {
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 Menu_Principal mp = new Menu_Principal();
                 mp.setVisible(true);
                 this.dispose();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "El Archivo ruta no se cargo correctamente");
             }
         }

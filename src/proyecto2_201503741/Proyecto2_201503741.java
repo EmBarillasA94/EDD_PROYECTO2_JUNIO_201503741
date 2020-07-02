@@ -26,8 +26,8 @@ import proyecto2_201503741.EDD.Lista_Aristas;
  */
 public class Proyecto2_201503741 {
 
-    public static Tabla_Hash Tabla = new Tabla_Hash();
-    public static Lista_Conductores Lista_Conductores = new Lista_Conductores();
+    public static Tabla_Hash TablaHash_Clientes = new Tabla_Hash();
+    public static Lista_Conductores ListaCirculoar_Conductores = new Lista_Conductores();
     public static Arbol_B Arbol_Vehiculos = new Arbol_B();
     public static Lista_Adyacencia Grafo = new Lista_Adyacencia();
     public static BlockChain_Viajes Block_Viajes = new BlockChain_Viajes();
@@ -159,7 +159,7 @@ public class Proyecto2_201503741 {
             String telefono = separador2[5].trim();
             String direccion = separador2[6].trim();
             Cliente ClienteNuevo = new Cliente(Long.parseLong(dpi), nombres, apellidos, genero, fecha, Integer.parseInt(telefono), direccion);
-            Tabla.Insertar(ClienteNuevo);
+            TablaHash_Clientes.Insertar(ClienteNuevo);
         }
     }
 
@@ -191,7 +191,7 @@ public class Proyecto2_201503741 {
             String telefono = separador2[6].trim();
             String direccion = separador2[7].trim();
             Conductor ConductorNuevo = new Conductor(Long.parseLong(dpi), nombres, apellidos, licencia, genero, fecha, Integer.parseInt(telefono), direccion);
-            Lista_Conductores.Insertar(ConductorNuevo);
+            ListaCirculoar_Conductores.Insertar(ConductorNuevo);
         }
     }
 
