@@ -5,6 +5,8 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import proyecto2_201503741.Clases.Cliente;
 import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Cliente;
 import proyecto2_201503741.Proyecto2_201503741;
@@ -20,6 +22,7 @@ public class Admin_Clientes extends javax.swing.JFrame {
      */
     public Admin_Clientes() {
         initComponents();
+        RefrescarTabla();
     }
 
     /**
@@ -280,17 +283,46 @@ public class Admin_Clientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void RefrescarTabla(){
-        
+    public static Cliente Cliente_Buscado;
+
+    public static void RefrescarTabla() {
+        Cliente[] Clientes = Proyecto2_201503741.TablaHash_Clientes.ListaClientes();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "DPI", "Nombres", "Apellidos", "Genero", "Fecha Nacimiento", "Telefono", "Direccion"
+                }
+        );
+        for (int i = 0; i < Clientes.length; i++) {
+            String dpi = Clientes[i].getDpi() + "";
+            String nombres = Clientes[i].getNombres();
+            String apellidos = Clientes[i].getApellidos();
+            String genero = Clientes[i].getGenero();
+            String fecha_nac = Clientes[i].getFecha_nacimiento();
+            String telefono = Clientes[i].getTelefono() + "";
+            String direccion = Clientes[i].getDireccion();
+            modelo.addRow(new Object[]{dpi, nombres, apellidos, genero, fecha_nac, telefono, direccion});
+        }
+        btl_Clientes.setModel(modelo);
     }
-    
+
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
-        // TODO add your handling code here:
+        if (!txt_buscar.getText().equals("")) {
+            Cliente_Buscado = Proyecto2_201503741.TablaHash_Clientes.Buscar(Long.parseLong(txt_buscar.getText().trim()));
+            if (Cliente_Buscado != null) {
+                Ventana_Cliente vtn_Cliente = new Ventana_Cliente();
+                vtn_Cliente.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontro el cliente");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ingrese un DPI valido");
+        }
     }//GEN-LAST:event_btn_BuscarActionPerformed
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        if (!"".equals(txt_Dpi.getText()) 
-                && !txt_Nombres.getText().equals("") 
+        if (!"".equals(txt_Dpi.getText())
+                && !txt_Nombres.getText().equals("")
                 && !txt_Apellidos.getText().equals("")
                 && !txt_Genero.getText().equals("")
                 && !txt_Fecha.getText().equals("")
@@ -307,6 +339,7 @@ public class Admin_Clientes extends javax.swing.JFrame {
             txt_Fecha.setText("");
             txt_Telefono.setText("");
             txt_Direccion.setText("");
+            RefrescarTabla();
         }
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
@@ -346,7 +379,7 @@ public class Admin_Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable btl_Clientes;
+    private static javax.swing.JTable btl_Clientes;
     private javax.swing.JButton btn_Buscar;
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JLabel jLabel1;
