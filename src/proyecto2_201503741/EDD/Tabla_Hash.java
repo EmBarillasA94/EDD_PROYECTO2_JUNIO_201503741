@@ -174,4 +174,45 @@ public class Tabla_Hash {
             System.out.println("Error al escribir el archivo R_TablaHash.dot");
         }
     }
+
+    public String getSubGraph() {
+        String texto = "";
+        char comillas = '"';
+        int altura = this.claves_ocupadas / 2;
+
+        texto = texto + "subgraph TablaHash{ \n";
+        texto = texto + "nodesep =.01; \n";
+        texto = texto + "rankdir = LR; \n";
+        texto = texto + "node[shape=record,width=.1,height=" + altura + "]; \n";
+
+        texto = texto + "nodeArray[label=" + comillas;
+        for (int i = 0; i <= this.Tabla.length - 1; i++) {
+            texto = texto + "<f" + i + ">" + i;
+            if (i < this.Tabla.length - 1) {
+                texto = texto + "|";
+            }
+        }
+        texto = texto + comillas + "]; \n";
+//            fw_archivo.write("node[width = 1.5 \n]");
+
+        for (int i = 0; i < Tabla.length; i++) {
+            if (Tabla[i] != null) {
+                if (!Tabla[i].getLista().isEmpty()) {
+                    String ListaEstudiantes = Tabla[i].getLista().ListaClientes();
+                    texto = texto + "node" + i + "[label=" + comillas + "{" + ListaEstudiantes + "}" + comillas + ", height = 0.1]; \n";
+                }
+            }
+        }
+        texto = texto + "\n";
+        for (int i = 0; i < Tabla.length; i++) {
+            if (Tabla[i] != null) {
+                if (!Tabla[i].getLista().isEmpty()) {
+                    texto = texto + "nodeArray:f" + i + "->node" + i + ":f0; \n";
+                }
+            }
+        }
+
+        texto = texto + "} \n";
+        return texto;
+    }
 }

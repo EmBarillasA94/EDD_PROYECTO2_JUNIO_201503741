@@ -153,17 +153,18 @@ public class Lista_Adyacencia {
         return lista_RutaCorta;
     }
 
-    public String [] ListadoVertices(){
-        String [] listado = new String[this.size];
+    public String[] ListadoVertices() {
+        String[] listado = new String[this.size];
         Vertice aux = this.Inicio;
-        if(!isEmpty())
-        for (int i = 0; i < this.size; i++) {
-            listado[i] = aux.getNombre();
-            aux = aux.getAbajo();
+        if (!isEmpty()) {
+            for (int i = 0; i < this.size; i++) {
+                listado[i] = aux.getNombre();
+                aux = aux.getAbajo();
+            }
         }
         return listado;
     }
-    
+
     public void Graph() {
         try {
             File archivo;
@@ -208,4 +209,32 @@ public class Lista_Adyacencia {
         } catch (Exception e) {
         }
     }
+
+    public String getSubgraph() {
+        String texto = "";
+        char comillas = '"';
+
+        texto = texto + "subgraph Grafo{ \n";
+        texto = texto + "rankdir = LR; \n";
+
+        Vertice aux = this.Inicio;
+        for (int i = 0; i < this.size; i++) {
+            texto = texto + "" + comillas + aux.getNombre() + "_G" + comillas + "[label=" + comillas + aux.getNombre() + comillas + "] \n";
+            aux = aux.getAbajo();
+        }
+        texto = texto + "\n";
+        aux = this.Inicio;
+        for (int i = 0; i < this.size; i++) {
+            Arista auxArista = aux.getInicio();
+            for (int j = 0; j < aux.getTamLista(); j++) {
+                texto = texto + "" + comillas + aux.getNombre() + "_G" + comillas + " -> " + comillas + auxArista.getDestino() + "_G" + comillas;
+                texto = texto + "[label= " + comillas + auxArista.getTiempo() + comillas + "] \n";
+                auxArista = auxArista.getSiguiente();
+            }
+            aux = aux.getAbajo();
+        }
+        texto = texto + "}";
+        return texto;
+    }
+
 }

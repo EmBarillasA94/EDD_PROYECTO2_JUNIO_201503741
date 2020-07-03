@@ -619,4 +619,60 @@ public class Arbol_B {
         }
     }
 
+    String texto = "";
+
+    public String getSubGraph() {
+        texto = "";
+        texto = texto + "subgraph ArbolB{ \n";
+        texto = texto + "rankdir = TB; \n";
+        texto = texto + "node [shape = record]; \n";
+
+        SubGraph_GraficarNodos(this.raiz);
+        texto = texto + "\n";
+        SubGraph_CrearEnlaces(this.raiz);
+        texto = texto + "} \n";
+        return texto;
+    }
+
+    public void SubGraph_GraficarNodos(Nodo_B Raiz) {
+        if (Raiz != null) {
+            texto = texto + Raiz.hashCode() + "[label =" + com;
+            int nonull = 0;
+            for (int i = 0; i < Raiz.getRamas().length; i++) {
+                if (Raiz.getRamas()[i] != null) {
+                    nonull++;
+                }
+            }
+            for (int i = 0; i < 5; i++) {
+                if (Raiz.getRamas()[i] != null) {
+                    texto = texto + "<" + Raiz.getRamas()[i].hashCode() + ">";
+                }
+                if (i < nonull - 1) {
+                    texto = texto + "|";
+                }
+                if (Raiz.getVehiculos()[i] != null) {
+                    texto = texto + "<" + Raiz.getVehiculos()[i].hashCode() + ">" + Raiz.getVehiculos()[i].getPlaca() + espacio + Raiz.getVehiculos()[i].getModelo() + espacio + Raiz.getVehiculos()[i].getColor() + espacio + Raiz.getVehiculos()[i].getTransmision() + "|";
+                }
+            }
+            texto = texto + com + "]; \n";
+
+            for (int i = 0; i < Raiz.getRamas().length; i++) {
+                SubGraph_GraficarNodos(Raiz.getRamas()[i]);
+            }
+        }
+    }
+
+    public void SubGraph_CrearEnlaces(Nodo_B Raiz) {
+        if (Raiz != null) {
+            for (int i = 0; i < Raiz.getRamas().length; i++) {
+                if (Raiz.getRamas()[i] != null) {
+                    texto = texto + Raiz.hashCode() + ":" + Raiz.getRamas()[i].hashCode() + "->" + Raiz.getRamas()[i].hashCode() + ":n; \n";
+                }
+            }
+            for (int i = 0; i < Raiz.getRamas().length; i++) {
+                SubGraph_CrearEnlaces(Raiz.getRamas()[i]);
+            }
+        }
+    }
+
 }

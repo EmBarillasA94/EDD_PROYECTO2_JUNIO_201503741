@@ -20,6 +20,7 @@ public class Conductor {
     private int telefono;
     private String direccion;
     private int numero_viajes;
+    private int ganancias;
     private Conductor before;
     private Conductor next;
 
@@ -33,6 +34,7 @@ public class Conductor {
         this.telefono = telefono;
         this.direccion = direccion;
         this.numero_viajes = 0;
+        this.ganancias = 0;
         this.before = null;
         this.next = null;
     }
@@ -127,5 +129,17 @@ public class Conductor {
     
     public void AumentarViajes() {
         this.numero_viajes += 1;
+    }
+
+    public int getGanancias() {
+        return ganancias;
+    }
+
+    public void setGanancias(int ganancias) {
+        this.ganancias = ganancias;
+    }
+    
+    public void GuardarGanancias(int dinero){
+        this.ganancias += dinero;
     }
 }
