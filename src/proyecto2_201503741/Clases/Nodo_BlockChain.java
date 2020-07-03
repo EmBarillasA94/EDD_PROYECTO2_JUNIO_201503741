@@ -134,11 +134,14 @@ public class Nodo_BlockChain {
 
             fw_archivo.write("digraph BlockChain{ \n");
             fw_archivo.write("node[shape=box]; \n");
-            fw_archivo.write("rankdir = LR; \n");
+            fw_archivo.write("rankdir = TB; \n");
             fw_archivo.write("\n");
             
+            fw_archivo.write("" + comillas + this.hashCode() + comillas + "[label = " + comillas + this.getLlave() + espacio + "Lugar Origen: " + this.getLugar_origen() + espacio + "Lugar Destino: " + this.getLugar_destino() + espacio + "Fecha y Hora: " + this.getFecha_hora_inicio() + espacio + "Cliente: " + this.getCliente().getDpi() + espacio + "Conductor: " + this.getConductor().getDpi() + espacio + "Vehiculo: " + this.getVehiculo().getPlaca() + comillas + "] \n");
+            fw_archivo.write("\n");
             fw_archivo.write(this.ruta.Graph_RutaCorta(this.hashCode()+""));
-            
+            fw_archivo.write("\n");
+            fw_archivo.write("" + comillas + this.hashCode() + comillas + "->" + comillas + this.getRuta().getInicio().getDestino() + "_" + this.hashCode() + comillas + "; \n");
             fw_archivo.write("}");
             fw_archivo.close();
             //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"

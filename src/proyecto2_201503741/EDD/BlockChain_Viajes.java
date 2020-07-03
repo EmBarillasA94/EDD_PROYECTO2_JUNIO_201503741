@@ -45,8 +45,8 @@ public class BlockChain_Viajes {
             this.size++;
         }
     }
-    
-    public Nodo_BlockChain Buscar(String llave){
+
+    public Nodo_BlockChain Buscar(String llave) {
         Nodo_BlockChain aux = this.firts;
         String llave_encriptada = aux.Generar_llave_MD5(llave);
         for (int i = 0; i < this.size; i++) {
@@ -57,7 +57,7 @@ public class BlockChain_Viajes {
         }
         return null;
     }
-    
+
     public void Graph() {
         try {
             File archivo;
@@ -74,7 +74,7 @@ public class BlockChain_Viajes {
 
             Nodo_BlockChain aux = this.firts;
             for (int i = 0; i < this.size; i++) {
-                fw_archivo.write("" + comillas + aux.hashCode() + comillas + "[label = " + comillas + aux.getLlave() + comillas + "] \n");
+                fw_archivo.write("" + comillas + aux.hashCode() + comillas + "[label = " + comillas + aux.getLlave() + espacio + "Lugar Origen: " + aux.getLugar_origen() + espacio + "Lugar Destino: " + aux.getLugar_destino() + espacio + "Fecha y Hora: " + aux.getFecha_hora_inicio() + espacio + "Cliente: " + aux.getCliente().getDpi() + espacio + "Conductor: " + aux.getConductor().getDpi() + espacio + "Vehiculo: " + aux.getVehiculo().getPlaca() + comillas + "] \n");
                 aux = aux.getNext();
             }
             aux = this.firts;
@@ -99,13 +99,13 @@ public class BlockChain_Viajes {
             aux = this.firts;
             for (int i = 0; i < this.size; i++) {
                 fw_archivo.write("{rank=same " + comillas + aux.hashCode() + comillas + " " + comillas + aux.getRuta().getInicio().getDestino() + "_" + aux.hashCode() + comillas + "} \n");
-                fw_archivo.write(""+comillas + aux.hashCode() + comillas + "->"+comillas + aux.getRuta().getInicio().getDestino() + "_" + aux.hashCode() + comillas+"; \n");
+                fw_archivo.write("" + comillas + aux.hashCode() + comillas + "->" + comillas + aux.getRuta().getInicio().getDestino() + "_" + aux.hashCode() + comillas + "; \n");
                 aux = aux.getNext();
             }
             fw_archivo.write("\n");
             fw_archivo.write("}");
             fw_archivo.close();
-            
+
             //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"
             String Comando = "C:\\release\\bin\\dot.exe -Tpng R_BlockChain.dot -o Grafica_BlockChain.png";
             Process p;

@@ -1,26 +1,26 @@
 digraph g{ 
 rankdir = TB; 
 node [shape = record]; 
-24016692[label ="<27491577>|<638946>P345RTX&#92;nCorolla&#92;nNegro&#92;nAutomatico|<30612502>"]; 
-27491577[label ="<33297999>|<24310717>P100TEW&#92;nCentra&#92;nGris&#92;nMecanico|<14919198>|<18692536>P150ERT&#92;nModelo2&#92;nBlanco&#92;nMecanico|<1966138>|<124063>P250JSI&#92;nModelo18&#92;nAmarillo&#92;nAutomatico|<30371799>"]; 
-33297999[label ="<20663087>P050OEX&#92;nModelo12&#92;nAmarillo&#92;nAutomatico|<22318562>P075WOQ&#92;nModelo17&#92;nAmarillo&#92;nAutomatico|"]; 
-14919198[label ="<963403>P125QPW&#92;nModelo4&#92;nNegro&#92;nMecanico|<11132298>P140GNI&#92;nModelo13&#92;nAmarillo&#92;nAutomatico|"]; 
-1966138[label ="<22578819>P175EOS&#92;nModelo6&#92;nAzul&#92;nMecanico|<16660631>P200CDQ&#92;nModelo1&#92;nRojo&#92;nAutomatico|"]; 
-30371799[label ="<22629608>P300QEA&#92;nModelo8&#92;nAmarillo&#92;nAutomatico|<16943428>P325YWP&#92;nModelo10&#92;nAmarillo&#92;nAutomatico|"]; 
-30612502[label ="<6911289>|<33341859>P450ZNQ&#92;nModelo9&#92;nAmarillo&#92;nAutomatico|<6678584>|<21628505>P600ANB&#92;nModelo7&#92;nAmarillo&#92;nAutomatico|<11892916>|<24728664>P700YQZ&#92;nModelo15&#92;nAmarillo&#92;nAutomatico|<940903>"]; 
-6911289[label ="<20833457>P400EPQ&#92;nModelo3&#92;nVerde&#92;nMecanico|<12733690>P425HRP&#92;nModelo119&#92;nAmarillo&#92;nAutomatico|"]; 
-6678584[label ="<30020334>P500RTI&#92;nModelo5&#92;nAmarillo&#92;nAutomatico|<19378003>P550MXA&#92;nModelo11&#92;nAmarillo&#92;nAutomatico|"]; 
-11892916[label ="<30529322>P625DWE&#92;nModelo16&#92;nAmarillo&#92;nAutomatico|<32046902>P654CRV&#92;nCorolla&#92;nNegro&#92;nAutomatico|"]; 
-940903[label ="<12108359>P876GDW&#92;nLancer&#92;nAzul&#92;nMecanico|<12430196>P900VSF&#92;nModelo114&#92;nAmarillo&#92;nAutomatico|"]; 
+15511495[label ="<19580130>|<29808913>P345RTX&#92;nCorolla&#92;nNegro&#92;nAutomatico|<6767623>"]; 
+19580130[label ="<33182555>|<9869714>P100TEW&#92;nCentra&#92;nGris&#92;nMecanico|<30923008>|<20640833>P150ERT&#92;nModelo2&#92;nBlanco&#92;nMecanico|<1514742>|<476591>P250JSI&#92;nModelo18&#92;nAmarillo&#92;nAutomatico|<18317558>"]; 
+33182555[label ="<21227049>P050OEX&#92;nModelo12&#92;nAmarillo&#92;nAutomatico|<22913435>P075WOQ&#92;nModelo17&#92;nAmarillo&#92;nAutomatico|"]; 
+30923008[label ="<22130722>P125QPW&#92;nModelo4&#92;nNegro&#92;nMecanico|<15634958>P140GNI&#92;nModelo13&#92;nAmarillo&#92;nAutomatico|"]; 
+1514742[label ="<6052244>P175EOS&#92;nModelo6&#92;nAzul&#92;nMecanico|<13729405>P200CDQ&#92;nModelo1&#92;nRojo&#92;nAutomatico|"]; 
+18317558[label ="<10164837>P300QEA&#92;nModelo8&#92;nAmarillo&#92;nAutomatico|<2720090>P325YWP&#92;nModelo10&#92;nAmarillo&#92;nAutomatico|"]; 
+6767623[label ="<2356850>|<19812253>P450ZNQ&#92;nModelo9&#92;nAmarillo&#92;nAutomatico|<25181487>|<18701076>P600ANB&#92;nModelo7&#92;nAmarillo&#92;nAutomatico|<16428771>|<27088582>P700YQZ&#92;nModelo15&#92;nAmarillo&#92;nAutomatico|<22311199>"]; 
+2356850[label ="<6574170>P400EPQ&#92;nModelo3&#92;nVerde&#92;nMecanico|<22309379>P425HRP&#92;nModelo119&#92;nAmarillo&#92;nAutomatico|"]; 
+25181487[label ="<13119753>P500RTI&#92;nModelo5&#92;nAmarillo&#92;nAutomatico|<4875462>P550MXA&#92;nModelo11&#92;nAmarillo&#92;nAutomatico|"]; 
+16428771[label ="<8784277>P625DWE&#92;nModelo16&#92;nAmarillo&#92;nAutomatico|<9728308>P654CRV&#92;nCorolla&#92;nNegro&#92;nAutomatico|"]; 
+22311199[label ="<26690646>P876GDW&#92;nLancer&#92;nAzul&#92;nMecanico|<16021686>P900VSF&#92;nModelo114&#92;nAmarillo&#92;nAutomatico|"]; 
 
-24016692:27491577->27491577:n; 
-24016692:30612502->30612502:n; 
-27491577:33297999->33297999:n; 
-27491577:14919198->14919198:n; 
-27491577:1966138->1966138:n; 
-27491577:30371799->30371799:n; 
-30612502:6911289->6911289:n; 
-30612502:6678584->6678584:n; 
-30612502:11892916->11892916:n; 
-30612502:940903->940903:n; 
+15511495:19580130->19580130:n; 
+15511495:6767623->6767623:n; 
+19580130:33182555->33182555:n; 
+19580130:30923008->30923008:n; 
+19580130:1514742->1514742:n; 
+19580130:18317558->18317558:n; 
+6767623:2356850->2356850:n; 
+6767623:25181487->25181487:n; 
+6767623:16428771->16428771:n; 
+6767623:22311199->22311199:n; 
 } 
