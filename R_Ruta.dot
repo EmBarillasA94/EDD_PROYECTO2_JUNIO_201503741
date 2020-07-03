@@ -1,19 +1,19 @@
 digraph BlockChain{ 
 node[shape=box]; 
-rankdir = LR; 
+rankdir = TB; 
 
-"28040687"[label = "0e676304a2f181304786d5d578b6d07f&#92;nLugar Origen: Granada&#92;nLugar Destino: Albacete&#92;nFecha y Hora: 2720 8:37&#92;nCliente: 465321232212&#92;nConductor: 6865324680074&#92;nVehiculo: P125QPW"] 
+"19040312"[label = "d7ef2d80d87c8db77ddcfef67a090f1c&#92;nLugar Origen: Oviedo&#92;nLugar Destino: Corunia&#92;nFecha y Hora: 2720 9:37&#92;nCliente: 221374732231&#92;nConductor: 2552889210101&#92;nVehiculo: P345RTX"] 
 
-subgraph ruta_28040687{ 
+subgraph ruta_19040312{ 
 rank=same; 
-"Granada_28040687"[label="Granada&#92;n0"]; 
-"Jaen_28040687"[label="Jaen&#92;n99"]; 
-"Madrid_28040687"[label="Madrid&#92;n434"]; 
-"Albacete_28040687"[label="Albacete&#92;n685"]; 
+"Oviedo_19040312"[label="Oviedo&#92;n0"]; 
+"Bilbao_19040312"[label="Bilbao&#92;n304"]; 
+"Valladolid_19040312"[label="Valladolid&#92;n584"]; 
+"Corunia_19040312"[label="Corunia&#92;n1039"]; 
 
-"Granada_28040687"->"Jaen_28040687"; 
-"Jaen_28040687"->"Madrid_28040687"; 
-"Madrid_28040687"->"Albacete_28040687"; 
+"Oviedo_19040312"->"Bilbao_19040312"; 
+"Bilbao_19040312"->"Valladolid_19040312"; 
+"Valladolid_19040312"->"Corunia_19040312"; 
 }
-"28040687"->"Granada_28040687"; 
+"19040312"->"Oviedo_19040312"; 
 }

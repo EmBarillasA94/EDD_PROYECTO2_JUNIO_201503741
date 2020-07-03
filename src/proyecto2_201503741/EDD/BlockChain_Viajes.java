@@ -8,6 +8,11 @@ package proyecto2_201503741.EDD;
 import java.io.File;
 import java.io.FileWriter;
 import proyecto2_201503741.Clases.Nodo_BlockChain;
+import static proyecto2_201503741.Proyecto2_201503741.Arbol_Vehiculos;
+import static proyecto2_201503741.Proyecto2_201503741.TablaHash_Clientes;
+import static proyecto2_201503741.Proyecto2_201503741.ListaCirculoar_Conductores;
+import static proyecto2_201503741.Proyecto2_201503741.Block_Viajes;
+import static proyecto2_201503741.Proyecto2_201503741.Grafo;
 
 /**
  *
@@ -162,5 +167,61 @@ public class BlockChain_Viajes {
         texto = texto + "\n";
         texto = texto + "}";
         return texto;
+    }
+    
+    public void Graph_General(){
+        try {
+            File archivo;
+            FileWriter fw_archivo;
+            archivo = new File("R_General.dot");
+            fw_archivo = new FileWriter(archivo, false);
+            char comillas = '"';
+            String espacio = "&#92;n";
+
+            fw_archivo.write("digraph General{ \n");
+            fw_archivo.write("node[shape=box]; \n");
+            fw_archivo.write("rankdir = LR; \n");
+            fw_archivo.write("\n");
+            
+            //subgrafo del arbol
+            fw_archivo.write("\n");
+            fw_archivo.write(Arbol_Vehiculos.getSubGraph());
+            fw_archivo.write("\n");
+            
+            //subgrafo de la tabla
+            fw_archivo.write("\n");
+            fw_archivo.write(TablaHash_Clientes.getSubGraph());
+            fw_archivo.write("\n");
+            
+            //subgrafo de la lista doble
+            fw_archivo.write("\n");
+            fw_archivo.write(ListaCirculoar_Conductores.getSubgraph());
+            fw_archivo.write("\n");
+            
+            //subgrafo del blockchain
+            fw_archivo.write("\n");
+            fw_archivo.write(Block_Viajes.getSubGraph());
+            fw_archivo.write("\n");
+            
+            //subgrafo del grafo
+            fw_archivo.write("\n");
+            fw_archivo.write(Grafo.getSubgraph());
+            fw_archivo.write("\n");
+            
+            fw_archivo.write("}");
+            
+            fw_archivo.close();
+            
+            //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"
+            String Comando = "C:\\release\\bin\\dot.exe -Tpng R_General.dot -o Grafica_General.png";
+            Process p;
+            try {
+                p = Runtime.getRuntime().exec(Comando);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+        }
     }
 }

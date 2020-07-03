@@ -216,6 +216,7 @@ public class Lista_Adyacencia {
 
         texto = texto + "subgraph Grafo{ \n";
         texto = texto + "rankdir = LR; \n";
+        texto = texto + "nodesep=oval; \n";
 
         Vertice aux = this.Inicio;
         for (int i = 0; i < this.size; i++) {

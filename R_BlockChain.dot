@@ -2,54 +2,62 @@ digraph BlockChain{
 node[shape=box]; 
 rankdir = LR; 
 
-"33113427"[label = "bef28c8a22dc5a58450fa62486e75b61&#92;nLugar Origen: Oviedo&#92;nLugar Destino: Corunia&#92;nFecha y Hora: 2720 8:36&#92;nCliente: 221374732231&#92;nConductor: 2552889210101&#92;nVehiculo: P345RTX"] 
-"28040687"[label = "0e676304a2f181304786d5d578b6d07f&#92;nLugar Origen: Granada&#92;nLugar Destino: Albacete&#92;nFecha y Hora: 2720 8:37&#92;nCliente: 465321232212&#92;nConductor: 6865324680074&#92;nVehiculo: P125QPW"] 
-"13833081"[label = "0e676304a2f181304786d5d578b6d07f&#92;nLugar Origen: Sevilla&#92;nLugar Destino: Albacete&#92;nFecha y Hora: 2720 8:37&#92;nCliente: 465321232212&#92;nConductor: 6865324680074&#92;nVehiculo: P125QPW"] 
-"33113427"->"28040687"; 
-"28040687"->"33113427"; 
-"28040687"->"13833081"; 
-"13833081"->"28040687"; 
+"27096026"[label = "e01895bfc2e3f434d809f4a6268b989f&#92;nLugar Origen: Oviedo&#92;nLugar Destino: Gerona&#92;nFecha y Hora: 2720 9:45&#92;nCliente: 221374732231&#92;nConductor: 2552889210101&#92;nVehiculo: P345RTX"] 
+"8421612"[label = "dc97ba92f712af83d083ff14d1797087&#92;nLugar Origen: Madrid&#92;nLugar Destino: Cadiz&#92;nFecha y Hora: 2720 9:45&#92;nCliente: 465321232212&#92;nConductor: 3875490173451&#92;nVehiculo: P250JSI"] 
+"2111460"[label = "fda364faed9ec6a331a70e45dc0e9ee1&#92;nLugar Origen: Corunia&#92;nLugar Destino: Granada&#92;nFecha y Hora: 2720 9:45&#92;nCliente: 342123984521&#92;nConductor: 6865324680074&#92;nVehiculo: P125QPW"] 
+"27096026"->"8421612"; 
+"8421612"->"27096026"; 
+"8421612"->"2111460"; 
+"2111460"->"8421612"; 
 
-subgraph ruta_33113427{ 
+subgraph ruta_27096026{ 
 rank=same; 
-"Oviedo_33113427"[label="Oviedo&#92;n0"]; 
-"Bilbao_33113427"[label="Bilbao&#92;n304"]; 
-"Valladolid_33113427"[label="Valladolid&#92;n584"]; 
-"Corunia_33113427"[label="Corunia&#92;n1039"]; 
+"Oviedo_27096026"[label="Oviedo&#92;n0"]; 
+"Bilbao_27096026"[label="Bilbao&#92;n304"]; 
+"Zaragoza_27096026"[label="Zaragoza&#92;n628"]; 
+"Barcelona_27096026"[label="Barcelona&#92;n924"]; 
+"Gerona_27096026"[label="Gerona&#92;n1024"]; 
 
-"Oviedo_33113427"->"Bilbao_33113427"; 
-"Bilbao_33113427"->"Valladolid_33113427"; 
-"Valladolid_33113427"->"Corunia_33113427"; 
+"Oviedo_27096026"->"Bilbao_27096026"; 
+"Bilbao_27096026"->"Zaragoza_27096026"; 
+"Zaragoza_27096026"->"Barcelona_27096026"; 
+"Barcelona_27096026"->"Gerona_27096026"; 
 }
-subgraph ruta_28040687{ 
+subgraph ruta_8421612{ 
 rank=same; 
-"Granada_28040687"[label="Granada&#92;n0"]; 
-"Jaen_28040687"[label="Jaen&#92;n99"]; 
-"Madrid_28040687"[label="Madrid&#92;n434"]; 
-"Albacete_28040687"[label="Albacete&#92;n685"]; 
+"Madrid_8421612"[label="Madrid&#92;n0"]; 
+"Murcia_8421612"[label="Murcia&#92;n150"]; 
+"Granada_8421612"[label="Granada&#92;n428"]; 
+"Jaen_8421612"[label="Jaen&#92;n527"]; 
+"Sevilla_8421612"[label="Sevilla&#92;n769"]; 
+"Cadiz_8421612"[label="Cadiz&#92;n894"]; 
 
-"Granada_28040687"->"Jaen_28040687"; 
-"Jaen_28040687"->"Madrid_28040687"; 
-"Madrid_28040687"->"Albacete_28040687"; 
+"Madrid_8421612"->"Murcia_8421612"; 
+"Murcia_8421612"->"Granada_8421612"; 
+"Granada_8421612"->"Jaen_8421612"; 
+"Jaen_8421612"->"Sevilla_8421612"; 
+"Sevilla_8421612"->"Cadiz_8421612"; 
 }
-subgraph ruta_13833081{ 
+subgraph ruta_2111460{ 
 rank=same; 
-"Sevilla_13833081"[label="Sevilla&#92;n0"]; 
-"Granada_13833081"[label="Granada&#92;n256"]; 
-"Jaen_13833081"[label="Jaen&#92;n355"]; 
-"Madrid_13833081"[label="Madrid&#92;n690"]; 
-"Albacete_13833081"[label="Albacete&#92;n941"]; 
+"Corunia_2111460"[label="Corunia&#92;n0"]; 
+"Vigo_2111460"[label="Vigo&#92;n171"]; 
+"Valladolid_2111460"[label="Valladolid&#92;n527"]; 
+"Madrid_2111460"[label="Madrid&#92;n720"]; 
+"Murcia_2111460"[label="Murcia&#92;n870"]; 
+"Granada_2111460"[label="Granada&#92;n1148"]; 
 
-"Sevilla_13833081"->"Granada_13833081"; 
-"Granada_13833081"->"Jaen_13833081"; 
-"Jaen_13833081"->"Madrid_13833081"; 
-"Madrid_13833081"->"Albacete_13833081"; 
+"Corunia_2111460"->"Vigo_2111460"; 
+"Vigo_2111460"->"Valladolid_2111460"; 
+"Valladolid_2111460"->"Madrid_2111460"; 
+"Madrid_2111460"->"Murcia_2111460"; 
+"Murcia_2111460"->"Granada_2111460"; 
 }
-{rank=same "33113427" "Oviedo_33113427"} 
-"33113427"->"Oviedo_33113427"; 
-{rank=same "28040687" "Granada_28040687"} 
-"28040687"->"Granada_28040687"; 
-{rank=same "13833081" "Sevilla_13833081"} 
-"13833081"->"Sevilla_13833081"; 
+{rank=same "27096026" "Oviedo_27096026"} 
+"27096026"->"Oviedo_27096026"; 
+{rank=same "8421612" "Madrid_8421612"} 
+"8421612"->"Madrid_8421612"; 
+{rank=same "2111460" "Corunia_2111460"} 
+"2111460"->"Corunia_2111460"; 
 
 }

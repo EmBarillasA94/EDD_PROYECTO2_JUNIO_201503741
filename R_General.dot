@@ -1,0 +1,170 @@
+digraph General{ 
+node[shape=box]; 
+rankdir = LR; 
+
+
+subgraph ArbolB{ 
+rankdir = TB; 
+node [shape = record]; 
+6597523[label ="<29212625>|<33492346>P345RTX&#92;nCorolla&#92;nNegro&#92;nAutomatico|<5098415>"]; 
+29212625[label ="<16964486>|<31439360>P100TEW&#92;nCentra&#92;nGris&#92;nMecanico|<2290972>|<8412548>P150ERT&#92;nModelo2&#92;nBlanco&#92;nMecanico|<31683897>|<19188479>P250JSI&#92;nModelo18&#92;nAmarillo&#92;nAutomatico|<15025810>"]; 
+16964486[label ="<6638967>P050OEX&#92;nModelo12&#92;nAmarillo&#92;nAutomatico|<6798719>P075WOQ&#92;nModelo17&#92;nAmarillo&#92;nAutomatico|"]; 
+2290972[label ="<27914814>P125QPW&#92;nModelo4&#92;nNegro&#92;nMecanico|<25357391>P140GNI&#92;nModelo13&#92;nAmarillo&#92;nAutomatico|"]; 
+31683897[label ="<26874301>P175EOS&#92;nModelo6&#92;nAzul&#92;nMecanico|<6282292>P200CDQ&#92;nModelo1&#92;nRojo&#92;nAutomatico|"]; 
+15025810[label ="<14805891>P300QEA&#92;nModelo8&#92;nAmarillo&#92;nAutomatico|<2458116>P325YWP&#92;nModelo10&#92;nAmarillo&#92;nAutomatico|"]; 
+5098415[label ="<29848964>|<32223412>P450ZNQ&#92;nModelo9&#92;nAmarillo&#92;nAutomatico|<11791353>|<6583753>P600ANB&#92;nModelo7&#92;nAmarillo&#92;nAutomatico|<1007316>|<9778609>P700YQZ&#92;nModelo15&#92;nAmarillo&#92;nAutomatico|<27980089>"]; 
+29848964[label ="<15538168>P400EPQ&#92;nModelo3&#92;nVerde&#92;nMecanico|<12587087>P425HRP&#92;nModelo119&#92;nAmarillo&#92;nAutomatico|"]; 
+11791353[label ="<17534811>P500RTI&#92;nModelo5&#92;nAmarillo&#92;nAutomatico|<32936250>P550MXA&#92;nModelo11&#92;nAmarillo&#92;nAutomatico|"]; 
+1007316[label ="<29887403>P625DWE&#92;nModelo16&#92;nAmarillo&#92;nAutomatico|<22688693>P654CRV&#92;nCorolla&#92;nNegro&#92;nAutomatico|"]; 
+27980089[label ="<5512594>P876GDW&#92;nLancer&#92;nAzul&#92;nMecanico|<23208995>P900VSF&#92;nModelo114&#92;nAmarillo&#92;nAutomatico|"]; 
+
+6597523:29212625->29212625:n; 
+6597523:5098415->5098415:n; 
+29212625:16964486->16964486:n; 
+29212625:2290972->2290972:n; 
+29212625:31683897->31683897:n; 
+29212625:15025810->15025810:n; 
+5098415:29848964->29848964:n; 
+5098415:11791353->11791353:n; 
+5098415:1007316->1007316:n; 
+5098415:27980089->27980089:n; 
+} 
+
+
+subgraph TablaHash{ 
+nodesep =.01; 
+rankdir = LR; 
+node[shape=record,width=.1,height=1]; 
+nodeArray[label="<f0>0|<f1>1|<f2>2|<f3>3|<f4>4|<f5>5|<f6>6|<f7>7|<f8>8|<f9>9|<f10>10|<f11>11|<f12>12|<f13>13|<f14>14|<f15>15|<f16>16|<f17>17|<f18>18|<f19>19|<f20>20|<f21>21|<f22>22|<f23>23|<f24>24|<f25>25|<f26>26|<f27>27|<f28>28|<f29>29|<f30>30|<f31>31|<f32>32|<f33>33|<f34>34|<f35>35|<f36>36"]; 
+node4[label="{<22253586>221374732231 Jos� Carlos L�pez Morales|}", height = 0.1]; 
+node9[label="{<18125325>465321232212 Carlos Alejandro Flores G�mez|<739823>342123984521 Gabriela P�rez Sandoval|}", height = 0.1]; 
+
+nodeArray:f4->node4:f0; 
+nodeArray:f9->node9:f0; 
+} 
+
+
+subgraph Lista_Conductores{ 
+rankdir = LR; 
+node[shape=box] 
+"19083062"[label ="2552889210101&#92;nEddy Alejandro&#92;nLicencia Tipo: C"]; 
+"23045731"[label ="3875490173451&#92;nCarlos Jose&#92;nLicencia Tipo: B"]; 
+"32023502"[label ="6865324680074&#92;nCarla Patricia&#92;nLicencia Tipo: C"]; 
+"19083062"->"23045731"
+"19083062"->"32023502"
+"23045731"->"32023502"
+"23045731"->"19083062"
+"32023502"->"19083062"
+"32023502"->"23045731"
+}
+
+
+subgraph BlockChain{ 
+node[shape=box]; 
+rankdir = LR; 
+
+"27096026"[label = "e01895bfc2e3f434d809f4a6268b989f&#92;nLugar Origen: Oviedo&#92;nLugar Destino: Gerona&#92;nFecha y Hora: 2720 9:45&#92;nCliente: 221374732231&#92;nConductor: 2552889210101&#92;nVehiculo: P345RTX"] 
+"8421612"[label = "dc97ba92f712af83d083ff14d1797087&#92;nLugar Origen: Madrid&#92;nLugar Destino: Cadiz&#92;nFecha y Hora: 2720 9:45&#92;nCliente: 465321232212&#92;nConductor: 3875490173451&#92;nVehiculo: P250JSI"] 
+"2111460"[label = "fda364faed9ec6a331a70e45dc0e9ee1&#92;nLugar Origen: Corunia&#92;nLugar Destino: Granada&#92;nFecha y Hora: 2720 9:45&#92;nCliente: 342123984521&#92;nConductor: 6865324680074&#92;nVehiculo: P125QPW"] 
+"27096026"->"8421612"; 
+"8421612"->"27096026"; 
+"8421612"->"2111460"; 
+"2111460"->"8421612"; 
+
+subgraph ruta_27096026{ 
+rank=same; 
+"Oviedo_27096026"[label="Oviedo&#92;n0"]; 
+"Bilbao_27096026"[label="Bilbao&#92;n304"]; 
+"Zaragoza_27096026"[label="Zaragoza&#92;n628"]; 
+"Barcelona_27096026"[label="Barcelona&#92;n924"]; 
+"Gerona_27096026"[label="Gerona&#92;n1024"]; 
+
+"Oviedo_27096026"->"Bilbao_27096026"; 
+"Bilbao_27096026"->"Zaragoza_27096026"; 
+"Zaragoza_27096026"->"Barcelona_27096026"; 
+"Barcelona_27096026"->"Gerona_27096026"; 
+}
+subgraph ruta_8421612{ 
+rank=same; 
+"Madrid_8421612"[label="Madrid&#92;n0"]; 
+"Murcia_8421612"[label="Murcia&#92;n150"]; 
+"Granada_8421612"[label="Granada&#92;n428"]; 
+"Jaen_8421612"[label="Jaen&#92;n527"]; 
+"Sevilla_8421612"[label="Sevilla&#92;n769"]; 
+"Cadiz_8421612"[label="Cadiz&#92;n894"]; 
+
+"Madrid_8421612"->"Murcia_8421612"; 
+"Murcia_8421612"->"Granada_8421612"; 
+"Granada_8421612"->"Jaen_8421612"; 
+"Jaen_8421612"->"Sevilla_8421612"; 
+"Sevilla_8421612"->"Cadiz_8421612"; 
+}
+subgraph ruta_2111460{ 
+rank=same; 
+"Corunia_2111460"[label="Corunia&#92;n0"]; 
+"Vigo_2111460"[label="Vigo&#92;n171"]; 
+"Valladolid_2111460"[label="Valladolid&#92;n527"]; 
+"Madrid_2111460"[label="Madrid&#92;n720"]; 
+"Murcia_2111460"[label="Murcia&#92;n870"]; 
+"Granada_2111460"[label="Granada&#92;n1148"]; 
+
+"Corunia_2111460"->"Vigo_2111460"; 
+"Vigo_2111460"->"Valladolid_2111460"; 
+"Valladolid_2111460"->"Madrid_2111460"; 
+"Madrid_2111460"->"Murcia_2111460"; 
+"Murcia_2111460"->"Granada_2111460"; 
+}
+{rank=same "27096026" "Oviedo_27096026"} 
+"27096026"->"Oviedo_27096026"; 
+{rank=same "8421612" "Madrid_8421612"} 
+"8421612"->"Madrid_8421612"; 
+{rank=same "2111460" "Corunia_2111460"} 
+"2111460"->"Corunia_2111460"; 
+
+}
+
+subgraph Grafo{ 
+rankdir = LR; 
+"Oviedo_G"[label="Oviedo"] 
+"Bilbao_G"[label="Bilbao"] 
+"Zaragoza_G"[label="Zaragoza"] 
+"Madrid_G"[label="Madrid"] 
+"Valladolid_G"[label="Valladolid"] 
+"Barcelona_G"[label="Barcelona"] 
+"Gerona_G"[label="Gerona"] 
+"Corunia_G"[label="Corunia"] 
+"Vigo_G"[label="Vigo"] 
+"Badajoz_G"[label="Badajoz"] 
+"Albacete_G"[label="Albacete"] 
+"Murcia_G"[label="Murcia"] 
+"Valencia_G"[label="Valencia"] 
+"Granada_G"[label="Granada"] 
+"Jaen_G"[label="Jaen"] 
+"Sevilla_G"[label="Sevilla"] 
+"Cadiz_G"[label="Cadiz"] 
+
+"Oviedo_G" -> "Bilbao_G"[label= "304"] 
+"Bilbao_G" -> "Zaragoza_G"[label= "324"] 
+"Bilbao_G" -> "Madrid_G"[label= "395"] 
+"Bilbao_G" -> "Valladolid_G"[label= "280"] 
+"Zaragoza_G" -> "Barcelona_G"[label= "296"] 
+"Zaragoza_G" -> "Madrid_G"[label= "325"] 
+"Madrid_G" -> "Badajoz_G"[label= "403"] 
+"Madrid_G" -> "Albacete_G"[label= "251"] 
+"Madrid_G" -> "Murcia_G"[label= "150"] 
+"Valladolid_G" -> "Corunia_G"[label= "455"] 
+"Valladolid_G" -> "Madrid_G"[label= "193"] 
+"Barcelona_G" -> "Gerona_G"[label= "100"] 
+"Corunia_G" -> "Vigo_G"[label= "171"] 
+"Vigo_G" -> "Valladolid_G"[label= "356"] 
+"Murcia_G" -> "Valencia_G"[label= "241"] 
+"Murcia_G" -> "Granada_G"[label= "278"] 
+"Valencia_G" -> "Albacete_G"[label= "191"] 
+"Valencia_G" -> "Barcelona_G"[label= "349"] 
+"Granada_G" -> "Jaen_G"[label= "99"] 
+"Jaen_G" -> "Madrid_G"[label= "335"] 
+"Jaen_G" -> "Sevilla_G"[label= "242"] 
+"Sevilla_G" -> "Granada_G"[label= "256"] 
+"Sevilla_G" -> "Cadiz_G"[label= "125"] 
+}
+}
