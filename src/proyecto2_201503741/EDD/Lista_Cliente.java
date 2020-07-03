@@ -74,7 +74,7 @@ public class Lista_Cliente {
         if (!isEmpty()) {
             Cliente aux = this.Inicio;
             while (aux != null) {
-                lista = lista + aux.getDpi()+ " " + aux.getNombres()+ " "+ aux.getApellidos()+"|";
+                lista = lista + "<" + aux.hashCode() + ">" + aux.getDpi() + " " + aux.getNombres() + " " + aux.getApellidos() + "|";
                 aux = aux.getNext();
             }
         } else {
@@ -87,6 +87,4 @@ public class Lista_Cliente {
         return this.Inicio;
     }
 
-    
-    
 }
