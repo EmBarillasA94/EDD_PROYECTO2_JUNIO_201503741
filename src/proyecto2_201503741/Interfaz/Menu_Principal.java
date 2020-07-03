@@ -82,6 +82,10 @@ public class Menu_Principal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -335,6 +339,24 @@ public class Menu_Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu5.setText("Top's 10");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem19.setText("Top 10 viajes mas largos");
+        jMenu5.add(jMenuItem19);
+
+        jMenuItem20.setText("Top 10 clientes mas frecuentes");
+        jMenu5.add(jMenuItem20);
+
+        jMenuItem21.setText("Top 10 Conductores con mas ganancias");
+        jMenu5.add(jMenuItem21);
+
+        jMenuItem22.setText("Top 10 Vehiculos con mas viajes");
+        jMenu5.add(jMenuItem22);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Reportes");
@@ -632,6 +654,7 @@ public class Menu_Principal extends javax.swing.JFrame {
             Nodo_BlockChain viaje = new Nodo_BlockChain(veh.getPlaca() + getFecha() + getHora(), origen, destino, getFecha() + " " + getHora(), cli, con, veh, rutaTomada);
             cli.AumentarViajes();
             veh.AumentarViajes();
+            Arbol_Vehiculos.LlenarListado(veh);
             con.AumentarViajes();
             Block_Viajes.Insertar(viaje);
             Block_Viajes.Graph();
@@ -724,7 +747,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         String[] commands = {
             "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
         };
-        
+
         try {
             Process p = Runtime.getRuntime().exec(commands);
             p.waitFor();
@@ -740,7 +763,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         String[] commands = {
             "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
         };
-        
+
         try {
             Process p = Runtime.getRuntime().exec(commands);
             p.waitFor();
@@ -756,7 +779,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         String[] commands = {
             "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
         };
-        
+
         try {
             Process p = Runtime.getRuntime().exec(commands);
             p.waitFor();
@@ -772,7 +795,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         String[] commands = {
             "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
         };
-        
+
         try {
             Process p = Runtime.getRuntime().exec(commands);
             p.waitFor();
@@ -788,7 +811,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         String[] commands = {
             "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
         };
-        
+
         try {
             Process p = Runtime.getRuntime().exec(commands);
             p.waitFor();
@@ -804,7 +827,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         String[] commands = {
             "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
         };
-        
+
         try {
             Process p = Runtime.getRuntime().exec(commands);
             p.waitFor();
@@ -814,6 +837,18 @@ public class Menu_Principal extends javax.swing.JFrame {
             Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        Vehiculo[] MasViajados = Arbol_Vehiculos.getConMasViajes();
+        String cadena = "";
+        for (int i = 0; i < MasViajados.length; i++) {
+            if (MasViajados[i] != null) {
+                cadena = cadena + "Placa: " + MasViajados[i].getPlaca() + " Marca: " + MasViajados[i].getMarca() + " Modelo: " + MasViajados[i].getModelo() + " Viajes: " + MasViajados[i].getNumero_viajes() + " \n";
+            }
+        }
+        
+        JOptionPane.showMessageDialog(this, "Vehiculos con mas nuemro de viajes \n          "+cadena);
+    }//GEN-LAST:event_jMenu5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -883,7 +918,11 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

@@ -22,10 +22,12 @@ public class Arbol_B {
 
     Nodo_B raiz;
     int cantidad;
+    Vehiculo[] ConMasViajes;
 
     public Arbol_B() {
         this.raiz = new Nodo_B();
         this.cantidad = 0;
+        this.ConMasViajes = new Vehiculo[10];
     }
 
     public void Insertar(Vehiculo n) {
@@ -179,14 +181,14 @@ public class Arbol_B {
         this.cantidad--;
     }
 
-    public String BuscarNodoB_HashCode(String placa){
+    public String BuscarNodoB_HashCode(String placa) {
         Nodo_B aux = this.raiz;
         Nodo_B Nodo_Encontrado = BuscarNodo(aux, placa);
-        String hashcode = Nodo_Encontrado.hashCode()+"";
+        String hashcode = Nodo_Encontrado.hashCode() + "";
         buscar = null;
         return hashcode;
     }
-    
+
     public Nodo_B BuscarNodo(Nodo_B raiz, String placa) {
         if (raiz != null) {
             int comparacion;
@@ -526,6 +528,59 @@ public class Arbol_B {
             }
         }
     }
+
+    int mas10 = 0;
+
+    public void LlenarListado(Vehiculo v) {
+        if (mas10 < 10) {
+            for (int i = 0; i < this.ConMasViajes.length; i++) {
+                if (ConMasViajes[i] == null) {
+                    ConMasViajes[i] = v;
+                    mas10++;
+                }
+            }
+        } else if (mas10 == 10) {
+            //ordenar
+            Vehiculo aux;
+            for (int i = 0; i < ConMasViajes.length - 1; i++) {
+                for (int j = i + 1; j < ConMasViajes.length; j++) {
+                    if (ConMasViajes[j].getNumero_viajes() > ConMasViajes[i].getNumero_viajes()) {
+                        aux = ConMasViajes[i];
+                        ConMasViajes[i] = ConMasViajes[j];
+                        ConMasViajes[j] = aux;
+                    }
+                }
+            }
+            mas10 = 20;
+        } else {
+            //ir comparando
+            Vehiculo aux;
+            for (int i = 0; i < ConMasViajes.length; i++) {
+                if (v.getNumero_viajes() > ConMasViajes[i].getNumero_viajes()) {
+                    aux = ConMasViajes[i];
+                    ConMasViajes[i] = v;
+                    Vehiculo aux2;
+                    for (int j = i + 1; j < ConMasViajes.length; j++) {
+                        aux2 = ConMasViajes[j];
+                        ConMasViajes[j]=aux;
+                        aux = aux2;
+                    }
+                    break;
+                }
+            }
+        }
+
+    }
+
+    public Vehiculo[] getConMasViajes() {
+        return ConMasViajes;
+    }
+
+    public void setConMasViajes(Vehiculo[] ConMasViajes) {
+        this.ConMasViajes = ConMasViajes;
+    }
+    
+    
 
     File R_ArbolB;
     FileWriter FW_ArbolB;
