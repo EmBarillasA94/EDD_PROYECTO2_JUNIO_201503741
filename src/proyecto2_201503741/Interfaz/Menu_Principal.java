@@ -5,7 +5,10 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -86,6 +89,13 @@ public class Menu_Principal extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -379,6 +389,58 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
+        jMenu7.setText("Imagenes");
+
+        jMenuItem13.setText("Grafica_TablaHash.png");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem13);
+
+        jMenuItem14.setText("Grafica_ArbolB.png");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem14);
+
+        jMenuItem15.setText("Grafica_ListaDobleCir.png");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem15);
+
+        jMenuItem16.setText("Grafica_Grafo.png");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem16);
+
+        jMenuItem17.setText("Grafica_BlockChain.png");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem17);
+
+        jMenuItem18.setText("Grafica_General.png");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem18);
+
+        jMenuBar1.add(jMenu7);
+
         jMenu4.setText("Acerca de");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -602,11 +664,11 @@ public class Menu_Principal extends javax.swing.JFrame {
                 Ruta_Imagen = "Grafica_Ruta.png";
                 Visor vr = new Visor();
                 vr.setVisible(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "No se encontro ningun viaje con esa llave");
             }
             txt_llave.setText("");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Ingrese una llave");
         }
     }//GEN-LAST:event_btn_BuscarViajeActionPerformed
@@ -656,6 +718,102 @@ public class Menu_Principal extends javax.swing.JFrame {
         Visor vr = new Visor();
         vr.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        String fileName = "Grafica_TablaHash.png";
+        String[] commands = {
+            "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
+        };
+        
+        try {
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        String fileName = "Grafica_ArbolB.png";
+        String[] commands = {
+            "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
+        };
+        
+        try {
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        String fileName = "Grafica_Lista_Doble_Circular.png";
+        String[] commands = {
+            "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
+        };
+        
+        try {
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        String fileName = "Grafica_Grafo.png";
+        String[] commands = {
+            "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
+        };
+        
+        try {
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        String fileName = "Grafica_BlockChain.png";
+        String[] commands = {
+            "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
+        };
+        
+        try {
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        String fileName = "Grafica_General.png";
+        String[] commands = {
+            "cmd.exe", "/c", "start", "\"DummyTitle\"", "\"" + fileName + "\""
+        };
+        
+        try {
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu_Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -713,11 +871,18 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

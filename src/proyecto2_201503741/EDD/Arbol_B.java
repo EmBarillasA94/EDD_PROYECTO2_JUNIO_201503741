@@ -179,6 +179,14 @@ public class Arbol_B {
         this.cantidad--;
     }
 
+    public String BuscarNodoB_HashCode(String placa){
+        Nodo_B aux = this.raiz;
+        Nodo_B Nodo_Encontrado = BuscarNodo(aux, placa);
+        String hashcode = Nodo_Encontrado.hashCode()+"";
+        buscar = null;
+        return hashcode;
+    }
+    
     public Nodo_B BuscarNodo(Nodo_B raiz, String placa) {
         if (raiz != null) {
             int comparacion;
@@ -625,7 +633,7 @@ public class Arbol_B {
         texto = "";
         texto = texto + "subgraph ArbolB{ \n";
         texto = texto + "rankdir = TB; \n";
-        texto = texto + "node [shape = record]; \n";
+        texto = texto + "node [shape = record, color=blue]; \n";
 
         SubGraph_GraficarNodos(this.raiz);
         texto = texto + "\n";

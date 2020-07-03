@@ -130,7 +130,7 @@ public class BlockChain_Viajes {
         String espacio = "&#92;n";
 
         texto = texto + "subgraph BlockChain{ \n";
-        texto = texto + "node[shape=box]; \n";
+        texto = texto + "node[shape=box, color=red]; \n";
         texto = texto + "rankdir = LR; \n";
         texto = texto + "\n";
 
@@ -179,8 +179,8 @@ public class BlockChain_Viajes {
             String espacio = "&#92;n";
 
             fw_archivo.write("digraph General{ \n");
-            fw_archivo.write("node[shape=box]; \n");
-            fw_archivo.write("rankdir = LR; \n");
+            fw_archivo.write("node[shape=box, nodesep=0.5]; \n");
+            fw_archivo.write("rankdir = TB; \n");
             fw_archivo.write("\n");
             
             //subgrafo del arbol
@@ -207,6 +207,16 @@ public class BlockChain_Viajes {
             fw_archivo.write("\n");
             fw_archivo.write(Grafo.getSubgraph());
             fw_archivo.write("\n");
+            
+            //crear los enlaces a las otras estructas
+            Nodo_BlockChain aux = this.firts;
+            for (int i = 0; i < this.size; i++) {
+                fw_archivo.write(""+comillas+aux.hashCode()+comillas+"->node"+TablaHash_Clientes.CalcularHash(aux.getCliente().getDpi())+":"+aux.getCliente().hashCode()+"; \n");
+                fw_archivo.write(""+comillas+aux.hashCode()+comillas+"->"+comillas+aux.getConductor().hashCode()+comillas+"; \n");
+                fw_archivo.write(""+comillas+aux.hashCode()+comillas+"->"+Arbol_Vehiculos.BuscarNodoB_HashCode(aux.getVehiculo().getPlaca())+":"+aux.getVehiculo().hashCode()+"; \n");
+                aux=aux.getNext();
+            }
+            
             
             fw_archivo.write("}");
             

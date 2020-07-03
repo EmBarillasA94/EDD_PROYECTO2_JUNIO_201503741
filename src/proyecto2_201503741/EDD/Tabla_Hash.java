@@ -27,7 +27,7 @@ public class Tabla_Hash {
         this.claves_ocupadas = 0;
     }
 
-    private int CalcularHash(long dpi) {
+    public int CalcularHash(long dpi) {
         return (int) (dpi % this.tam);
     }
 
@@ -183,7 +183,7 @@ public class Tabla_Hash {
         texto = texto + "subgraph TablaHash{ \n";
         texto = texto + "nodesep =.01; \n";
         texto = texto + "rankdir = LR; \n";
-        texto = texto + "node[shape=record,width=.1,height=" + altura + "]; \n";
+        texto = texto + "node[shape=record,width=.1,height=" + altura + ", color=yellow]; \n";
 
         texto = texto + "nodeArray[label=" + comillas;
         for (int i = 0; i <= this.Tabla.length - 1; i++) {

@@ -2,18 +2,24 @@ digraph BlockChain{
 node[shape=box]; 
 rankdir = TB; 
 
-"19040312"[label = "d7ef2d80d87c8db77ddcfef67a090f1c&#92;nLugar Origen: Oviedo&#92;nLugar Destino: Corunia&#92;nFecha y Hora: 2720 9:37&#92;nCliente: 221374732231&#92;nConductor: 2552889210101&#92;nVehiculo: P345RTX"] 
+"2736801"[label = "5400c072f362763a7f8abc5f198bcfb1&#92;nLugar Origen: Valladolid&#92;nLugar Destino: Cadiz&#92;nFecha y Hora: 2720 10:53&#92;nCliente: 342123984521&#92;nConductor: 6865324680074&#92;nVehiculo: P654CRV"] 
 
-subgraph ruta_19040312{ 
+subgraph ruta_2736801{ 
 rank=same; 
-"Oviedo_19040312"[label="Oviedo&#92;n0"]; 
-"Bilbao_19040312"[label="Bilbao&#92;n304"]; 
-"Valladolid_19040312"[label="Valladolid&#92;n584"]; 
-"Corunia_19040312"[label="Corunia&#92;n1039"]; 
+"Valladolid_2736801"[label="Valladolid&#92;n0"]; 
+"Madrid_2736801"[label="Madrid&#92;n193"]; 
+"Murcia_2736801"[label="Murcia&#92;n343"]; 
+"Granada_2736801"[label="Granada&#92;n621"]; 
+"Jaen_2736801"[label="Jaen&#92;n720"]; 
+"Sevilla_2736801"[label="Sevilla&#92;n962"]; 
+"Cadiz_2736801"[label="Cadiz&#92;n1087"]; 
 
-"Oviedo_19040312"->"Bilbao_19040312"; 
-"Bilbao_19040312"->"Valladolid_19040312"; 
-"Valladolid_19040312"->"Corunia_19040312"; 
+"Valladolid_2736801"->"Madrid_2736801"; 
+"Madrid_2736801"->"Murcia_2736801"; 
+"Murcia_2736801"->"Granada_2736801"; 
+"Granada_2736801"->"Jaen_2736801"; 
+"Jaen_2736801"->"Sevilla_2736801"; 
+"Sevilla_2736801"->"Cadiz_2736801"; 
 }
-"19040312"->"Oviedo_19040312"; 
+"2736801"->"Valladolid_2736801"; 
 }

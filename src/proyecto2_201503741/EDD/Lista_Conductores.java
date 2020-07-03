@@ -165,7 +165,7 @@ public class Lista_Conductores {
         
         texto = texto + "subgraph Lista_Conductores{ \n";
         texto = texto + "rankdir = LR; \n";
-        texto = texto + "node[shape=box] \n";
+        texto = texto + "node[shape=box, color=green] \n";
 
         Conductor aux = this.firts;
         for (int i = 0; i < this.size; i++) {
