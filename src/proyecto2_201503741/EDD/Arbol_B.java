@@ -179,7 +179,7 @@ public class Arbol_B {
         this.cantidad--;
     }
 
-    private Nodo_B BuscarNodo(Nodo_B raiz, String placa) {
+    public Nodo_B BuscarNodo(Nodo_B raiz, String placa) {
         if (raiz != null) {
             int comparacion;
             for (int i = 0; i < raiz.getVehiculos().length; i++) {

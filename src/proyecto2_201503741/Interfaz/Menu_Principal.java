@@ -64,7 +64,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         cbx_Vehiculos = new javax.swing.JComboBox<>();
         btn_AceptarViaje = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_Viajes = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -75,6 +75,13 @@ public class Menu_Principal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,7 +103,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Viajes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -137,8 +144,13 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Viajes");
+        btn_Viajes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_Viajes.setText("Viajes");
+        btn_Viajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ViajesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -162,7 +174,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_AceptarViaje)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btn_Viajes)
                         .addGap(129, 129, 129))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +212,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_AceptarViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_Viajes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -284,6 +296,53 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu5.setText("Top's 10");
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Reportes");
+
+        jMenuItem7.setText("Reporte Clientes");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem7);
+
+        jMenuItem8.setText("Reporte Vehiculos");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
+
+        jMenuItem9.setText("Reporte Conductores");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem9);
+
+        jMenuItem10.setText("Reporte Grafo");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem10);
+
+        jMenuItem11.setText("Reporte BlockChain");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem11);
+
+        jMenuBar1.add(jMenu6);
+
         jMenu4.setText("Acerca de");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -317,6 +376,8 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public static String Ruta_Imagen;
 
     public static void CargarImagen() {
         try {
@@ -496,6 +557,47 @@ public class Menu_Principal extends javax.swing.JFrame {
         admin_con.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void btn_ViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViajesActionPerformed
+        Block_Viajes.Graph();
+        Ruta_Imagen = "Grafica_BlockChain.png";
+        Visor vr = new Visor();
+        vr.setVisible(true);
+    }//GEN-LAST:event_btn_ViajesActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        TablaHash_Clientes.Graph();
+        Ruta_Imagen = "Grafica_TablaHash.png";
+        Visor vr = new Visor();
+        vr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        Arbol_Vehiculos.Reporte_ArbolB();
+        Ruta_Imagen = "Grafica_ArbolB.png";
+        Visor vr = new Visor();
+        vr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        ListaCirculoar_Conductores.graph();
+        Ruta_Imagen = "Grafica_Lista_Doble_Circular.png";
+        Visor vr = new Visor();
+        vr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        Ruta_Imagen = "Grafica_Grafo.png";
+        Visor vr = new Visor();
+        vr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        Block_Viajes.Graph();
+        Ruta_Imagen = "Grafica_BlockChain.png";
+        Visor vr = new Visor();
+        vr.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -533,12 +635,12 @@ public class Menu_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_AceptarViaje;
+    private javax.swing.JButton btn_Viajes;
     private static javax.swing.JComboBox<String> cbx_Clientes;
     private static javax.swing.JComboBox<String> cbx_Conductores;
     private static javax.swing.JComboBox<String> cbx_Destino;
     private static javax.swing.JComboBox<String> cbx_Origen;
     private static javax.swing.JComboBox<String> cbx_Vehiculos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -548,13 +650,20 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
