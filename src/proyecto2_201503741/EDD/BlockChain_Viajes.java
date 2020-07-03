@@ -45,7 +45,19 @@ public class BlockChain_Viajes {
             this.size++;
         }
     }
-
+    
+    public Nodo_BlockChain Buscar(String llave){
+        Nodo_BlockChain aux = this.firts;
+        String llave_encriptada = aux.Generar_llave_MD5(llave);
+        for (int i = 0; i < this.size; i++) {
+            if (llave_encriptada.equals(aux.getLlave())) {
+                return aux;
+            }
+            aux = aux.getNext();
+        }
+        return null;
+    }
+    
     public void Graph() {
         try {
             File archivo;

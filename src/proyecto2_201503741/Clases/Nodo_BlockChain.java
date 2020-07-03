@@ -5,6 +5,8 @@
  */
 package proyecto2_201503741.Clases;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -119,6 +121,37 @@ public class Nodo_BlockChain {
 
     public Lista_Aristas getRuta() {
         return ruta;
+    }
+    
+    public void Graph_Ruta(){
+        try {
+            File archivo;
+            FileWriter fw_archivo;
+            archivo = new File("R_Ruta.dot");
+            fw_archivo = new FileWriter(archivo, false);
+            char comillas = '"';
+            String espacio = "&#92;n";
+
+            fw_archivo.write("digraph BlockChain{ \n");
+            fw_archivo.write("node[shape=box]; \n");
+            fw_archivo.write("rankdir = LR; \n");
+            fw_archivo.write("\n");
+            
+            fw_archivo.write(this.ruta.Graph_RutaCorta(this.hashCode()+""));
+            
+            fw_archivo.write("}");
+            fw_archivo.close();
+            //"C:\\release\\bin\\dot.exe -Tpng R_ArbolAVL.dot -o Grafica_ArbolAVL.png"
+            String Comando = "C:\\release\\bin\\dot.exe -Tpng R_Ruta.dot -o Grafica_Ruta.png";
+            Process p;
+            try {
+                p = Runtime.getRuntime().exec(Comando);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+        }
     }
 
     public void setRuta(Lista_Aristas ruta) {

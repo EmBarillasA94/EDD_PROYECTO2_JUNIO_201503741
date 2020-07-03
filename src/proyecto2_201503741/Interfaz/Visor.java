@@ -18,6 +18,7 @@ public class Visor extends javax.swing.JFrame {
      */
     public Visor() {
         initComponents();
+        CargarImagen();
     }
 
     /**

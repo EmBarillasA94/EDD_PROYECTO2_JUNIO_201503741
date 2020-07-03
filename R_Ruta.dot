@@ -1,0 +1,15 @@
+digraph BlockChain{ 
+node[shape=box]; 
+rankdir = LR; 
+
+subgraph ruta_8605796{ 
+rank=same; 
+"Oviedo_8605796"[label="Oviedo&#92;n0"]; 
+"Bilbao_8605796"[label="Bilbao&#92;n304"]; 
+"Zaragoza_8605796"[label="Zaragoza&#92;n628"]; 
+"Barcelona_8605796"[label="Barcelona&#92;n924"]; 
+
+"Oviedo_8605796"->"Bilbao_8605796"; 
+"Bilbao_8605796"->"Zaragoza_8605796"; 
+"Zaragoza_8605796"->"Barcelona_8605796"; 
+}}
