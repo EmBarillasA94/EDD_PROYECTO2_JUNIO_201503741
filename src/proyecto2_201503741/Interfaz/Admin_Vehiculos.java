@@ -5,6 +5,12 @@
  */
 package proyecto2_201503741.Interfaz;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyecto2_201503741.Clases.Vehiculo;
+import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Vehiculos;
+import proyecto2_201503741.Proyecto2_201503741;
+
 /**
  *
  * @author EDDY
@@ -16,6 +22,7 @@ public class Admin_Vehiculos extends javax.swing.JFrame {
      */
     public Admin_Vehiculos() {
         initComponents();
+        RefrescarTabla();
     }
 
     /**
@@ -93,6 +100,11 @@ public class Admin_Vehiculos extends javax.swing.JFrame {
 
         btn_Ingresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -268,9 +280,65 @@ public class Admin_Vehiculos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static Vehiculo Vehiculo_Buscado;
+
+    public static void RefrescarTabla() {
+        Vehiculo[] ListaVehiculos = Proyecto2_201503741.Arbol_Vehiculos.Lista_Vehiculos();
+        DefaultTableModel modelo = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Placa", "Marca", "Modelo", "Año", "Color", "Precio", "Transmicion"
+                }
+        );
+        for (int i = 0; i < ListaVehiculos.length; i++) {
+            String placa = ListaVehiculos[i].getPlaca()+ "";
+            String marca = ListaVehiculos[i].getMarca();
+            String mod = ListaVehiculos[i].getModelo();
+            String anio = ListaVehiculos[i].getAnio()+"";
+            String color = ListaVehiculos[i].getColor();
+            String precio = ListaVehiculos[i].getPrecio()+ "";
+            String Transmicion = ListaVehiculos[i].getTransmision();
+            modelo.addRow(new Object[]{placa, marca, mod, anio, color, precio, Transmicion});
+        }
+        tbl_Vehiculos.setModel(modelo);
+    }
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
-        // TODO add your handling code here:
+        if (!txt_buscar.getText().equals("")) {
+            Vehiculo_Buscado = Proyecto2_201503741.Arbol_Vehiculos.Buscar(txt_buscar.getText().trim());
+            if (Vehiculo_Buscado != null) {
+                Ventana_Vehiculo vtn_Vehiculo = new Ventana_Vehiculo();
+                vtn_Vehiculo.setVisible(true);
+                txt_buscar.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontro el cliente");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ingrese un DPI valido");
+        }
     }//GEN-LAST:event_btn_BuscarActionPerformed
+
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        if (!"".equals(txt_Placa.getText())
+                && !txt_Marca.getText().equals("")
+                && !txt_Modelo.getText().equals("")
+                && !txt_Anio.getText().equals("")
+                && !txt_Color.getText().equals("")
+                && !txt_Precio.getText().equals("")
+                && !txt_Transmicion.getText().equals("")) {
+            Vehiculo Nuevo_Veh = new Vehiculo(txt_Placa.getText(), txt_Marca.getText(), txt_Modelo.getText(), Integer.parseInt(txt_Anio.getText()), txt_Color.getText(), txt_Precio.getText().trim(), txt_Transmicion.getText());
+            Proyecto2_201503741.Arbol_Vehiculos.Insertar(Nuevo_Veh);
+            CargarCbx_Vehiculos();
+            //refrescar tabla
+            txt_Placa.setText("");
+            txt_Marca.setText("");
+            txt_Modelo.setText("");
+            txt_Anio.setText("");
+            txt_Color.setText("");
+            txt_Precio.setText("");
+            txt_Transmicion.setText("");
+            RefrescarTabla();
+        }
+    }//GEN-LAST:event_btn_IngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,7 +390,7 @@ public class Admin_Vehiculos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_Vehiculos;
+    private static javax.swing.JTable tbl_Vehiculos;
     private javax.swing.JTextField txt_Anio;
     private javax.swing.JTextField txt_Color;
     private javax.swing.JTextField txt_Marca;

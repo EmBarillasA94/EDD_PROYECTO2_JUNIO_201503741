@@ -6,21 +6,22 @@
 package proyecto2_201503741.Interfaz;
 
 import javax.swing.JOptionPane;
-import proyecto2_201503741.Clases.Conductor;
-import static proyecto2_201503741.Interfaz.Admin_Conductores.Conductor_Buscado;
-import static proyecto2_201503741.Interfaz.Admin_Conductores.RefrescarTabla;
-import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Conductores;
+import proyecto2_201503741.Clases.Vehiculo;
 import proyecto2_201503741.Proyecto2_201503741;
+import static proyecto2_201503741.Interfaz.Admin_Vehiculos.RefrescarTabla;
+import static proyecto2_201503741.Interfaz.Admin_Vehiculos.Vehiculo_Buscado;
+import static proyecto2_201503741.Interfaz.Menu_Principal.CargarCbx_Vehiculos;
+
 /**
  *
  * @author EDDY
  */
-public class Ventana_Conductores extends javax.swing.JFrame {
+public class Ventana_Vehiculo extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ventana_Conductores
+     * Creates new form Ventana_Vehiculo
      */
-    public Ventana_Conductores() {
+    public Ventana_Vehiculo() {
         initComponents();
         CargarDatos();
     }
@@ -36,65 +37,63 @@ public class Ventana_Conductores extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txt_Dpi = new javax.swing.JTextField();
+        txt_Placa = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txt_Nombres = new javax.swing.JTextField();
+        txt_Marca = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txt_Apellidos = new javax.swing.JTextField();
+        txt_Modelo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txt_Genero = new javax.swing.JTextField();
+        txt_Anio = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txt_Fecha = new javax.swing.JTextField();
+        txt_Color = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txt_Telefono = new javax.swing.JTextField();
+        txt_Precio = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txt_Direccion = new javax.swing.JTextField();
+        txt_Transmicion = new javax.swing.JTextField();
         btn_Modificar = new javax.swing.JButton();
         btn_Eliminar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        txt_Licencia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Conductor");
+        setTitle("Vehiculo");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Conductor");
+        jLabel1.setText("Vehiculo");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("DPI");
+        jLabel2.setText("Placa");
 
-        txt_Dpi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Placa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Nombres");
+        jLabel3.setText("Marca");
 
-        txt_Nombres.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Marca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Apellidos");
+        jLabel4.setText("Modelo");
 
-        txt_Apellidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Modelo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Genero");
+        jLabel5.setText("Año");
 
-        txt_Genero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Anio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Fecha Nacimiento");
+        jLabel6.setText("Color");
 
-        txt_Fecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Color.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Telefono");
+        jLabel7.setText("Precio");
 
-        txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Precio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Direccion");
+        jLabel8.setText("Transmicion");
 
-        txt_Direccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_Transmicion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         btn_Modificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_Modificar.setText("Modificar");
@@ -120,11 +119,6 @@ public class Ventana_Conductores extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Tipo Licencia");
-
-        txt_Licencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,18 +135,16 @@ public class Ventana_Conductores extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_Dpi)
-                            .addComponent(txt_Nombres)
-                            .addComponent(txt_Apellidos)
-                            .addComponent(txt_Genero)
-                            .addComponent(txt_Fecha)
-                            .addComponent(txt_Telefono)
-                            .addComponent(txt_Direccion)
-                            .addComponent(txt_Licencia))))
+                            .addComponent(txt_Placa)
+                            .addComponent(txt_Marca)
+                            .addComponent(txt_Modelo)
+                            .addComponent(txt_Anio)
+                            .addComponent(txt_Color)
+                            .addComponent(txt_Precio)
+                            .addComponent(txt_Transmicion))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(38, Short.MAX_VALUE)
@@ -171,91 +163,84 @@ public class Ventana_Conductores extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_Dpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(txt_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(txt_Licencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Transmicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public static void CargarDatos(){
-        txt_Dpi.setText(Conductor_Buscado.getDpi()+"");
-        txt_Nombres.setText(Conductor_Buscado.getNombres());
-        txt_Apellidos.setText(Conductor_Buscado.getApellidos());
-        txt_Genero.setText(Conductor_Buscado.getGenero());
-        txt_Licencia.setText(Conductor_Buscado.getTipo_licencia());
-        txt_Fecha.setText(Conductor_Buscado.getFecha_nacimiento());
-        txt_Telefono.setText(Conductor_Buscado.getTelefono()+"");
-        txt_Direccion.setText(Conductor_Buscado.getDireccion());
+        txt_Placa.setText(Vehiculo_Buscado.getPlaca());
+        txt_Marca.setText(Vehiculo_Buscado.getMarca());
+        txt_Modelo.setText(Vehiculo_Buscado.getModelo());
+        txt_Anio.setText(Vehiculo_Buscado.getAnio()+"");
+        txt_Color.setText(Vehiculo_Buscado.getColor());
+        txt_Precio.setText(Vehiculo_Buscado.getPrecio());
+        txt_Transmicion.setText(Vehiculo_Buscado.getTransmision());
     }
     
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
-        if (Long.parseLong(txt_Dpi.getText().trim()) == Conductor_Buscado.getDpi()) {
-            Conductor_Buscado.setNombres(txt_Nombres.getText());
-            Conductor_Buscado.setApellidos(txt_Apellidos.getText());
-            Conductor_Buscado.setGenero(txt_Genero.getText());
-            Conductor_Buscado.setTipo_licencia(txt_Licencia.getText());
-            Conductor_Buscado.setFecha_nacimiento(txt_Fecha.getText());
-            Conductor_Buscado.setTelefono(Integer.parseInt(txt_Telefono.getText()));
-            Conductor_Buscado.setDireccion(txt_Direccion.getText());
+        if (txt_Placa.getText().equals(Vehiculo_Buscado.getPlaca())) {
+            Vehiculo_Buscado.setMarca(txt_Marca.getText());
+            Vehiculo_Buscado.setModelo(txt_Modelo.getText());
+            Vehiculo_Buscado.setAnio(Integer.parseInt(txt_Anio.getText()));
+            Vehiculo_Buscado.setColor(txt_Color.getText());
+            Vehiculo_Buscado.setPrecio(txt_Precio.getText());
+            Vehiculo_Buscado.setTransmision(txt_Transmicion.getText());
             JOptionPane.showMessageDialog(this, "Modificado");
             CargarDatos();
             RefrescarTabla();
-            CargarCbx_Conductores();
+            CargarCbx_Vehiculos();
         } else {
-            Proyecto2_201503741.ListaCirculoar_Conductores.Eliminar(Conductor_Buscado.getDpi());
-            Conductor ConductorModificado = new Conductor(Long.parseLong(txt_Dpi.getText().trim()), txt_Nombres.getText(), txt_Apellidos.getText(), txt_Genero.getText(), txt_Fecha.getText(), txt_Fecha.getText(), Integer.parseInt(txt_Telefono.getText()), txt_Direccion.getText());
-            Proyecto2_201503741.ListaCirculoar_Conductores.Insertar(ConductorModificado);
-            Conductor_Buscado = Proyecto2_201503741.ListaCirculoar_Conductores.Buscar(ConductorModificado.getDpi());
+            Proyecto2_201503741.Arbol_Vehiculos.EliminarPorplaca(Vehiculo_Buscado.getPlaca());
+            Vehiculo VehiculoModificado = new Vehiculo(txt_Placa.getText(), txt_Marca.getText(), txt_Modelo.getText(), Integer.parseInt(txt_Anio.getText()), txt_Color.getText(), txt_Precio.getText(), txt_Transmicion.getText());
+            Proyecto2_201503741.Arbol_Vehiculos.Insertar(VehiculoModificado);
+            Vehiculo_Buscado = Proyecto2_201503741.Arbol_Vehiculos.Buscar(VehiculoModificado.getPlaca());
             JOptionPane.showMessageDialog(this, "Modificado");
             CargarDatos();
             RefrescarTabla();
-            CargarCbx_Conductores();
+            CargarCbx_Vehiculos();
         }
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Seguro desea borrar este conductor?", "", JOptionPane.YES_NO_OPTION);
+        int confirmar = JOptionPane.showConfirmDialog(null, "¿Seguro desea borrar este vehiculo?", "", JOptionPane.YES_NO_OPTION);
         if (confirmar == JOptionPane.YES_OPTION) {
-            Proyecto2_201503741.ListaCirculoar_Conductores.Eliminar(Long.parseLong(txt_Dpi.getText().trim()));
+            Proyecto2_201503741.Arbol_Vehiculos.EliminarPorplaca(txt_Placa.getText());
             RefrescarTabla();
-            CargarCbx_Conductores();
-            Conductor_Buscado = null;
+            CargarCbx_Vehiculos();
+            Vehiculo_Buscado = null;
             this.dispose();
         }
     }//GEN-LAST:event_btn_EliminarActionPerformed
@@ -281,20 +266,20 @@ public class Ventana_Conductores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Conductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana_Vehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Conductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana_Vehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Conductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana_Vehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana_Conductores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ventana_Vehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana_Conductores().setVisible(true);
+                new Ventana_Vehiculo().setVisible(true);
             }
         });
     }
@@ -311,14 +296,12 @@ public class Ventana_Conductores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private static javax.swing.JTextField txt_Apellidos;
-    private static javax.swing.JTextField txt_Direccion;
-    private static javax.swing.JTextField txt_Dpi;
-    private static javax.swing.JTextField txt_Fecha;
-    private static javax.swing.JTextField txt_Genero;
-    private static javax.swing.JTextField txt_Licencia;
-    private static javax.swing.JTextField txt_Nombres;
-    private static javax.swing.JTextField txt_Telefono;
+    private static javax.swing.JTextField txt_Anio;
+    private static javax.swing.JTextField txt_Color;
+    private static javax.swing.JTextField txt_Marca;
+    private static javax.swing.JTextField txt_Modelo;
+    private static javax.swing.JTextField txt_Placa;
+    private static javax.swing.JTextField txt_Precio;
+    private static javax.swing.JTextField txt_Transmicion;
     // End of variables declaration//GEN-END:variables
 }
